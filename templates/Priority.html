@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Priority Health Programs - Broader Accessible-Health Initiatives</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+ body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+  }
+
+ /* Header */
+  header {
+    background: #172e69;
+    padding: 5px;
+    text-align: center;
+    height: 20px;
+  }
+
+  .social-links {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 15px;
+    padding: 2px 20px;
+    margin: auto;
+  }
+
+  .social-links img {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+  }
+
+  .social-links img:hover {
+    transform: scale(1.2);
+  }
+
+  /* Navigation */
+  .main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10%;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .logo img {
+    height: 100px;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+
+  nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+
+  nav ul li a:hover {
+    color: #007bff;
+  }
+
+ /* Hide toggle button on desktop */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 26px;
+  color: #172e69;
+  cursor: pointer;
+}
+
+/* Mobile menu is hidden by default */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background-color: #fff;
+  position: absolute;
+  top: 80px;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-menu a {
+  padding: 15px 20px;
+  text-decoration: none;
+  color: #172e69;
+  font-weight: 600;
+  border-bottom: 1px solid #eee;
+}
+/* Close button inside mobile menu */
+.mobile-menu .close-btn {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #172e69;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+/* Mobile-only adjustments */
+@media (max-width: 600px) {
+  nav ul {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  .mobile-menu {
+    display: none; /* Shown via JS */
+  }
+}
+  /* Slider */
+  .slider-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+  }
+
+  .slide {
+    flex: 0 0 100%;
+    position: relative;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+  }
+
+  .slider img {
+    width: 100%;
+    height: 700px;
+    object-fit: cover;
+  }
+
+  .slide-text {
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    z-index: 2;
+  }
+
+  .slide-text h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 50px;
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 10px;
+    z-index: 10;
+  }
+
+  .slide-text p {
+    font-size: 18px;
+    text-align: left;
+    z-index: 10;
+  }
+
+  .vignette {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.8) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 22px;
+    transition: 0.3s;
+    border-radius: 50%;
+  }
+
+  .prev {
+    left: 50px;
+  }
+
+  .next {
+    right: 50px;
+  }
+
+  .prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+        .page-header h1 {
+      font-size: 28px;
+      color: white;
+      margin-top: 20px;
+    }
+
+    .page-header h1 {
+      font-size: 28px;
+      color: white;
+      margin-top: 20px;
+    }
+    .program-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 60px 20px;
+      background-color: #f9f9f9;
+    }
+    .program-card {
+      width: 280px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      text-align: left;
+      padding: 20px;
+      transition: transform 0.3s ease;
+    }
+    .program-card:hover {
+      transform: translateY(-5px);
+    }
+    .program-card h3 {
+      font-size: 18px;
+      color: #172e69;
+      margin-bottom: 10px;
+    }
+    .program-card p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+    .program-card a {
+      font-size: 14px;
+      color: #1abc9c;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    footer {
+      background-color: #080f21;
+      color: #fff;
+      padding: 40px 20px;
+      font-family: 'Arial', sans-serif;
+    }
+    .footer-bottom {
+      text-align: center;
+      font-size: 14px;
+      opacity: 0.8;
+      border-top: 1px solid #444;
+      padding-top: 10px;
+      margin-top: 20px;
+    }
+    @media (max-width: 768px) {
+      .program-card {
+        width: 100%;
+        max-width: 350px;
+      }
+    }
+    .project-gallery {
+      background-color: #ffffff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .project-gallery h2 {
+      color: #172e69;
+      font-size: 28px;
+      margin-bottom: 40px;
+      border-bottom: 3px solid #1abc9c;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+    .project-images {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .project-images img {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    .project-images img:hover {
+      transform: scale(1.05);
+    }
+           footer {
+            background-color: #080f21;
+            color: #fff;
+            padding: 40px 20px;
+            font-family: 'Arial', sans-serif;
+        }
+        .footer-top {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .footer-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 40px;
+            width: 100%;
+            max-width: 1100px;
+            margin: auto;
+        }
+        .footer-logo {
+            text-align: left;
+        }
+        .footer-logo img {
+            max-width: 180px;
+            margin-bottom: 15px;
+        }
+        .footer-prose {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            text-align: left;
+            max-width: 250px;
+        }
+        .footer-column {
+            min-width: 200px;
+        }
+        .footer-column h4 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #e63946;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-column ul li {
+            margin-bottom: 8px;
+        }
+        .footer-column ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-column ul li a:hover {
+            color: #e63946;
+        }
+        .social-links {
+         align-items: flex-start;
+            text-align: left;
+            margin-top: 40px;
+        }
+        .social-links h4 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .social-links a {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .social-links img {
+            width: 30px;
+            height: 30px;
+        }
+ .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #444;
+            padding-top: 10px;
+            margin-top: 20px;
+            font-size: 13px;
+            opacity: 0.7;
+        }
+        .footer-bottom-links a {
+            margin-left: 15px;
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-bottom-links a:hover {
+            color: #e63946;
+        }
+
+
+      @media (max-width: 600px) {
+  /* Hide desktop nav */
+  nav ul {
+    display: none;
+  }
+
+  /* Show mobile toggle */
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  /* Initially hide mobile menu (JS toggles display) */
+  .mobile-menu {
+    display: none;
+  }
+
+  /* Logo size adjustment */
+  .logo img {
+    height: 60px;
+  }
+
+  /* Header layout */
+  .main-header {
+    flex-direction: flex;
+    align-items: flex-start;
+    padding: 10px 5%;
+  }
+
+  /* Social icons size and padding */
+  .social-links {
+    gap: 10px;
+    padding: 2px 10px;
+  }
+
+  .social-links img {
+    width: 15px;
+    height: 15px;
+  }
+
+  /* Slider image & text */
+  .slider-container {
+    height: auto;
+  }
+
+  .slider img {
+    height: auto;
+    max-height: 100vh;
+    object-fit: cover;
+  }
+
+  .slide {
+    height: auto;
+    flex-direction: column;
+  }
+
+  .slide-text {
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+  }
+
+  .slide-text h2 {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .slide-text p {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  /* Footer adjustments */
+  .footer-columns {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .footer-logo,
+  .footer-prose,
+  .footer-column {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .footer-prose {
+    font-size: 12px;
+  }
+
+  .footer-column h4,
+  .footer-column ul li {
+    font-size: 13px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    font-size: 12px;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .footer-bottom-links a {
+    font-size: 13px;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+<header>
+     </header>
+    <div class="main-header">
+        <div class="logo">
+            <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='bahi logo.png') }}" alt="BAHI logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="/Priority">Programs</a></li>
+                <li><a href=/Health-Systems>Health-Systems</a></li>
+                <li><a href="/Involved">Get Involve</a></li>
+                <li><a href="/Newsletter">Newsletter</a></li>
+            </ul>
+        </nav>
+               <!-- Toggle Button for Mobile -->
+<button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close-btn" onclick="toggleMobileMenu()">×</button>
+  <a href="/">Home</a>
+  <a href="/about-us">About</a>
+  <a href="/Priority">Programs</a>
+  <a href=/Health-Systems>Health-Systems</a>
+    <a href="/Involved">Get Involve</a>
+  <a href="/Newsletter">Newsletter</a>
+</div>
+
+    </div>
+
+<section class="slider-container">
+    <div class="slider">
+        <div class="slide">
+            <img src="{{ url_for('static', filename='home-slider9.jpg') }}" alt="home-slider1">
+             <div class="vignette"></div> <!-- Vignette inside the slide -->
+            <div class="slide-text">
+                <h2>Innovative Programs for Health Equity and Impact</h2>
+                <p>We design and implement strategic health programs
+                    that respond to the needs of communities and deliver measurable results.</p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="{{ url_for('static', filename='home-slider10.jpg') }}" alt="home-slider2">
+             <div class="vignette"></div> <!-- Vignette inside the slide -->
+            <div class="slide-text">
+                <h2>Integrated Health Solutions That Change Lives</h2>
+                <p>From malaria to maternal care, our programs address
+                    the full spectrum of public health priorities with a focus on access and sustainability.</p>
+            </div>
+        </div>
+             </div>
+      <button class="prev" onclick="prevSlide()">&#10094;</button>
+    <button class="next" onclick="nextSlide()">&#10095;</button>
+</section>
+  <section class="program-grid">
+    <div class="program-card">
+      <h3>Infectious Diseases</h3>
+      <p>Preventing, detecting, and responding to infectious disease threats that affect communities.</p>
+    </div>
+    <div class="program-card">
+      <h3>Malaria</h3>
+      <p>Comprehensive prevention, diagnosis, and treatment to reduce malaria-related deaths and illness.</p>
+    </div>
+    <div class="program-card">
+      <h3>HIV/AIDS</h3>
+      <p>Targeted interventions for prevention, care, treatment, and stigma reduction in affected populations.</p>
+    </div>
+    <div class="program-card">
+      <h3>Non-Communicable Diseases</h3>
+      <p>Addressing chronic diseases through education, lifestyle interventions, and access to care.</p>
+    </div>
+    <div class="program-card">
+      <h3>Reproductive Health & Family Planning</h3>
+      <p>
+        Empowering individuals with access to modern contraceptives, informed choices, and services that support reproductive rights and healthy families.
+      </p>
+    </div>
+    <div class="program-card">
+      <h3>Maternal and Child Health</h3>
+      <p>
+        We ensure safe pregnancies, skilled delivery, and newborn care through community outreach and facility support, reducing preventable maternal and child deaths.
+      </p>
+    </div>
+    <div class="program-card">
+      <h3>Nutrition</h3>
+      <p>Ensuring improved nutrition outcomes for children, women, and vulnerable groups through targeted interventions.</p>
+    </div>
+  </section>
+<section class="project-gallery">
+    <h2>Our Projects in Action</h2>
+    <div class="project-images">
+      <img src="static/images/project1.jpg" alt="Project 1">
+      <img src="static/images/project2.jpg" alt="Project 2">
+      <img src="static/images/project3.jpg" alt="Project 3">
+      <img src="static/images/project4.jpg" alt="Project 4">
+    </div>
+  </section>
+
+     <footer>
+        <div class="footer-top">
+        <!-- Footer Columns -->
+        <div class="footer-columns">
+            <!-- Column 1: Logo and Prose -->
+            <div class="footer-logo">
+                <a href="{{ url_for('index') }}">
+                    <img src="{{ url_for('static', filename='BAHI LOGO.png') }}" alt="BAHI Logo">
+                </a>
+                <p class="footer-prose">
+                    BAHI is committed to improving healthcare accessibility and outcomes through innovation, evidence-based policies, and community-driven initiatives.
+                </p>
+            </div>
+
+            <!-- Column 2: About Us -->
+            <div class="footer-column">
+                <a href="/about-us" style="text-decoration: none; color: inherit;">
+                    <h4>About Us</h4></a>
+                <ul>
+                    <li>Our Mission</li>
+                    <li>Our Impact</li>
+                    <li>Leadership</li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Programs -->
+            <div class="footer-column">
+                <a href="/Priority" style="text-decoration: none; color: inherit;">
+                 <h4>Programs</h4></a>
+                <ul>
+                    <li><a href="/Health-Systems">Health Systems</a></li>
+                    <li>HIV/AIDS</li>
+                    <li>Research & Innovation</li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Get Involved -->
+            <div class="footer-column">
+                <a href="/Involved" style="text-decoration: none; color: inherit;">
+                  <h4>Get Involved</h4>
+                </a>
+                <ul>
+                    <li><a href="/Involved">Donate</a></li>
+                    <li><a href="/Involved">Volunteer</a></li>
+                </ul>
+            </div>
+        </div>
+ </div>
+        <!-- Social Links Below Columns -->
+        <div class="social-links">
+            <h4>Follow Us</h4>
+            <a href="https://facebook.com" target="_blank">
+                <img src="{{ url_for('static', filename='facebook.png') }}" alt="Facebook">
+            </a>
+            <a href="https://instagram.com" target="_blank">
+                <img src="{{ url_for('static', filename='instagram.png') }}" alt="Instagram">
+            </a>
+            <a href="https://linkedin.com" target="_blank">
+                <img src="{{ url_for('static', filename='linkedin.png') }}" alt="LinkedIn">
+            </a>
+        </div>
+
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 Broader Accessible-Health Initiatives. All Rights Reserved.</p>
+    </div>>
+</footer>
+ <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let currentIndex = 0;
+            const slides = document.querySelectorAll(".slide");
+            const totalSlides = slides.length;
+            const slider = document.querySelector(".slider");
+
+            function showSlide(index) {
+                if (index < 0) {
+                    currentIndex = totalSlides - 1;
+                } else if (index >= totalSlides) {
+                    currentIndex = 0;
+                } else {
+                    currentIndex = index;
+                }
+
+                const offset = -currentIndex * 100;
+                slider.style.transform = `translateX(${offset}%)`;
+            }
+
+            function nextSlide() {
+                showSlide(currentIndex + 1);
+            }
+
+            function prevSlide() {
+                showSlide(currentIndex - 1);
+            }
+
+            document.querySelector(".prev").addEventListener("click", prevSlide);
+            document.querySelector(".next").addEventListener("click", nextSlide);
+
+            // Auto slide every 15 seconds
+            setInterval(nextSlide, 5000);
+        });
+            function toggleMobileMenu() {
+    const menu = document.getElementById("mobileMenu");
+    if (menu.style.display === "flex") {
+      menu.style.display = "none";
+    } else {
+      menu.style.display = "flex";
+    }
+  }
+
+
+    </script>
+
+
+</body>
+</html>
