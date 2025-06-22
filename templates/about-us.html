@@ -320,65 +320,84 @@
     border-left: 6px solid #1abc9c;
   }
 
-  /* Founder Section */
-  .founder-section {
-    background-color: #ffffff;
-    padding: 60px 20px;
+.trustees-section {
+  background-color: #f9f9f9;
+  padding: 60px 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.trustees-section h2 {
+  font-size: 28px;
+  color: #172e69;
+  margin-bottom: 30px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid #1abc9c;
+  text-align: center;
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.trustee-slider {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.trustee-card {
+  background-color: #fff;
+  width: 300px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  flex-shrink: 0;
+  transition: transform 0.3s;
+}
+
+.trustee-card:hover {
+  transform: translateY(-5px);
+}
+
+.trustee-card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #1abc9c;
+  margin-bottom: 15px;
+}
+
+.trustee-card h3 {
+  font-size: 18px;
+  color: #172e69;
+  margin-bottom: 10px;
+}
+
+.trustee-card p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Mobile swipe optimization */
+@media (max-width: 768px) {
+  .trustee-slider {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
   }
 
-  .founder-container {
-    max-width: 1100px;
-    margin: 0 auto;
+  .trustee-card {
+    scroll-snap-align: center;
+    min-width: 80%;
+    margin-right: 16px;
   }
+}
 
-  .section-heading {
-    text-align: center;
-    font-size: 32px;
-    color: #172e69;
-    border-bottom: 3px solid #1abc9c;
-    margin-bottom: 40px;
-    padding-bottom: 10px;
-    display: inline-block;
-  }
-
-  .founder-content {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 40px;
-  }
-
-  .founder-image img {
-    width: 260px;
-    height: 260px;
-    object-fit: cover;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-
-  .founder-text {
-    flex: 1;
-  }
-
-  .founder-text h3 {
-    font-size: 24px;
-    color: #172e69;
-    margin-bottom: 5px;
-  }
-
-  .founder-text .title {
-    font-size: 16px;
-    font-weight: 600;
-    color: #1abc9c;
-    margin-bottom: 20px;
-  }
-
-  .founder-text p {
-    font-size: 16px;
-    line-height: 1.8;
-    color: #555;
-    margin-bottom: 18px;
-  }
 
   /* Footer */
   footer {
@@ -728,32 +747,42 @@
                 </div>
               </div>
             </section>
-            <section class="founder-section">
-              <div class="founder-container">
-                <h2 class="section-heading">Founder's Message</h2>
-
-                <div class="founder-content">
-                  <div class="founder-image">
-                    <img src="static/images/dr-isaac.jpg" alt="Dr. Isaac Olugbenga Aladeniyi">
-                  </div>
-
-                  <div class="founder-text">
-                    <h3>Dr. Isaac Olugbenga Aladeniyi</h3>
-                    <p class="title">Medical & Field Epidemiologist | Director, Family Health</p>
-                    <p>
-                      Welcome to Broader Accessible-Health Initiatives. As a medical and field epidemiologist, my passion has always been rooted in using science and strategic leadership to transform health outcomes — particularly in the areas of non-communicable diseases and maternal and child healthcare.
-                    </p>
-                    <p>
-                      Working as a senior health systems specialist in Nigeria's subnational government, I have witnessed first-hand the critical gaps in service delivery, policy alignment, and public health equity. This has only deepened my commitment to building resilient systems that are data-informed, people-centered, and sustainably financed.
-                    </p>
-                    <p>
-                      At BAHI, our work is guided by integrity, evidence, and empathy. We are not just delivering programs — we are restoring dignity, empowering communities, and creating a healthier future for all. I invite you to be a part of this journey — whether through partnership, advocacy, volunteering, or support.
-                    </p>
-                    <p><strong>Together, we can make healthcare more accessible, inclusive, and impactful.</strong></p>
-                  </div>
-                </div>
+<section class="trustees-section">
+                  <div class="section-header">
+                <h2>Board of Trustees</h2>
               </div>
-            </section>
+  <div class="container">
+
+    <div class="trustee-slider">
+
+      <div class="trustee-card">
+        <img src="static/rhodaalade.jpg" alt="Olayemi Rhoda Aladeniyi">
+        <h3>Olayemi Rhoda Aladeniyi</h3>
+        <p>
+          A seasoned Nurse/Midwife and public health lecturer with over 25 years of experience in maternal and child health. She is a certified Master Trainer in postpartum care and pursuing a Master’s in Maternal and Child Health.
+        </p>
+      </div>
+
+      <div class="trustee-card">
+        <img src="static/oga.jpg" alt="Board Member 2">
+        <h3>Prof. Oladimeji Bolarinwa</h3>
+        <p>
+          Expert in global health financing and governance, John brings strategic leadership and nonprofit development experience across multiple international platforms.
+        </p>
+      </div>
+
+      <div class="trustee-card">
+        <img src="static/profbolarinwa.jpg" alt="Board Member 3">
+        <h3>Prof. Oladimeji Bolarinwa</h3>
+        <p>A public health expert and epidemiologist with vast experience in health research, policy,
+            and systems strengthening.
+            He serves as Professor at the University of Ilorin and has consulted for Africa CDC, WHO, and UNICEF.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 
    <footer>
