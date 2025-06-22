@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7fdca8b2-1d34-4a40-871e-e09f235f703c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/visitor_log.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/Health-Systems.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Health-Systems.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Newsletter.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Newsletter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Involved.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Involved.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/Priority.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Priority.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/about-us.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/about-us.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -237,15 +237,16 @@
       margin-top: 20px;
     }
 
-    .program-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      padding: 10;
+.program-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 60px 20px;
       background-color: #f9f9f9;
     }
     .program-card {
-      width: 80%;
+      width: 280px;
       background: white;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -257,12 +258,12 @@
       transform: translateY(-5px);
     }
     .program-card h3 {
-      font-size: 15px;
+      font-size: 18px;
       color: #172e69;
       margin-bottom: 10px;
     }
     .program-card p {
-      font-size: 12px;
+      font-size: 14px;
       color: #555;
       margin-bottom: 10px;
     }
@@ -321,7 +322,7 @@
             background-color: #080f21;
             color: #fff;
             padding: 40px 20px;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
         .footer-top {
             display: flex;
@@ -331,9 +332,9 @@
         }
         .footer-columns {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-            gap: 40px;
-            width: 100%;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            width: 50%;
             max-width: 1100px;
             margin: auto;
         }
@@ -345,7 +346,7 @@
             margin-bottom: 15px;
         }
         .footer-prose {
-            font-size: 14px;
+            font-size: 12px;
             line-height: 1.6;
             margin-bottom: 30px;
             text-align: left;
@@ -355,7 +356,7 @@
             min-width: 200px;
         }
         .footer-column h4 {
-            font-size: 16px;
+            font-size: 14px;
             margin-bottom: 10px;
             border-bottom: 2px solid #e63946;
             display: inline-block;
@@ -414,7 +415,7 @@
         }
 
 
-      @media (max-width: 600px) {
+      @media (max-width: 760px) {
   /* Hide desktop nav */
   nav ul {
     display: none;
