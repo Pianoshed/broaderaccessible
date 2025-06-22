@@ -236,16 +236,16 @@
       color: white;
       margin-top: 20px;
     }
+
     .program-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-      padding: 60px 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: 10;
       background-color: #f9f9f9;
     }
     .program-card {
-      width: 280px;
+      width: 80%;
       background: white;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -257,12 +257,12 @@
       transform: translateY(-5px);
     }
     .program-card h3 {
-      font-size: 18px;
+      font-size: 15px;
       color: #172e69;
       margin-bottom: 10px;
     }
     .program-card p {
-      font-size: 14px;
+      font-size: 12px;
       color: #555;
       margin-bottom: 10px;
     }
@@ -286,12 +286,7 @@
       padding-top: 10px;
       margin-top: 20px;
     }
-    @media (max-width: 768px) {
-      .program-card {
-        width: 100%;
-        max-width: 350px;
-      }
-    }
+
     .project-gallery {
       background-color: #ffffff;
       padding: 60px 20px;
@@ -590,9 +585,20 @@
 </section>
   <section class="program-grid">
     <div class="program-card">
+      <h3>Community Health System Strengthening</h3>
+      <p>Empowering local health structures, engaging communities,
+          and promoting ownership for sustainable health outcomes.</p>
+    </div>
+       <div class="program-card">
+      <h3>Primary Health Care System Strengthening</h3>
+      <p>Supporting PHC revitalization through capacity building, infrastructure support,
+          health financing, and integrated service delivery.</p>
+    </div>
+      <div class="program-card">
       <h3>Infectious Diseases</h3>
       <p>Preventing, detecting, and responding to infectious disease threats that affect communities.</p>
     </div>
+
     <div class="program-card">
       <h3>Malaria</h3>
       <p>Comprehensive prevention, diagnosis, and treatment to reduce malaria-related deaths and illness.</p>
@@ -608,18 +614,21 @@
     <div class="program-card">
       <h3>Reproductive Health & Family Planning</h3>
       <p>
-        Empowering individuals with access to modern contraceptives, informed choices, and services that support reproductive rights and healthy families.
+        Empowering individuals with access to modern contraceptives, informed choices, and services
+          that support reproductive rights and healthy families.
       </p>
     </div>
     <div class="program-card">
       <h3>Maternal and Child Health</h3>
       <p>
-        We ensure safe pregnancies, skilled delivery, and newborn care through community outreach and facility support, reducing preventable maternal and child deaths.
+        We ensure safe pregnancies, skilled delivery, and newborn care through community
+          outreach and facility support, reducing preventable maternal and child deaths.
       </p>
     </div>
     <div class="program-card">
       <h3>Nutrition</h3>
-      <p>Ensuring improved nutrition outcomes for children, women, and vulnerable groups through targeted interventions.</p>
+      <p>Ensuring improved nutrition outcomes for children, women, and vulnerable groups
+          through targeted interventions.</p>
     </div>
   </section>
 <section class="project-gallery">
@@ -636,16 +645,6 @@
         <div class="footer-top">
         <!-- Footer Columns -->
         <div class="footer-columns">
-            <!-- Column 1: Logo and Prose -->
-            <div class="footer-logo">
-                <a href="{{ url_for('index') }}">
-                <img src="{{ url_for('static', filename='bahi logo.png') }}" alt="bahi logo">
-                </a>
-                <p class="footer-prose">
-                    BAHI is committed to improving healthcare accessibility and outcomes through innovation, evidence-based policies, and community-driven initiatives.
-                </p>
-            </div>
-
             <!-- Column 2: About Us -->
             <div class="footer-column">
                 <a href="/about-us" style="text-decoration: none; color: inherit;">
@@ -697,7 +696,7 @@
 
     <div class="footer-bottom">
         <p>&copy; 2025 Broader Accessible-Health Initiatives. All Rights Reserved.</p>
-    </div>>
+    </div>
 </footer>
  <script>
         document.addEventListener("DOMContentLoaded", function () {

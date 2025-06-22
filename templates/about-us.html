@@ -382,19 +382,28 @@
   line-height: 1.6;
 }
 
-/* Mobile swipe optimization */
 @media (max-width: 768px) {
   .trustee-slider {
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2-column grid */
+    gap: 20px; /* space between cards */
+    padding: 10px; /* padding around the grid */
   }
+.trustee-card h3 {
+  font-size: 14px;
+}
+
+.trustee-card p {
+  font-size: 10px;
+}
 
   .trustee-card {
-    scroll-snap-align: center;
-    min-width: 80%;
-    margin-right: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    border: 1px solid #ddd; /* optional: light border for clarity */
+    border-radius: 8px;
+    background-color: #fff;
   }
 }
 
@@ -577,36 +586,35 @@
       font-size: 14px;
     }
 
-    .founder-content {
-      flex-direction: column;
-      align-items: center;
-    }
+  .footer-columns {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    text-align: center;
+  }
 
-    .founder-text h3 {
-      font-size: 20px;
-      text-align: center;
-    }
+    .footer-logo,
+  .footer-prose,
+  .footer-column {
+    max-width: 100%;
+    text-align: center;
+    align-items: center;
+  }
 
-    .founder-text p {
-      font-size: 14px;
-      text-align: justify;
-    }
+    .footer-prose {
+    margin: 10px auto;
+    font-size: 10px;
+  }
 
-    .footer-columns {
-      grid-template-columns: 1fr;
-      text-align: center;
-    }
+  .footer-column h4,
+  .footer-column ul li {
+    font-size: 10px;
+  }
+  .footer-bottom {
+    font-size: 10px;
+    padding: 10px;
+  }
 
-    .footer-bottom {
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .footer-bottom-links a {
-     /* Mobile-only adjustments */
-
-
-
+}
 
 </style>
 
@@ -678,16 +686,17 @@
     <section class="about">
         <div class="container">
             <h2>About Us</h2>
-            <p>Broader Accessible-Health Initiatives (BAHI) is a registered,
+            <p>Broader Accessible-Health Initiatives (BRAIN) is a registered,
                 not-for-profit, and non-political organization dedicated to advancing equitable healthcare
                 access and strengthening health systems across Nigeria. Founded on the principles of accountability,
                 collaboration, and impact-driven service,
-                BAHI works to bridge critical gaps in healthcare delivery—particularly for vulnerable and
+                BRAIN works to bridge critical gaps in healthcare delivery—particularly for vulnerable and
                 underserved populations.
-                <p> Our mission is to provide sustainable, evidence-based interventions that enhance the efficiency of
-                health governance, service delivery, and community health outcomes.
-            We focus on key thematic areas including maternal and child health, reproductive health and family planning,
-            malaria prevention and treatment, and the prevention and management of HIV/AIDS.
+                <p> Our mission is to deliver sustainable, evidence-based solutions that improve health governance,
+            service delivery, and community outcomes. We focus on maternal and child health, reproductive health,
+            malaria, and HIV/AIDS. We also strengthen community health systems by empowering local
+            structures and promoting ownership, and support primary health care through capacity building,
+            infrastructure, and integrated services.
                 </p>
              <p>
                 Through strategic partnerships with government agencies, local communities,
@@ -752,22 +761,34 @@
                 <h2>Board of Trustees</h2>
               </div>
   <div class="container">
-
     <div class="trustee-slider">
+      <div class="trustee-card">
+        <img src="static/rhodaalade.jpg" alt="Olayemi Rhoda Aladeniyi">
+        <h3>Olayemi Rhoda Aladeniyi</h3>
+        <p>
+          A seasoned Nurse/Midwife and public health lecturer with over 25 years of experience in
+            maternal and child health. She is a certified Master Trainer in postpartum care and pursuing a
+            Master’s in Maternal and Child Health.
+        </p>
+      </div>
+
+        <div class="trustee-card">
+        <img src="static/rhodaalade.jpg" alt="Olayemi Rhoda Aladeniyi">
+        <h3>Olayemi Rhoda Aladeniyi</h3>
+        <p>
+          A seasoned Nurse/Midwife and public health lecturer with over 25 years of experience in
+            maternal and child health. She is a certified Master Trainer in postpartum care and pursuing a
+            Master’s in Maternal and Child Health.
+        </p>
+      </div>
 
       <div class="trustee-card">
         <img src="static/rhodaalade.jpg" alt="Olayemi Rhoda Aladeniyi">
         <h3>Olayemi Rhoda Aladeniyi</h3>
         <p>
-          A seasoned Nurse/Midwife and public health lecturer with over 25 years of experience in maternal and child health. She is a certified Master Trainer in postpartum care and pursuing a Master’s in Maternal and Child Health.
-        </p>
-      </div>
-
-      <div class="trustee-card">
-        <img src="static/oga.jpg" alt="Board Member 2">
-        <h3>Prof. Oladimeji Bolarinwa</h3>
-        <p>
-          Expert in global health financing and governance, John brings strategic leadership and nonprofit development experience across multiple international platforms.
+          Expert in global health financing and governance, J
+            ohn brings strategic leadership and nonprofit development experience across
+            multiple international platforms.
         </p>
       </div>
 
@@ -779,7 +800,6 @@
             He serves as Professor at the University of Ilorin and has consulted for Africa CDC, WHO, and UNICEF.
         </p>
       </div>
-
     </div>
   </div>
 </section>
@@ -789,16 +809,6 @@
         <div class="footer-top">
         <!-- Footer Columns -->
         <div class="footer-columns">
-            <!-- Column 1: Logo and Prose -->
-            <div class="footer-logo">
-                <a href="{{ url_for('index') }}">
-                  <img src="{{ url_for('static', filename='bahi logo.png') }}" alt="bahi logo">
-                </a>
-                <p class="footer-prose">
-                    BAHI is committed to improving healthcare accessibility and outcomes through innovation, evidence-based policies, and community-driven initiatives.
-                </p>
-            </div>
-
             <!-- Column 2: About Us -->
             <div class="footer-column">
                 <a href="/about-us" style="text-decoration: none; color: inherit;">
