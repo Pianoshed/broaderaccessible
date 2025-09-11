@@ -339,73 +339,98 @@
   margin-right: auto;
 }
 
+/* Trustees Wrapper */
 .trustee-slider {
   display: flex;
-  gap: 30px;
+  gap: 25px;
   justify-content: center;
   flex-wrap: wrap;
 }
 
+/* Trustee Card */
 .trustee-card {
   background-color: #fff;
-  width: 300px;
-  padding: 20px;
-  border-radius: 12px;
+  width: 260px; /* reduced for compactness */
+  padding: 18px 15px;
+  border-radius: 14px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
   flex-shrink: 0;
-  transition: transform 0.3s;
 }
 
 .trustee-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
 }
 
+/* Circular Profile Image */
 .trustee-card img {
-  width: 120px;
-  height: 120px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid #1abc9c;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
+/* Trustee Name */
 .trustee-card h3 {
-  font-size: 18px;
+  font-size: 16px;
   color: #172e69;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  font-weight: 700;
 }
 
+/* Trustee Bio */
 .trustee-card p {
-  font-size: 15px;
+  font-size: 13px;
   color: #555;
-  line-height: 1.6;
+  line-height: 1.5;
+  text-align: justify;
+  margin: 0;
+  max-height: 90px;   /* keeps cards neat */
+  overflow-y: auto;   /* scroll if too long */
+  padding-right: 4px; /* space for scrollbar */
 }
 
+/* Scrollbar Styling */
+.trustee-card p::-webkit-scrollbar {
+  width: 5px;
+}
+.trustee-card p::-webkit-scrollbar-thumb {
+  background: #1abc9c;
+  border-radius: 3px;
+}
+
+/* Responsive Grid */
 @media (max-width: 768px) {
   .trustee-slider {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 2-column grid */
-    gap: 20px; /* space between cards */
-    padding: 10px; /* padding around the grid */
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
   }
-.trustee-card h3 {
-  font-size: 14px;
-}
-
-.trustee-card p {
-  font-size: 10px;
-}
 
   .trustee-card {
     width: 100%;
-    box-sizing: border-box;
-    margin: 0;
-    border: 1px solid #ddd; /* optional: light border for clarity */
-    border-radius: 8px;
-    background-color: #fff;
+    padding: 15px 10px;
+  }
+
+  .trustee-card img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .trustee-card h3 {
+    font-size: 14px;
+  }
+
+  .trustee-card p {
+    font-size: 11px;
+    max-height: 70px;
   }
 }
+
 
 
   /* Footer */
@@ -742,41 +767,29 @@
               </div>
   <div class="container">
     <div class="trustee-slider">
-      <div class="trustee-card">
-        <img src="static/CEO_PICS.jpg" alt="Dr. Aladeniyi Isaac Olugbenga">
-        <h3>Dr. Aladeniyi Isaac Olugbenga</h3>
-        <p>
-          Dr. Aladeniyi Isaac Olugbenga is the visionary and founder of the organization.
-            He currently serves as the Director of Family Health at the Ondo State Ministry of Health,
-            where he leads key public health initiatives focused on maternal and child health, non-communicable diseases,
-            and health systems strengthening.
-        </p>
-      </div>
-              <div class="trustee-card">
+                    <div class="trustee-card">
         <img src="static/profbolarinwa.jpg" alt="Prof. Oladimeji Bolarinwa">
         <h3>Prof. Oladimeji Bolarinwa</h3>
-        <p>A public health expert and epidemiologist with vast experience in health research, policy,
-            and systems strengthening.
-            He serves as Professor at the University of Ilorin and has consulted for Africa CDC, WHO, and UNICEF.
-        </p>
-      </div>
-        <div class="trustee-card">
-        <img src="static/MRS_ALADENIYI.jpg" alt="MRS_ALADENIYI">
-        <h3>Olayemi Rhoda Aladeniyi</h3>
         <p>
-          A seasoned Nurse/Midwife and public health lecturer with over 25 years of experience in
-            maternal and child health. She is a certified Master Trainer in postpartum care and pursuing a
-            Master’s in Maternal and Child Health.
+            Professor Oladimeji Akeem Bolarinwa is a public health physician, research methodologist,
+            and academic leader with over two decades of experience in health systems, infectious and non-communicable
+            diseases research. A Fellow of the West African College of Physicians and Bernard Lown Visiting Scholar
+            at Harvard T.H. Chan School of Public Health, he has authored more than 100 peer-reviewed publications,
+            supervised numerous postgraduate students, and secured multi-million-naira and international research grants. As Board of Trustees Chairman of Broader Accessible-Health Initiative,
+            he brings deep expertise in health policy, program design, and evidence-based research, working to expand equitable healthcare access and strengthen community health systems across Africa
         </p>
       </div>
-
-              <div class="trustee-card">
+                    <div class="trustee-card">
         <img src="static/DrPius.jpg" alt="Dr. Pius Olakunle Osunyikanmi">
         <h3>Dr. Pius Olakunle Osunyikanmi</h3>
-        <p>Dr. Pius Olakunle Osunyikanmi is a seasoned diplomat and political scientist with vast experience
-            in international relations and governance. He served as Director General of the Nigerian Technical
-            Aid Corps and Special Adviser to the President.
-            He holds dual PhDs and has significantly contributed to education and multilateral development.
+        <p>Dr. Pius Olakunle Osunyikanmi is a Professor of Political Science and International Relations
+            and a seasoned public administrator with over 30 years of experience in academia, governance,
+            and international development. He has served as Special Adviser to the President of Nigeria,
+            Commissioner for Education in Ondo State, and Director-General of the Directorate of Technical Aid Corps.
+            As a scholar–practitioner, he combines rigorous research with hands-on leadership in policymaking
+            and institution building, bringing strategic insight and global
+            perspective to his role as a member of the Board of Trustees of Broader Accessible-Health
+            Initiative.
         </p>
       </div>
       <div class="trustee-card">
@@ -788,13 +801,61 @@
             she brings a strong commitment to integrity, equity, and community service in her judicial responsibilities and beyond.
         </p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="trustees-section">
+                  <div class="section-header">
+                <h2>Management Team</h2>
+              </div>
+  <div class="container">
+    <div class="trustee-slider">
+      <div class="trustee-card">
+        <img src="static/CEO_PICS.jpg" alt="Dr. Aladeniyi Isaac Olugbenga">
+        <h3>Dr. Aladeniyi Isaac Olugbenga</h3>
+        <p>
+         Dr. Isaac Olugbenga Aladeniyi is a Medical Epidemiologist and Senior Health Specialist with over
+            25 years of post-graduation experience in public health leadership, health systems strengthening,
+            and epidemiological research. He holds an MBBS from the University of Ilorin, an MPH in Field Epidemiology, and a PhD in Epidemiology from the University of Ibadan. Over his career, he has coordinated multimillion-dollar donor-funded projects, advised national and international agencies, and published extensively on infectious and non-communicable diseases, health financing, and systems improvement. Currently serving as Director of Family Health at the Ondo State Ministry of Health and Senior Lecturer at the University of Medical Sciences, Ondo, he brings a wealth of expertise in project planning,
+            policy development, and strategic partnerships to his role as member Board of Trustees of Broader Accessible-Health Initiative.
+                 </p>
+      </div>
+
+        <div class="trustee-card">
+        <img src="static/MRS_ALADENIYI.jpg" alt="MRS_ALADENIYI">
+        <h3>Olayemi Rhoda Aladeniyi/ Program Director Reproductive maternal newborn and child health</h3>
+        <p>
+Olayemi Rhoda Aladeniyi, MSc (Nursing), BNSc, HND(PHN), RM, RN, is a Nurse, Midwife,
+            and Public Health Nursing Specialist with over 25 years of progressive experience in
+            clinical practice, health systems strengthening, and nursing education. She currently serves
+            as Head of the Department of Public Health Nursing at the College of Health Technology, Ondo
+            State Ministry of Health, Akure, where she provides strategic leadership for academic programming,
+            curriculum development, and the professional formation of future public health nurses.
+            She is also a Master Trainer and Facility Supervisor on the AMPLI-PPHI Project, supporting
+            skilled birth attendants in applying evidence-based interventions to prevent postpartum haemorrhage and advance maternal health outcomes.
+
+Olayemi’s professional journey reflects a consistent commitment to maternal, newborn, and child health.
+            She has previously served as Head of Nursing Services at the College of Health Technology Model
+            Health Centre, Deputy Head of the STI Clinic at the State Specialist Hospital, Akure, and as a
+            practicing Nurse and Midwife across primary, secondary, and tertiary facilities in Ondo State.
+            Alongside her clinical and managerial contributions, she has established family planning services, led community health outreach programs, and mentored both senior and junior colleagues. She holds a Master degree in Maternal and Child Health from the University of Benin, building on her BNSc in Nursing and HND in Public Health Nursing, with earlier certifications as a Registered Nurse and Registered Midwife. Recognized with the
+            Ondo State Ministry of Health’s Award for Excellence in Midwifery, she continues to combine service, scholarship, and leadership in shaping the nursing profession and strengthening Nigeria’s health system.
+        </p>
+      </div>
+
       <div class="trustee-card">
         <img src="static/maryadeolu.jpg" alt="Mary Adeolu">
         <h3>Mary Adeolu/Program Director</h3>
         <p>
-          Results-driven Data Analytics Professional with a strong background in epidemiological research,
-            health informatics, and strategic planning, delivering data-driven insights to support healthcare
-            programs and improve patient outcomes.
+        Mary Adeolu is a Data Analytics Professional and Public Health Researcher with more than a
+            decade of experience in data management, health informatics, and program monitoring and evaluation.
+            She holds a Master’s degree in Biostatistics from the University of Ibadan and a Bachelor of Technology
+            in Industrial Mathematics from the Federal University of Technology, Akure. Over her career,
+            she has worked with leading organizations including the World Health Organization, APIN Public Health Initiatives,
+            and the Nigeria State Health Investment Project, where she developed expertise in strategic planning, epidemiological research, and health systems data management.
+
+With proven proficiency in tools such as Power BI, Tableau, and MySQL, Mary specializes in transforming complex datasets into actionable insights that inform policy, improve health outcomes, and drive operational efficiency. She has trained and mentored health facility managers, strengthened data integrity systems, and contributed to large-scale public health projects targeting HIV, malaria, and maternal and child health. Her blend of technical expertise, strategic vision, and passion for evidence-driven decision-making underscores her commitment to advancing public health through data innovation and informed policy.
         </p>
       </div>
         <div class="trustee-card">
@@ -811,6 +872,8 @@
     </div>
   </div>
 </section>
+
+
 
 
    <footer>
