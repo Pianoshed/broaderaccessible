@@ -5,7 +5,7 @@ from datetime import datetime
 from collections import defaultdict
 
 
-from flask import Flask, render_template, request, redirect, url_for, flash, send_from_directory, jsonify, send_file
+from flask import Flask, Response, render_template, request, redirect, url_for, flash, send_from_directory, jsonify, send_file
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
@@ -157,6 +157,40 @@ def download_visitors():
             mimetype='text/csv'
         )
     return 'No visitor log available.', 404
+
+@app.route('/sitemap.xml', methods=['GET'])
+def sitemap():
+    """Generate a simple XML sitemap for the site"""
+    # List all your main URLs
+    base_url = request.url_root.rstrip('/')  # e.g., https://broaderaccessible.org
+    pages = [
+        f"{base_url}/",
+        f"{base_url}/about-us",
+        f"{base_url}/Health-Systems",
+        f"{base_url}/Priority",
+        f"{base_url}/Involved",
+        f"{base_url}/Newsletter",
+       ]
+
+    # Optionally add static files you want indexed
+    # pages.append(f"{base_url}/static/example.pdf")
+
+    lastmod = datetime.now().date().isoformat()  # Use today's date for all
+
+    sitemap_xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
+    sitemap_xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+
+    for page in pages:
+        sitemap_xml += f'''  <url>
+    <loc>{page}</loc>
+    <lastmod>{lastmod}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>\n'''
+
+    sitemap_xml += '</urlset>'
+
+    return Response(sitemap_xml, mimetype='application/xml')
 
 
 ### **RUN FLASK APP**
