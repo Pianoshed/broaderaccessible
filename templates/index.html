@@ -5,13 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Broader Accessible-Health Initiatives</title>
      <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='bahi logo.png') }}">
-     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&family=Roboto:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
-        /* Reset Defaults */
         * {
             margin: 0;
             padding: 0px;
@@ -21,7 +19,7 @@
     background-color: #f4f4f4;
   }
 
-  /* Header */
+
   header {
     background: #172e69;
     padding: 5px;
@@ -47,7 +45,6 @@
   .social-links img:hover {
     transform: scale(1.2);
   }
-        /* Navigation Styles */
         .main-header {
             display: flex;
             align-items: center;
@@ -77,7 +74,6 @@
             color: #007bff;
         }
 
-        /* Slider Styles */
         .slider-container {
             position: relative;
             width: 100%;
@@ -150,7 +146,6 @@
                         z-index: 1; /* Ensures vignette is behind text but above image */
                     }
 
-        /* Slider Buttons */
         .prev, .next {
             position: absolute;
             top: 50%;
@@ -240,7 +235,6 @@
                     margin: 0 auto;
                 }
 
-                /* Two-Column Layout */
                 .services-table {
                     display: grid;
                     grid-template-columns: 1fr 2px 1fr; /* Two columns with a divider */
@@ -250,21 +244,18 @@
                     align-items: start;
                 }
 
-                /* Divider */
                 .services-divider {
                     background: rgba(0, 0, 0, 0.1); /* Light gray divider */
                     width: 2px;
                     height: 100%;
                 }
 
-                /* Service Column */
                 .service-column {
                     display: flex;
                     flex-direction: column;
                     gap: 30px;
                 }
 
-/* Hide toggle button on desktop */
 .mobile-menu-toggle {
   display: none;
   background: none;
@@ -274,7 +265,6 @@
   cursor: pointer;
 }
 
-/* Mobile menu is hidden by default */
 .mobile-menu {
   display: none;
   flex-direction: column;
@@ -294,7 +284,6 @@
   font-weight: 600;
   border-bottom: 1px solid #eee;
 }
-/* Close button inside mobile menu */
 .mobile-menu .close-btn {
   align-self: flex-end;
   background: none;
@@ -305,7 +294,7 @@
   cursor: pointer;
   font-weight: bold;
 }
-/* Mobile-only adjustments */
+
 @media (max-width: 600px) {
   nav ul {
     display: none;
@@ -320,14 +309,13 @@
   }
 }
 
-                /* Service Item Styling (Without Card) */
                 .service-item {
                     display: flex;
                     align-items: center;
                     gap: 10px;
                 }
 
-                /* Clickable Span Text */
+
                 .service-item a {
                     text-decoration: none;
                     color: #00274D; /* Deep Blue */
@@ -342,7 +330,7 @@
                     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
                     opacity: 0.8;
                 }
-                        /* Hover Effect */
+
                        .service-item img:hover {
                             transform: scale(1.1);
                         }
@@ -356,7 +344,7 @@
                     gap: 20px;
                 }
 
-                /* Headers with Halfway Underline */
+
                 .service-column h2,
                 .service-column h3,
                 .service-column h4 {
@@ -380,7 +368,7 @@
                     background-color: #00274D; /* Match header color */
                 }
 
-                /* Ultra Compact Know More Button */
+
                 .know-more-btn {
                     display: inline-flex; /* Align text and icon inline */
                     align-items: center; /* Center items vertically */
@@ -399,12 +387,12 @@
                     line-height: 2; /* Minimize button height */
                 }
 
-                /* Hover Effect */
+      
                 .know-more-btn:hover {
                     background-color: #003366;
                 }
 
-                /* Responsive Design */
+            
                 @media (max-width: 768px) {
                     .services-table {
                         grid-template-columns: 1fr; /* Stack in one column */
@@ -500,18 +488,18 @@
 
 .social-links a {
     display: flex;
-    flex-direction: row;      /* place image and text side by side */
-    align-items: center;      /* vertically center image and text */
-    justify-content: center;  /* center contents inside the <a> */
+    flex-direction: row;      
+    align-items: center;      
+    justify-content: center;  
     margin-bottom: 10px;
     text-decoration: none;
-    color: inherit;           /* optional: keep text color consistent */
+    color: inherit;          
 }
 
 .social-links img {
     width: 30px;
     height: 30px;
-    margin-right: 8px;        /* space between icon and text */
+    margin-right: 8px;       
 }
 
     .modal-overlay {
@@ -601,7 +589,7 @@
     }
 
 @media (max-width: 768px) {
-  /* Reduce padding and font sizes for mobile readability */
+  
   body {
     font-size: 14px;
   }
@@ -758,7 +746,47 @@
   }
 }
 
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 170px; /* Positioned above the chat buttons */
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: var(--lilac-primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 998;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
 
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background-color: var(--lilac-dark);
+  transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 150px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+  }
+}
 
     </style>
 </head>
@@ -781,10 +809,10 @@
             <li><a href="/Newsletter">Newsletter</a></li>
         </ul>
     </nav>
-<!-- Toggle Button for Mobile -->
+
 <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
 
-<!-- Mobile Menu -->
+
 <div class="mobile-menu" id="mobileMenu">
   <button class="close-btn" onclick="toggleMobileMenu()">×</button>
   <a href="/">Home</a>
@@ -800,7 +828,7 @@
     <div class="slider">
         <div class="slide">
             <img src="{{ url_for('static', filename='home-slider1.jpg') }}" alt="home-slider1">
-             <div class="vignette"></div> <!-- Vignette inside the slide -->
+             <div class="vignette"></div> 
             <div class="slide-text">
                 <h2>Providing Quality Healthcare</h2>
                 <p>Your health is our priority.</p>
@@ -808,7 +836,7 @@
         </div>
         <div class="slide">
             <img src="{{ url_for('static', filename='home-slider2.jpg') }}" alt="home-slider2">
-             <div class="vignette"></div> <!-- Vignette inside the slide -->
+             <div class="vignette"></div> 
             <div class="slide-text">
                 <h2>Building Stronger Communities</h2>
                 <p>Empowering health for all.</p>
@@ -816,7 +844,7 @@
         </div>
         <div class="slide">
             <img src="{{ url_for('static', filename='home-slider3.jpg') }}" alt="home-slider3">
-             <div class="vignette"></div> <!-- Vignette inside the slide -->
+             <div class="vignette"></div> 
             <div class="slide-text">
                 <h2>Accessible Medical Testing</h2>
                 <p>Ensuring early diagnosis for better health.</p>
@@ -824,7 +852,7 @@
         </div>
                 <div class="slide">
             <img src="{{ url_for('static', filename='home-slider4.jpg') }}" alt="home-slider4">
-                     <div class="vignette"></div> <!-- Vignette inside the slide -->
+                     <div class="vignette"></div> 
             <div class="slide-text">
                 <h2>Accessible Medical Testing</h2>
                 <p>Ensuring early diagnosis for better health.</p>
@@ -864,7 +892,7 @@
     </div>
 
     <div class="services-table">
-        <!-- Left Column -->
+       
         <div class="service-column">
             <h2>Health System Strengthening</h2>
 
@@ -900,10 +928,10 @@
             <a href="/Health-Systems" class="know-more-btn">Know More→</a>
         </div>
 
-        <!-- Divider -->
+       
         <div class="services-divider"></div>
 
-        <!-- Right Column -->
+       
         <div class="service-column">
             <h2>Public Health Programs</h2>
 
@@ -937,9 +965,9 @@
 </section>
     <footer>
         <div class="footer-top">
-        <!-- Footer Columns -->
+        
         <div class="footer-columns">
-            <!-- Column 1: Logo and Prose -->
+           
             <div class="footer-logo">
                 <a href="{{ url_for('index') }}">
                     <img src="{{ url_for('static', filename='bahi logo.png') }}" alt="bahi logo">
@@ -950,7 +978,7 @@
                 </p>
             </div>
 
-            <!-- Column 2: About Us -->
+  
             <div class="footer-column">
                 <a href="/about-us" style="text-decoration: none; color: inherit;">
                     <h4>About Us</h4></a>
@@ -961,7 +989,7 @@
                 </ul>
             </div>
 
-            <!-- Column 3: Programs -->
+         
             <div class="footer-column">
                 <a href="/Priority" style="text-decoration: none; color: inherit;">
                  <h4>Programs</h4></a>
@@ -972,7 +1000,7 @@
                 </ul>
             </div>
 
-            <!-- Column 4: Get Involved -->
+        
             <div class="footer-column">
                 <a href="/Involved" style="text-decoration: none; color: inherit;">
                   <h4>Get Involved</h4>
@@ -984,7 +1012,7 @@
             </div>
         </div>
  </div>
-        <!-- Social Links Below Columns -->
+       
         <div class="social-links">
             <h4>Follow Us</h4>
             <a href="https://facebook.com" target="_blank">
@@ -1007,7 +1035,6 @@
     </div>
   </div>
 
-  <!-- Privacy Policy Modal -->
   <div class="modal-overlay" id="privacyModal">
     <div class="modal">
       <span class="close-btn" onclick="closeModal('privacyModal')">&times;</span>
@@ -1084,7 +1111,6 @@
     </div>
   </div>
 
-  <!-- Terms of Use Modal -->
   <div class="modal-overlay" id="termsModal">
     <div class="modal">
       <span class="close-btn" onclick="closeModal('termsModal')">&times;</span>
@@ -1146,7 +1172,7 @@
     </div>
   </div>
 
-  <!-- Contact Us Modal -->
+  
   <div class="modal-overlay" id="contactModal">
     <div class="modal">
       <span class="close-btn" onclick="closeModal('contactModal')">&times;</span>
@@ -1187,7 +1213,7 @@
       kindly send us an email or fill out our contact form on the homepage.</p>
     </div>
   </div>
-         <!-- Cookie Banner -->
+    
   <div class="cookie-banner" id="cookieBanner">
     This website uses cookies to enhance user experience and track anonymous visits.
       By continuing, you accept our privacy terms.
@@ -1226,7 +1252,7 @@
             document.querySelector(".prev").addEventListener("click", prevSlide);
             document.querySelector(".next").addEventListener("click", nextSlide);
 
-            // Auto slide every 15 seconds
+
             setInterval(nextSlide, 5000);
         });
     </script>
@@ -1270,8 +1296,8 @@
 
     function acceptCookies() {
       document.getElementById('cookieBanner').style.display = 'none';
-      setCookie('cookieConsent', 'true', 60); // 1-hour session
-      // Optional: Track visitor via fetch to backend
+      setCookie('cookieConsent', 'true', 60); 
+   
       fetch('/track-visitor', { method: 'POST' });
     }
 
@@ -1290,7 +1316,28 @@
       menu.style.display = "flex";
     }
   }
-</script>
+  document.addEventListener("DOMContentLoaded", function() {
+  const backToTopBtn = document.getElementById("backToTop");
 
+  // Only run if the button actually exists in the HTML
+  if (backToTopBtn) {
+    window.addEventListener("scroll", () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add("show");
+      } else {
+        backToTopBtn.classList.remove("show");
+      }
+    });
+
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  }
+});
+</script>
+<button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 </body>
 </html>

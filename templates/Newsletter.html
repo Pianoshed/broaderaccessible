@@ -15,7 +15,7 @@
       font-family: 'Roboto', sans-serif;
       background-color: #f4f4f4;
     }
-  /* Header */
+
   header {
     background: #172e69;
     padding: 5px;
@@ -73,7 +73,7 @@
             color: #007bff;
         }
 
-        /* Slider Styles */
+
         .slider-container {
             position: relative;
             width: 100%;
@@ -146,7 +146,6 @@
                         z-index: 1; /* Ensures vignette is behind text but above image */
                     }
 
-        /* Slider Buttons */
         .prev, .next {
             position: absolute;
             top: 50%;
@@ -261,7 +260,7 @@
 
         @media (max-width: 600px) {
 
-  /* Adjust body padding if needed */
+
   body {
     font-size: 14px;
   }
@@ -343,7 +342,7 @@
     font-size: 14px;
   }
 
-  /* Footer layout */
+
   .footer-columns {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -381,7 +380,7 @@
 
 }
 
-        /* Hide toggle button on desktop */
+ 
 .mobile-menu-toggle {
   display: none;
   background: none;
@@ -391,7 +390,6 @@
   cursor: pointer;
 }
 
-/* Mobile menu is hidden by default */
 .mobile-menu {
   display: none;
   flex-direction: column;
@@ -411,7 +409,7 @@
   font-weight: 600;
   border-bottom: 1px solid #eee;
 }
-/* Close button inside mobile menu */
+
 .mobile-menu .close-btn {
   align-self: flex-end;
   background: none;
@@ -422,7 +420,7 @@
   cursor: pointer;
   font-weight: bold;
 }
-/* Mobile-only adjustments */
+
 @media (max-width: 600px) {
   nav ul {
     display: none;
@@ -459,10 +457,10 @@
             <li><a href="/Newsletter">Newsletter</a></li>
         </ul>
     </nav>
-<!-- Toggle Button for Mobile -->
+
 <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
 
-<!-- Mobile Menu -->
+
 <div class="mobile-menu" id="mobileMenu">
   <button class="close-btn" onclick="toggleMobileMenu()">×</button>
   <a href="/">Home</a>
@@ -487,7 +485,7 @@
         </div>
         <div class="slide">
             <img src="{{ url_for('static', filename='home-slider11.jpg') }}" alt="home-slider2">
-             <div class="vignette"></div> <!-- Vignette inside the slide -->
+             <div class="vignette"></div>
             <div class="slide-text">
                 <h2>Join the Conversation That Drives Change</h2>
                 <p>From policy updates to field reports, our newsletter and
@@ -512,7 +510,7 @@
 
     <div class="events">
       <h2>Upcoming Events</h2>
-      <!-- No events available at this time -->
+ 
     </div>
   </section>
 
@@ -532,10 +530,10 @@ document.getElementById('newsletter-form').addEventListener('submit', async func
     const response = await fetch('/subscribe', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json', // REQUIRED for Flask to read JSON
+        'Content-Type': 'application/json', 
         'Accept': 'application/json'
       },
-      body: JSON.stringify({ email: email }) // Body must be stringified
+      body: JSON.stringify({ email: email }) 
     });
 
     const result = await response.json();
@@ -584,7 +582,6 @@ document.getElementById('newsletter-form').addEventListener('submit', async func
             document.querySelector(".prev").addEventListener("click", prevSlide);
             document.querySelector(".next").addEventListener("click", nextSlide);
 
-            // Auto slide every 15 seconds
             setInterval(nextSlide, 5000);
         });
 

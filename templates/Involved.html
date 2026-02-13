@@ -144,11 +144,11 @@
                         width: 100%;
                         height: 100%;
                         background: radial-gradient(circle, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.8) 100%);
-                        pointer-events: none; /* Prevents interaction issues */
-                        z-index: 1; /* Ensures vignette is behind text but above image */
+                        pointer-events: none; 
+                        z-index: 1;
                     }
 
-        /* Slider Buttons */
+    
         .prev, .next {
             position: absolute;
             top: 50%;
@@ -294,7 +294,7 @@
         .footer-bottom-links a:hover {
             color: #e63946;
         }
-/* Hide toggle button on desktop */
+
 .mobile-menu-toggle {
   display: none;
   background: none;
@@ -304,7 +304,7 @@
   cursor: pointer;
 }
 
-/* Mobile menu is hidden by default */
+
 .mobile-menu {
   display: none;
   flex-direction: column;
@@ -324,7 +324,7 @@
   font-weight: 600;
   border-bottom: 1px solid #eee;
 }
-/* Close button inside mobile menu */
+
 .mobile-menu .close-btn {
   align-self: flex-end;
   background: none;
@@ -335,7 +335,7 @@
   cursor: pointer;
   font-weight: bold;
 }
-/* Mobile-only adjustments */
+
 @media (max-width: 600px) {
   nav ul {
     display: none;
@@ -352,7 +352,7 @@
 
 
       @media (max-width: 600px) {
-  /* Header */
+
   header {
     height: 20px;
     padding: 5px 10px;
@@ -362,7 +362,6 @@
     height: 60px;
   }
 
-  /* Navigation */
   .main-header {
     flex-direction: flex;
     align-items: flex-start;
@@ -378,7 +377,6 @@
     font-size: 14px;
   }
 
-  /* Slider */
   .slide {
     height: auto;
     flex-direction: column;
@@ -407,7 +405,7 @@
     text-align: center;
   }
 
-  /* Involve Section */
+ 
   .involve-section {
     flex-direction: column;
     gap: 20px;
@@ -431,7 +429,7 @@
     padding: 8px 16px;
   }
 
-  /* Footer */
+ 
   .footer-columns {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -506,10 +504,10 @@
             </ul>
         </nav>
 
-           <!-- Toggle Button for Mobile -->
+        
 <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
 
-<!-- Mobile Menu -->
+
 <div class="mobile-menu" id="mobileMenu">
   <button class="close-btn" onclick="toggleMobileMenu()">×</button>
   <a href="/">Home</a>
@@ -525,7 +523,7 @@
     <div class="slider">
         <div class="slide">
             <img src="{{ url_for('static', filename='home-slider3.jpg') }}" alt="home-slider3">
-             <div class="vignette"></div> <!-- Vignette inside the slide -->
+             <div class="vignette"></div>
             <div class="slide-text">
                 <h2>Your Support. Their Future.</h2>
                 <p>Whether you donate, volunteer, or advocate —
@@ -534,7 +532,7 @@
         </div>
                 <div class="slide">
             <img src="{{ url_for('static', filename='home-slider12.jpg') }}" alt="home-slider4">
-                     <div class="vignette"></div> <!-- Vignette inside the slide -->
+                     <div class="vignette"></div> 
             <div class="slide-text">
                 <h2>Together, We Can Do More</h2>
                 <p>Every contribution counts. Join our mission to create accessible,
@@ -561,9 +559,9 @@
 
     <footer>
         <div class="footer-top">
-        <!-- Footer Columns -->
+     
         <div class="footer-columns">
-            <!-- Column 2: About Us -->
+       
             <div class="footer-column">
                 <a href="/about-us" style="text-decoration: none; color: inherit;">
                     <h4>About Us</h4></a>
@@ -585,7 +583,7 @@
                 </ul>
             </div>
 
-            <!-- Column 4: Get Involved -->
+           
             <div class="footer-column">
                 <a href="/Involved" style="text-decoration: none; color: inherit;">
                   <h4>Get Involved</h4>
@@ -632,7 +630,7 @@
             document.querySelector(".prev").addEventListener("click", prevSlide);
             document.querySelector(".next").addEventListener("click", nextSlide);
 
-            // Auto slide every 15 seconds
+           
             setInterval(nextSlide, 5000);
         });
                  function toggleMobileMenu() {

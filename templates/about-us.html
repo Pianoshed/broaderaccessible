@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Broader Accessible-Health Initiatives</title>
     <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='bahi logo.png') }}">
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="styles.css"> 
 
     <style>
-  /* Reset Defaults */
+
   * {
     margin: 0;
     padding: 0;
@@ -19,7 +19,7 @@
     background-color: #f4f4f4;
   }
 
-  /* Header */
+
   header {
     background: #172e69;
     padding: 5px;
@@ -46,7 +46,7 @@
     transform: scale(1.2);
   }
 
-  /* Navigation */
+
   .main-header {
     display: flex;
     align-items: center;
@@ -88,7 +88,7 @@
   cursor: pointer;
 }
 
-/* Mobile menu is hidden by default */
+
 .mobile-menu {
   display: none;
   flex-direction: column;
@@ -108,7 +108,7 @@
   font-weight: 600;
   border-bottom: 1px solid #eee;
 }
-/* Close button inside mobile menu */
+
 .mobile-menu .close-btn {
   align-self: flex-end;
   background: none;
@@ -119,7 +119,7 @@
   cursor: pointer;
   font-weight: bold;
 }
-/* Mobile-only adjustments */
+
 @media (max-width: 600px) {
   nav ul {
     display: none;
@@ -133,7 +133,7 @@
     display: none; /* Shown via JS */
   }
 }
-  /* Slider */
+
   .slider-container {
     position: relative;
     width: 100%;
@@ -228,7 +228,7 @@
     background-color: rgba(0, 0, 0, 0.8);
   }
 
-  /* About Section */
+
   .about {
     background-color: #ffffff;
     padding: 80px 20px;
@@ -260,7 +260,6 @@
     color: #555;
   }
 
-  /* Mission & Values */
   .mission-values-section {
     background-color: #f9f9f9;
     padding: 60px 20px;
@@ -339,7 +338,6 @@
   margin-right: auto;
 }
 
-/* Trustees Wrapper */
 .trustee-slider {
   display: flex;
   gap: 25px;
@@ -347,7 +345,7 @@
   flex-wrap: wrap;
 }
 
-/* Trustee Card */
+
 .trustee-card {
   background-color: #fff;
   width: 260px; /* reduced for compactness */
@@ -364,7 +362,7 @@
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
 }
 
-/* Circular Profile Image */
+
 .trustee-card img {
   width: 110px;
   height: 110px;
@@ -374,7 +372,7 @@
   margin-bottom: 12px;
 }
 
-/* Trustee Name */
+
 .trustee-card h3 {
   font-size: 16px;
   color: #172e69;
@@ -382,7 +380,6 @@
   font-weight: 700;
 }
 
-/* Trustee Bio */
 .trustee-card p {
   font-size: 13px;
   color: #555;
@@ -394,7 +391,6 @@
   padding-right: 4px; /* space for scrollbar */
 }
 
-/* Scrollbar Styling */
 .trustee-card p::-webkit-scrollbar {
   width: 5px;
 }
@@ -403,7 +399,7 @@
   border-radius: 3px;
 }
 
-/* Responsive Grid */
+
 @media (max-width: 768px) {
   .trustee-slider {
     display: grid;
@@ -433,7 +429,6 @@
 
 
 
-  /* Footer */
   footer {
     background-color: #080f21;
     color: #fff;
@@ -507,7 +502,6 @@
     color: #e63946;
   }
 
-  /* Mobile Responsive */
   @media (max-width: 600px) {
     body {
       font-size: 14px;
@@ -646,10 +640,10 @@
                 <li><a href="/Newsletter">Newsletter</a></li>
             </ul>
         </nav>
-        <!-- Toggle Button for Mobile -->
+
 <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
 
-<!-- Mobile Menu -->
+
 <div class="mobile-menu" id="mobileMenu">
   <button class="close-btn" onclick="toggleMobileMenu()">×</button>
   <a href="/">Home</a>
@@ -665,7 +659,7 @@
     <div class="slider">
         <div class="slide">
             <img src="{{ url_for('static', filename='home-slider5.jpg') }}" alt="home-slider1">
-             <div class="vignette"></div> <!-- Vignette inside the slide -->
+             <div class="vignette"></div> 
             <div class="slide-text">
                 <h2>Strengthening Systems. Empowering Communities. Saving Lives</h2>
                 <p>We work to close healthcare gaps for underserved populations
@@ -674,7 +668,7 @@
         </div>
         <div class="slide">
             <img src="{{ url_for('static', filename='home-slider6.jpg') }}" alt="home-slider2">
-             <div class="vignette"></div> <!-- Vignette inside the slide -->
+             <div class="vignette"></div> 
             <div class="slide-text">
                 <h2>Partnering for Health Equity in Every Community.</h2>
                 <p>From policy to primary care, we bridge the divide in access
@@ -687,8 +681,7 @@
 </section>
 
 
-    <!-- About Us Section (Modified) -->
-    <section class="about">
+   <section class="about">
         <div class="container">
             <h2>About Us</h2>
             <p>Broader Accessible-Health Initiatives (BRAIN) is a registered,
@@ -712,14 +705,12 @@
                 </p>
         </div>
                 </section>
-            <!-- Mission & Values Section -->
             <section class="mission-values-section">
               <div class="section-header">
                 <h2>Our Mission & Core Values</h2>
               </div>
 
               <div class="card-container">
-                <!-- Mission Statement Card -->
                 <div class="info-card highlight-card">
                   <h3>Our Mission</h3>
                   <p>
@@ -729,7 +720,6 @@
                   </p>
                 </div>
 
-                <!-- Core Value Cards -->
                 <div class="info-card">
                   <h3>Equity</h3>
                   <p>We believe everyone deserves access to quality healthcare regardless of gender, location, or socio-economic status.</p>
@@ -878,9 +868,7 @@ With proven proficiency in tools such as Power BI, Tableau, and MySQL, Mary spec
 
    <footer>
         <div class="footer-top">
-        <!-- Footer Columns -->
         <div class="footer-columns">
-            <!-- Column 2: About Us -->
             <div class="footer-column">
                 <a href="/about-us" style="text-decoration: none; color: inherit;">
                     <h4>About Us</h4></a>
@@ -891,7 +879,6 @@ With proven proficiency in tools such as Power BI, Tableau, and MySQL, Mary spec
                 </ul>
             </div>
 
-            <!-- Column 3: Programs -->
             <div class="footer-column">
                 <a href="/Priority" style="text-decoration: none; color: inherit;">
                  <h4>Programs</h4></a>
@@ -902,7 +889,6 @@ With proven proficiency in tools such as Power BI, Tableau, and MySQL, Mary spec
                 </ul>
             </div>
 
-            <!-- Column 4: Get Involved -->
             <div class="footer-column">
                 <a href="/Involved" style="text-decoration: none; color: inherit;">
                   <h4>Get Involved</h4>
@@ -914,7 +900,6 @@ With proven proficiency in tools such as Power BI, Tableau, and MySQL, Mary spec
             </div>
         </div>
  </div>
-        <!-- Social Links Below Columns -->
         <div class="social-links">
             <h4>Follow Us</h4>
             <a href="https://facebook.com" target="_blank">

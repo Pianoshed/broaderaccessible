@@ -10,9 +10,9 @@ from flask import Flask, Response, render_template, request, redirect, url_for, 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
 
-# Simple in-memory store to track IPs for the day
-logged_ips = defaultdict(str)  # Format: {ip_address: 'YYYY-MM-DD'}
-# Database setup
+
+logged_ips = defaultdict(str)  
+
 def init_db():
     conn = sqlite3.connect("database.db")
     cursor = conn.cursor()
@@ -104,7 +104,7 @@ def subscribe():
 
 @app.route('/admin/download-subscribers/<secret_key>')
 def download_subscribers(secret_key):
-    if secret_key != "BAHI_SECRET_2025":  # Change to a unique strong string
+    if secret_key != "BAHI_SECRET_2025":  
         return "Unauthorized access", 403
 
     file_path = 'newsletter_subscriptions.csv'
@@ -124,9 +124,8 @@ def track_visitor():
     user_agent = request.headers.get('User-Agent')
     today = datetime.now().strftime('%Y-%m-%d')
 
-    # Only log if not already logged today
     if logged_ips.get(ip_address) == today:
-        return '', 204  # Already logged today
+        return '', 204  
 
     log_path = 'visitor_log.csv'
     file_exists = os.path.isfile(log_path)
@@ -138,7 +137,6 @@ def track_visitor():
                 writer.writerow(['Timestamp', 'IP Address', 'User Agent'])
             writer.writerow([datetime.now().strftime('%Y-%m-%d %H:%M:%S'), ip_address, user_agent])
 
-        # Store this IP as logged for today
         logged_ips[ip_address] = today
 
         return '', 204
@@ -161,7 +159,7 @@ def download_visitors():
 @app.route('/sitemap.xml', methods=['GET'])
 def sitemap():
     """Generate a simple XML sitemap for the site"""
-    # List all your main URLs
+
     base_url = request.url_root.rstrip('/')  # e.g., https://broaderaccessible.org
     pages = [
         f"{base_url}/",
@@ -172,10 +170,9 @@ def sitemap():
         f"{base_url}/Newsletter",
        ]
 
-    # Optionally add static files you want indexed
-    # pages.append(f"{base_url}/static/example.pdf")
 
-    lastmod = datetime.now().date().isoformat()  # Use today's date for all
+
+    lastmod = datetime.now().date().isoformat() 
 
     sitemap_xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
     sitemap_xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
@@ -193,6 +190,5 @@ def sitemap():
     return Response(sitemap_xml, mimetype='application/xml')
 
 
-### **RUN FLASK APP**
 if __name__ == "__main__":
     app.run()
