@@ -4,856 +4,907 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Broader Accessible-Health Initiatives</title>
-     <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='bahi logo.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='bahi logo.png') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&family=Roboto:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0px;
-        }
-  body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f4f4f4;
-  }
-
-
-  header {
-    background: #172e69;
-    padding: 5px;
-    text-align: center;
-    height: 20px;
-  }
-
-  .social-links {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 15px;
-    padding: 2px 20px;
-    margin: auto;
-  }
-
-  .social-links img {
-    width: 24px;
-    height: 24px;
-    transition: transform 0.3s ease;
-  }
-
-  .social-links img:hover {
-    transform: scale(1.2);
-  }
-        .main-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 5px 10%;
-            background-color: #fff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .logo img {
-            height: 100px;
+        /* =========================================================
+           DESIGN TOKENS — BAHI (Broader Accessible-Health Initiatives)
+           A public-health identity for Ondo State: trustworthy navy,
+           a living teal for growth/wellbeing, warm amber for warmth
+           and community. Signature motif: a vital-sign "pulse" line
+           used as section dividers and heading underlines, standing
+           in for the idea of steady, monitored, cared-for health.
+           ========================================================= */
+        :root{
+            --navy-950:#0A1F3D;
+            --navy-900:#0E2A50;
+            --navy-800:#123163;
+            --navy-700:#1B4079;
+            --teal-600:#158A6E;
+            --teal-700:#0F6E57;
+            --amber-500:#E8A33D;
+            --amber-600:#CE8A28;
+            --sand-50:#FAF6EE;
+            --paper:#FFFFFF;
+            --ink-900:#16202E;
+            --ink-600:#535E6E;
+            --ink-400:#8A93A3;
+            --line:rgba(10,31,61,0.12);
+            --shadow-sm: 0 2px 10px rgba(10,31,61,0.06);
+            --shadow-md: 0 12px 30px rgba(10,31,61,0.12);
+            --radius: 14px;
+            --font-display:'Fraunces', serif;
+            --font-body:'Inter', sans-serif;
+            --font-mono:'IBM Plex Mono', monospace;
         }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: #333;
-            font-size: 16px;
-            font-weight: 600;
-            transition: color 0.3s ease;
+        *{ margin:0; padding:0; box-sizing:border-box; }
+
+        html{ scroll-behavior:smooth; }
+
+        body{
+            font-family: var(--font-body);
+            background-color: var(--sand-50);
+            color: var(--ink-900);
+            line-height:1.6;
+            -webkit-font-smoothing:antialiased;
         }
 
-        nav ul li a:hover {
-            color: #007bff;
+        a{ color:inherit; }
+
+        /* ---------- Top utility strip ---------- */
+        header{
+            background: linear-gradient(90deg, var(--navy-950), var(--navy-800));
+            padding: 8px 10%;
+            height: auto;
+            display:flex;
+            align-items:center;
         }
 
-        .slider-container {
+        .social-links{
+            display:flex;
+            align-items:center;
+            justify-content:flex-start;
+            gap:14px;
+            padding:2px 0;
+            margin:0;
+        }
+
+        .social-links img{
+            width:18px;
+            height:18px;
+            filter: brightness(0) invert(1) opacity(0.85);
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+
+        .social-links img:hover{
+            transform: translateY(-2px);
+            opacity:1;
+        }
+
+        /* ---------- Main navigation ---------- */
+        .main-header{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            padding: 6px 10%;
+            background-color: var(--paper);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top:0;
+            z-index: 500;
+        }
+
+        .logo img{ height: 86px; }
+
+        nav ul{
+            list-style:none;
+            display:flex;
+            align-items:center;
+            gap: 30px;
+        }
+
+        nav ul li a{
+            position:relative;
+            text-decoration:none;
+            color: var(--navy-900);
+            font-size: 15px;
+            font-weight:600;
+            letter-spacing:0.01em;
+            padding: 6px 2px;
+            transition: color 0.25s ease;
+        }
+
+        nav ul li a::after{
+            content:"";
+            position:absolute;
+            left:0; bottom:0;
+            width:0%;
+            height:2px;
+            background: var(--teal-600);
+            transition: width 0.25s ease;
+        }
+
+        nav ul li a:hover{ color: var(--teal-700); }
+        nav ul li a:hover::after{ width:100%; }
+
+        /* ---------- Hero slider ---------- */
+        .slider-container{
             position: relative;
             width: 100%;
             max-width: 100%;
-            margin: 0px;
+            margin: 0;
             overflow: hidden;
-            border-radius: 0px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: none;
         }
 
-        .slider {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            width: 100%; /* Ensure smooth sliding */
+        .slider{
+            display:flex;
+            transition: transform 0.6s cubic-bezier(.65,.05,.36,1);
+            width:100%;
         }
 
-        .slide {
+        .slide{
             flex: 0 0 100%;
-            width: 100%;
-            position: relative;
-            height: 600px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: black;
+            width:100%;
+            position:relative;
+            height: 620px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background-color: var(--navy-950);
         }
 
-             .slider img {
-                    width: 100%;
-                     height: 700px;
-                    object-fit: cover;
-                    }
-                    .slide-text {
-                    position: absolute;
-                    top: 50%;
-                    left: 35%;
-                    transform: translate(-50%, -50%);
-                    text-align: center;
-                    color: white;
-                    background: rgba(0, 0, 0, 0); /* Semi-transparent dark background */
-                    padding: 20px;
-                    width: 80%;
-                    max-width: 600px;
-                     z-index: 2; /* Ensures text is above vignette */
-                }
-
-                 .slide-text h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 50px;
-            text-align: left;
-            font-weight: bold;
-            margin-bottom: 10px;
-            z-index: 10;
+        .slider img{
+            width:100%;
+            height:620px;
+            object-fit:cover;
+            filter: saturate(1.02);
         }
 
-                .slide-text p {
-                    font-size: 18px;
-                     z-index: 10;
-                      text-align: left;
-                }
-
-                    .vignette {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        background: radial-gradient(circle, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.8) 100%);
-                        pointer-events: none; /* Prevents interaction issues */
-                        z-index: 1; /* Ensures vignette is behind text but above image */
-                    }
-
-        .prev, .next {
-            position: absolute;
-            top: 50%;
+        .slide-text{
+            position:absolute;
+            top:50%;
+            left:8%;
             transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            cursor: pointer;
-            padding: 10px;
-            font-size: 22px;
-            transition: 0.3s;
-            border-radius: 50%;
+            text-align:left;
+            color:#fff;
+            padding:0;
+            width:80%;
+            max-width:640px;
+            z-index:2;
         }
 
-        .prev {
-            left: 50px;
+        .slide-text .eyebrow{
+            display:inline-block;
+            font-family: var(--font-mono);
+            font-size:12px;
+            letter-spacing:0.18em;
+            text-transform:uppercase;
+            color: var(--amber-500);
+            border:1px solid rgba(232,163,61,0.55);
+            padding:5px 12px;
+            border-radius: 999px;
+            margin-bottom: 18px;
         }
 
-        .next {
-            right: 50px;
+        .slide-text h2{
+            font-family: var(--font-display);
+            font-size: 52px;
+            font-weight:600;
+            line-height:1.08;
+            margin-bottom:14px;
+            text-align:left;
         }
 
-        .prev:hover, .next:hover {
-            background-color: rgba(0, 0, 0, 0.8);
+        .slide-text p{
+            font-family: var(--font-body);
+            font-size:17px;
+            font-weight:400;
+            color: rgba(255,255,255,0.88);
+            max-width: 460px;
+            text-align:left;
         }
 
-            .about {
-                display: flex;
-                align-items: center; /* Aligns items vertically */
-                justify-content: space-between; /* Ensures spacing between image and text */
-                gap: 50px; /* Adds spacing between image and text */
-                padding: 40px 10%; /* Adds padding to the section */
-                background-image: url("/static/grey.jpg");
-                        background-size: cover;
-                        background-repeat: no-repeat;
-                        background-attachment: relative; /* Keeps the image in place */
+        .vignette{
+            position:absolute;
+            top:0; left:0;
+            width:100%; height:100%;
+            background: linear-gradient(90deg, rgba(10,31,61,0.78) 0%, rgba(10,31,61,0.35) 45%, rgba(10,31,61,0.15) 70%, rgba(10,31,61,0.05) 100%);
+            pointer-events:none;
+            z-index:1;
+        }
 
-            }
+        .prev, .next{
+            position:absolute;
+            top:50%;
+            transform: translateY(-50%);
+            background-color: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.35);
+            backdrop-filter: blur(4px);
+            color:#fff;
+            cursor:pointer;
+            width:44px; height:44px;
+            font-size:18px;
+            transition: 0.25s ease;
+            border-radius:50%;
+            z-index:3;
+        }
 
-            .about img {
-                width: 70%; /* Adjust the width of the image */
-                max-width: 600px; /* Prevents the image from being too large */
-               position: relative;
-                 left: -10%;
-            }
+        .prev{ left:30px; }
+        .next{ right:30px; }
 
-            .about-text {
-                width: 50%; /* Makes the text take the remaining space */
-                text-align: left; /* Ensures text aligns left */
-            }
+        .prev:hover, .next:hover{
+            background-color: var(--teal-600);
+            border-color: var(--teal-600);
+        }
 
-            .about-text h2 {
-                font-size: 30px;
-                font-weight: bold;
-                margin-bottom: 10px;
-                color: #333;
-            }
+        /* Signature pulse divider — a vital-sign line marking the seam
+           between the hero and the page content. */
+        .pulse-divider{
+            width:100%;
+            height:34px;
+            background: var(--paper);
+            display:block;
+            line-height:0;
+        }
+        .pulse-divider svg{ width:100%; height:100%; display:block; }
+        .pulse-divider path{
+            fill:none;
+            stroke: var(--teal-600);
+            stroke-width:2;
+            stroke-linecap:round;
+            stroke-linejoin:round;
+        }
 
-            .about-text p {
-                font-size: 14px;
-                line-height: 1.6;
-                color: #555;
-            }
+        /* ---------- About / Who we are ---------- */
+        .about{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:60px;
+            padding: 80px 10% 90px;
+            background-color: var(--paper);
+        }
 
-                .function-container {
-                    padding: 60px 20%;
-                    background-color: #f8f9fa;
-                      font-family: 'Roboto', sans-serif;
-                }
+        .about img{
+            width:46%;
+            max-width:520px;
+            position:relative;
+            left:0;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+        }
 
-                /* Title and Description */
-                .function-text {
-                    text-align: center;
-                    margin-bottom: 40px;
-                }
+        .about-text{
+            width:52%;
+            text-align:left;
+        }
 
-                .function-text h3 {
-                    font-size: 32px;
-                    font-weight: bold;
-                    color: #00274D; /* Deep Blue Theme */
-                }
+        .about-text .eyebrow{
+            display:inline-block;
+            font-family: var(--font-mono);
+            font-size:12px;
+            letter-spacing:0.18em;
+            text-transform:uppercase;
+            color: var(--teal-700);
+            margin-bottom: 14px;
+        }
 
-                .function-text p {
-                    font-size: 16px;
-                    color: #555;
-                    max-width: 800px;
-                    margin: 0 auto;
-                }
+        .about-text h2{
+            font-family: var(--font-display);
+            font-size: 36px;
+            font-weight:600;
+            margin-bottom: 18px;
+            color: var(--navy-900);
+            position:relative;
+            display:inline-block;
+        }
 
-                .services-table {
-                    display: grid;
-                    grid-template-columns: 1fr 2px 1fr; /* Two columns with a divider */
-                    gap: 50px;
-                    max-width: 1000px;
-                    margin: 0 auto;
-                    align-items: start;
-                }
+        .about-text p{
+            font-size: 15.5px;
+            line-height:1.75;
+            color: var(--ink-600);
+            margin-bottom: 16px;
+        }
 
-                .services-divider {
-                    background: rgba(0, 0, 0, 0.1); /* Light gray divider */
-                    width: 2px;
-                    height: 100%;
-                }
+        .about-text p:last-child{ margin-bottom:0; }
 
-                .service-column {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 30px;
-                }
+        /* ---------- What we do ---------- */
+        .function-container{
+            padding: 90px 10%;
+            background-color: var(--sand-50);
+            font-family: var(--font-body);
+            position:relative;
+        }
 
-.mobile-menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 26px;
-  color: #172e69;
-  cursor: pointer;
-}
+        .function-text{
+            text-align:center;
+            max-width: 720px;
+            margin: 0 auto 56px;
+        }
 
-.mobile-menu {
-  display: none;
-  flex-direction: column;
-  background-color: #fff;
-  position: absolute;
-  top: 80px;
-  right: 0;
-  width: 100%;
-  z-index: 1000;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
+        .function-text .eyebrow{
+            display:inline-block;
+            font-family: var(--font-mono);
+            font-size:12px;
+            letter-spacing:0.18em;
+            text-transform:uppercase;
+            color: var(--teal-700);
+            margin-bottom:14px;
+        }
 
-.mobile-menu a {
-  padding: 15px 20px;
-  text-decoration: none;
-  color: #172e69;
-  font-weight: 600;
-  border-bottom: 1px solid #eee;
-}
-.mobile-menu .close-btn {
-  align-self: flex-end;
-  background: none;
-  border: none;
-  font-size: 28px;
-  color: #172e69;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-weight: bold;
-}
+        .function-text h3{
+            font-family: var(--font-display);
+            font-size: 34px;
+            font-weight:600;
+            color: var(--navy-900);
+            margin-bottom:16px;
+        }
 
-@media (max-width: 600px) {
-  nav ul {
-    display: none;
-  }
+        .function-text p{
+            font-size: 15.5px;
+            color: var(--ink-600);
+            max-width: 640px;
+            margin: 0 auto;
+            line-height:1.75;
+        }
 
-  .mobile-menu-toggle {
-    display: block;
-  }
+        .services-table{
+            display:grid;
+            grid-template-columns: 1fr 1px 1fr;
+            gap: 56px;
+            max-width: 1080px;
+            margin: 0 auto;
+            align-items:start;
+        }
 
-  .mobile-menu {
-    display: none; /* Shown via JS */
-  }
-}
+        .services-divider{
+            background: var(--line);
+            width:1px;
+            height:100%;
+        }
 
-                .service-item {
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                }
+        .service-column{
+            display:flex;
+            flex-direction:column;
+            gap: 16px;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 34px 30px;
+            box-shadow: var(--shadow-sm);
+        }
 
+        .mobile-menu-toggle{
+            display:none;
+            background:none;
+            border:none;
+            font-size:24px;
+            color: var(--navy-900);
+            cursor:pointer;
+        }
 
-                .service-item a {
-                    text-decoration: none;
-                    color: #00274D; /* Deep Blue */
-                    font-size: 18px;
-                    font-weight: 350;
-                    transition: color 0.3s ease-in-out;
-                }
+        .mobile-menu{
+            display:none;
+            flex-direction:column;
+            background-color: var(--paper);
+            position:absolute;
+            top: 92px;
+            right:0;
+            width:100%;
+            z-index:1000;
+            box-shadow: var(--shadow-md);
+        }
 
-                .service-item img {
-                    width: 40px;
-                    height: 40px;
-                    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-                    opacity: 0.8;
-                }
+        .mobile-menu a{
+            padding:16px 24px;
+            text-decoration:none;
+            color: var(--navy-900);
+            font-weight:600;
+            border-bottom: 1px solid var(--line);
+        }
 
-                       .service-item img:hover {
-                            transform: scale(1.1);
-                        }
-                .service-item a:hover {
-                    color: #003366;
-                    text-decoration: underline;
-                }
-                .service-column {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 20px;
-                }
+        .mobile-menu .close-btn{
+            align-self:flex-end;
+            background:none;
+            border:none;
+            font-size:26px;
+            color: var(--navy-900);
+            padding: 10px 20px;
+            cursor:pointer;
+            font-weight:bold;
+        }
 
+        @media (max-width:600px){
+            nav ul{ display:none; }
+            .mobile-menu-toggle{ display:block; }
+            .mobile-menu{ display:none; }
+        }
 
-                .service-column h2,
-                .service-column h3,
-                .service-column h4 {
-                    color: #00274D; /* Deep Blue */
-                    font-weight: 400;
-                    margin-bottom: 10px;
-                    position: relative;
-                    display: inline-block;
-                    padding-bottom: 5px;
-                }
+        .service-item{
+            display:flex;
+            align-items:center;
+            gap: 14px;
+            padding: 8px 10px;
+            border-radius: 10px;
+            transition: background-color 0.2s ease;
+        }
 
-                .service-column h2::after,
-                .service-column h3::after,
-                .service-column h4::after {
-                    content: "";
-                    position: absolute;
-                    left: 0; /* Align with text start */
-                    bottom: -3px; /* Position just below the text */
-                    width: 50%; /* Halfway underline */
-                    height: 3px;
-                    background-color: #00274D; /* Match header color */
-                }
+        .service-item:hover{ background-color: var(--sand-50); }
 
+        .service-item a{
+            text-decoration:none;
+            color: var(--navy-900);
+            font-size: 15.5px;
+            font-weight:500;
+            transition: color 0.25s ease;
+        }
 
-                .know-more-btn {
-                    display: inline-flex; /* Align text and icon inline */
-                    align-items: center; /* Center items vertically */
-                    gap: 5px; /* Space between text and arrow */
-                    margin-top: 5px;
-                    padding: 10px 15px;  /* Tight padding */
-                    font-size: 15px;   /* Small font */
-                    font-weight: 400;  /* Light font weight */
-                    text-align: center;
-                    color: white;
-                    background-color: #00274D; /* Deep Blue */
-                    border-radius: 3px;
-                    text-decoration: none;
-                    transition: background 0.3s ease-in-out;
-                    width: fit-content; /* Auto-adjust width */
-                    line-height: 2; /* Minimize button height */
-                }
+        .service-item img{
+            width:36px;
+            height:36px;
+            flex-shrink:0;
+            transition: transform 0.25s ease;
+        }
 
-      
-                .know-more-btn:hover {
-                    background-color: #003366;
-                }
+        .service-item img:hover{ transform: scale(1.08); }
 
-            
-                @media (max-width: 768px) {
-                    .services-table {
-                        grid-template-columns: 1fr; /* Stack in one column */
-                    }
+        .service-item span{
+            font-size: 15px;
+            color: var(--ink-900);
+            font-weight:500;
+        }
 
-                    .services-divider {
-                        display: none; /* Remove divider on smaller screens */
-                    }
+        .service-item a:hover{ color: var(--teal-700); }
 
-                    .service-item {
-                        flex-direction: row;
-                        text-align: left;
-                    }
+        .service-column h2,
+        .service-column h3,
+        .service-column h4{
+            font-family: var(--font-display);
+            color: var(--navy-900);
+            font-weight:600;
+            margin-bottom: 6px;
+            position:relative;
+            display:inline-block;
+            padding-bottom: 10px;
+        }
 
-                    .service-item img {
-                        width: 30px;
-                        height: 30px;
-                    }
-                }
+        .service-column h2{ font-size: 22px; }
+        .service-column h4{
+            font-size: 15px;
+            color: var(--teal-700);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-family: var(--font-mono);
+            font-weight:500;
+            margin-top: 6px;
+        }
 
-        footer {
-            background-color: #080f21;
+        .service-column h2::after,
+        .service-column h3::after{
+            content:"";
+            position:absolute;
+            left:0;
+            bottom:2px;
+            width:44px;
+            height:6px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 6'%3E%3Cpath d='M0 3 H14 L18 0 L22 6 L26 0 L30 3 H44' fill='none' stroke='%23158A6E' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat:no-repeat;
+        }
+
+        .know-more-btn{
+            display:inline-flex;
+            align-items:center;
+            gap:8px;
+            margin-top: 14px;
+            padding: 11px 20px;
+            font-size:14px;
+            font-weight:600;
+            letter-spacing:0.01em;
+            text-align:center;
+            color:#fff;
+            background-color: var(--navy-800);
+            border-radius: 8px;
+            text-decoration:none;
+            transition: background-color 0.25s ease, transform 0.2s ease;
+            width:fit-content;
+        }
+
+        .know-more-btn:hover{
+            background-color: var(--teal-700);
+            transform: translateX(2px);
+        }
+
+        @media (max-width:768px){
+            .services-table{ grid-template-columns: 1fr; gap:28px; }
+            .services-divider{ display:none; }
+            .service-item{ flex-direction:row; text-align:left; }
+            .service-item img{ width:30px; height:30px; }
+        }
+
+        /* ---------- Footer ---------- */
+        footer{
+            background-color: var(--navy-950);
             color: #fff;
-            padding: 40px 20px;
-            font-family: 'Arial', sans-serif;
+            padding: 64px 20px 0;
+            font-family: var(--font-body);
         }
-        .footer-top {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            text-align: center;
+
+        .footer-top{
+            display:flex;
+            flex-direction:row;
+            align-items:flex-start;
+            text-align:left;
         }
-          .footer-columns {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr)); minmax(0, 1fr)
-            gap: 10px;
-            width: 80%;
-            max-width: 1100px;
-            margin: auto;
+
+        .footer-columns{
+            display:grid;
+            grid-template-columns: 1.3fr 1fr 1fr 1fr;
+            gap: 30px;
+            width:84%;
+            max-width: 1140px;
+            margin: 0 auto;
         }
-        .footer-logo {
-            text-align: center;
+
+        .footer-logo{ text-align:left; }
+
+        .footer-logo img{
+            max-width: 140px;
+            margin-bottom: 16px;
+            filter: brightness(0) invert(1);
         }
-        .footer-logo img {
-            max-width: 150px;
-            margin-bottom: 15px;
-        }
-        .footer-prose {
-            font-size: 14px;
-            line-height: 1.6;
+
+        .footer-prose{
+            font-size:13.5px;
+            line-height:1.7;
             margin-bottom: 30px;
-            text-align: center;
-            max-width: 250px;
+            text-align:left;
+            max-width: 280px;
+            color: rgba(255,255,255,0.7);
         }
-        .footer-column {
-            min-width: 200px;
+
+        .footer-column{ min-width: 160px; }
+
+        .footer-column h4{
+            font-family: var(--font-display);
+            font-size:16px;
+            font-weight:600;
+            margin-bottom: 14px;
+            border-bottom: 2px solid var(--teal-600);
+            display:inline-block;
+            padding-bottom: 6px;
         }
-        .footer-column h4 {
-            font-size: 16px;
+
+        .footer-column ul{ list-style:none; padding:0; }
+        .footer-column ul li{ margin-bottom: 10px; font-size:13.5px; }
+
+        .footer-column ul li a{
+            color: rgba(255,255,255,0.72);
+            text-decoration:none;
+            transition: color 0.25s ease;
+        }
+
+        .footer-column ul li a:hover{ color: var(--amber-500); }
+
+        .social-links h4{
+            font-family: var(--font-display);
+            font-size:16px;
+            margin-bottom: 14px;
+        }
+
+        .social-links a{
+            display:flex;
+            flex-direction:row;
+            align-items:center;
+            justify-content:flex-start;
             margin-bottom: 10px;
-            border-bottom: 2px solid #e63946;
-            display: inline-block;
-            padding-bottom: 5px;
-        }
-        .footer-column ul {
-            list-style: none;
-            padding: 0;
-        }
-        .footer-column ul li {
-            margin-bottom: 8px;
-        }
-        .footer-column ul li a {
-            color: #bbb;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .footer-column ul li a:hover {
-            color: #e63946;
+            text-decoration:none;
+            color: rgba(255,255,255,0.72);
+            font-size:13.5px;
+            transition: color 0.25s ease;
         }
 
- .social-links {
-    display: flex;
-    flex-direction: column;   /* stack each <a> vertically */
-    align-items: center;      /* center the <a> tags horizontally */
-    text-align: center;       /* center the <h4> text */
-    margin-top: 8px;
-}
+        .social-links a:hover{ color: var(--amber-500); }
 
-.social-links h4 {
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-.social-links a {
-    display: flex;
-    flex-direction: row;      
-    align-items: center;      
-    justify-content: center;  
-    margin-bottom: 10px;
-    text-decoration: none;
-    color: inherit;          
-}
-
-.social-links img {
-    width: 30px;
-    height: 30px;
-    margin-right: 8px;       
-}
-
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(0, 0, 0, 0.6);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-    }
-    .modal {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 30px;
-      max-width: 800px;
-      width: 90%;
-      max-height: 90vh;
-      overflow-y: auto;
-      border-radius: 10px;
-      position: relative;
-      color: #fff;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 24px;
-      cursor: pointer;
-      color: #ddd;
-    }
-    .close-btn:hover {
-      color: #fff;
-    }
-    .modal h2 {
-      color: #1abc9c;
-    }
-    .modal p {
-      line-height: 1.6;
-      color: #eee;
-    }
-    .footer-bottom {
-      padding: 20px;
-      text-align: center;
-      font-size: 14px;
-      background-color: transparent;
-      color: #eee;
-    }
-    .footer-bottom-links a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: #1abc9c;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .footer-bottom-links a:hover {
-      text-decoration: underline;
-      color: #ffffff;
-    }
-           .cookie-banner {
-      display: none;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.6);
-      color: #eee;
-      font-size: 12px;
-      padding: 10px 20px;
-      text-align: center;
-      z-index: 999;
-      backdrop-filter: blur(6px);
-    }
-    .cookie-banner button {
-      background: #1abc9c;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      font-size: 12px;
-      margin-left: 10px;
-      border-radius: 3px;
-      cursor: pointer;
-    }
-
-@media (max-width: 768px) {
-  
-  body {
-    font-size: 14px;
-  }
-
-        .social-links {
-            display: flex;
-             align-items: flex-start;
-            margin: auto;
-  justify-content: flex-start;
-            gap: 15px;
-            padding: 2px;
+        .social-links a img{
+            width:22px;
+            height:22px;
+            margin-right: 10px;
         }
 
-        .social-links img {
-            width: 15px;
-            height: 15px;
-            transition: transform 0.3s ease;
+        .modal-overlay{
+            display:none;
+            position:fixed;
+            top:0; left:0;
+            width:100vw; height:100vh;
+            background-color: rgba(10,31,61,0.7);
+            z-index:1000;
+            justify-content:center;
+            align-items:center;
         }
 
-        .social-links img:hover {
-            transform: scale(1.2);
+        .modal{
+            background: rgba(20,32,52,0.92);
+            padding: 34px;
+            max-width: 800px;
+            width:90%;
+            max-height:90vh;
+            overflow-y:auto;
+            border-radius: var(--radius);
+            position:relative;
+            color:#fff;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.16);
         }
 
-  .main-header {
-    flex-direction: flex;
-    align-items: flex-start;
-    padding: 10px 5%;
-  }
+        .close-btn{
+            position:absolute;
+            top:12px; right:16px;
+            font-size:24px;
+            cursor:pointer;
+            color: rgba(255,255,255,0.75);
+        }
 
-  .logo img {
-    height: 60px;
-  }
+        .close-btn:hover{ color:#fff; }
 
-  .slider-container {
-    height: auto;
-  }
+        .modal h2{ font-family: var(--font-display); color: var(--amber-500); margin-bottom:4px; }
+        .modal h3{ font-family: var(--font-display); color: var(--teal-600); margin-top:18px; margin-bottom:8px; font-size:18px; }
+        .modal p{ line-height:1.7; color: rgba(255,255,255,0.86); margin-bottom:8px; }
+        .modal ul{ color: rgba(255,255,255,0.86); padding-left: 20px; margin-bottom:8px; }
+        .modal li{ margin-bottom:4px; }
 
-  .slider img {
-    height: auto;
-    max-height: 100vh;
-    object-fit: cover;
-  }
+        .footer-bottom{
+            margin-top: 46px;
+            padding: 22px 20px;
+            text-align:center;
+            font-size:13px;
+            background-color: transparent;
+            color: rgba(255,255,255,0.6);
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
 
-  .slide {
-    height: auto;
-    flex-direction: column;
-  }
+        .footer-bottom-links a{
+            margin: 0 10px;
+            text-decoration:none;
+            color: var(--teal-600);
+            font-weight:600;
+            cursor:pointer;
+        }
 
-  .slide-text {
-    position: absolute;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-  }
+        .footer-bottom-links a:hover{
+            text-decoration:underline;
+            color: var(--amber-500);
+        }
 
-  .slide-text h2 {
-    font-size: 24px;
-    text-align: center;
-  }
+        .cookie-banner{
+            display:none;
+            position:fixed;
+            bottom:0; left:0;
+            width:100%;
+            background-color: rgba(10,31,61,0.92);
+            color: rgba(255,255,255,0.88);
+            font-size:12.5px;
+            padding: 14px 20px;
+            text-align:center;
+            z-index:999;
+            backdrop-filter: blur(6px);
+        }
 
-  .slide-text p {
-    font-size: 14px;
-    text-align: center;
-  }
+        .cookie-banner button{
+            background: var(--teal-600);
+            color:#fff;
+            border:none;
+            padding: 6px 14px;
+            font-size:12.5px;
+            font-weight:600;
+            margin-left: 12px;
+            border-radius: 6px;
+            cursor:pointer;
+            transition: background-color 0.2s ease;
+        }
 
-  .about {
-    flex-direction: column;
-    gap: 20px;
-    padding: 30px 5%;
-    background-size: cover;
-  }
+        .cookie-banner button:hover{ background-color: var(--teal-700); }
 
-  .about img {
-    width: 100%;
-    max-width: 100%;
-    left: 0;
-  }
+        @media (max-width:768px){
+            body{ font-size:14px; }
 
-  .about-text {
-    width: 100%;
-  }
+            .social-links{
+                display:flex;
+                align-items:flex-start;
+                margin:0;
+                justify-content:flex-start;
+                gap:12px;
+                padding:2px 0;
+            }
 
-  .about-text h2 {
-    font-size: 18px;
-  }
+            .social-links img{ width:14px; height:14px; }
 
-  .about-text p {
-    font-size: 10px;
-  }
+            .main-header{
+                flex-direction: row;
+                align-items:center;
+                padding: 10px 5%;
+            }
 
-  .function-container {
-    padding: 30px 5%;
-  }
+            .logo img{ height:56px; }
 
-  .function-text h3 {
-    font-size: 18px;
-  }
+            .slider-container{ height:auto; }
 
-  .function-text p {
-    font-size: 10px;
-  }
+            .slider img{
+                height:auto;
+                max-height: 60vh;
+                object-fit:cover;
+            }
 
-  .footer-columns {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    text-align: center;
-  }
+            .slide{ height:auto; min-height: 420px; flex-direction:column; }
 
-  .footer-logo,
-  .footer-prose,
-  .footer-column {
-    max-width: 100%;
-    text-align: center;
-    align-items: center;
-  }
+            .slide-text{
+                left:6%;
+                width:88%;
+            }
 
-  .footer-prose {
-    margin: 10px auto;
-    font-size: 10px;
-  }
+            .slide-text .eyebrow{ font-size:10px; padding:4px 10px; margin-bottom:12px; }
+            .slide-text h2{ font-size:28px; }
+            .slide-text p{ font-size:14px; }
 
-  .footer-column h4,
-  .footer-column ul li {
-    font-size: 10px;
-  }
+            .about{
+                flex-direction:column;
+                gap: 26px;
+                padding: 44px 6%;
+            }
 
-  .footer-bottom {
-    font-size: 10px;
-    padding: 10px;
-  }
+            .about img{ width:100%; max-width:100%; left:0; }
+            .about-text{ width:100%; }
+            .about-text h2{ font-size:24px; }
+            .about-text p{ font-size:13.5px; }
 
-  .modal {
-    padding: 20px;
-  }
+            .function-container{ padding: 48px 6%; }
+            .function-text h3{ font-size:24px; }
+            .function-text p{ font-size:13.5px; }
 
-  .modal h2 {
-    font-size: 20px;
-  }
+            .footer-columns{
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align:center;
+            }
 
-  .modal p,
-  .modal ul {
-    font-size: 14px;
-  }
+            .footer-top{ text-align:center; }
 
-  .cookie-banner {
-    font-size: 11px;
-    padding: 8px;
-  }
+            .footer-logo,
+            .footer-prose,
+            .footer-column{
+                max-width:100%;
+                text-align:center;
+            }
 
-  .cookie-banner button {
-    font-size: 11px;
-    padding: 5px 8px;
-  }
-}
+            .footer-logo{ text-align:center; }
+            .footer-prose{ margin: 10px auto; font-size:12.5px; }
+            .social-links{ align-items:center; }
+            .social-links a{ justify-content:center; }
 
-/* Back to Top Button */
-.back-to-top {
-  position: fixed;
-  bottom: 170px; /* Positioned above the chat buttons */
-  right: 30px;
-  width: 50px;
-  height: 50px;
-  background-color: var(--lilac-primary);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  z-index: 998;
-  border: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
+            .footer-column h4{ font-size:15px; }
+            .footer-column ul li{ font-size:12.5px; }
 
-.back-to-top.show {
-  opacity: 1;
-  visibility: visible;
-}
+            .footer-bottom{ font-size:11.5px; padding: 16px; }
 
-.back-to-top:hover {
-  background-color: var(--lilac-dark);
-  transform: translateY(-5px);
-}
+            .modal{ padding: 22px; }
+            .modal h2{ font-size:20px; }
+            .modal p, .modal ul{ font-size:14px; }
 
-@media (max-width: 768px) {
-  .back-to-top {
-    bottom: 150px;
-    right: 20px;
-    width: 45px;
-    height: 45px;
-  }
-}
+            .cookie-banner{ font-size:11.5px; padding:10px; }
+            .cookie-banner button{ font-size:11.5px; padding:6px 10px; }
+        }
 
+        /* Back to Top Button */
+        .back-to-top{
+            position:fixed;
+            bottom: 170px;
+            right: 30px;
+            width:50px; height:50px;
+            background-color: var(--teal-600);
+            color:#fff;
+            border-radius:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:22px;
+            cursor:pointer;
+            opacity:0;
+            visibility:hidden;
+            transition: all 0.3s ease;
+            z-index:998;
+            border:none;
+            box-shadow: var(--shadow-md);
+        }
+
+        .back-to-top.show{ opacity:1; visibility:visible; }
+
+        .back-to-top:hover{
+            background-color: var(--teal-700);
+            transform: translateY(-5px);
+        }
+
+        @media (max-width:768px){
+            .back-to-top{ bottom:150px; right:20px; width:45px; height:45px; }
+        }
     </style>
 </head>
 <body>
 <header>
-   </header>
-    <div class="main-header">
-        <div class="logo">
-            <a href="{{ url_for('index') }}">
-                <img src="{{ url_for('static', filename='bahi logo.png') }}" alt="bahi logo">
-            </a>
-        </div>
-           <nav>
+    <div class="social-links">
+        <a href="https://facebook.com" target="_blank"><img src="{{ url_for('static', filename='facebook.png') }}" alt="Facebook"></a>
+        <a href="https://instagram.com" target="_blank"><img src="{{ url_for('static', filename='instagram.png') }}" alt="Instagram"></a>
+        <a href="https://linkedin.com" target="_blank"><img src="{{ url_for('static', filename='linkedin.png') }}" alt="LinkedIn"></a>
+    </div>
+</header>
+
+<div class="main-header">
+    <div class="logo">
+        <a href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='bahi logo.png') }}" alt="bahi logo">
+        </a>
+    </div>
+    <nav>
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/about-us">About</a></li>
             <li><a href="/Priority">Programs</a></li>
-            <li><a href=/Health-Systems>Health-System</a></li>
+            <li><a href="/Health-Systems">Health-System</a></li>
             <li><a href="/Involved">Get Involve</a></li>
             <li><a href="/Newsletter">Newsletter</a></li>
         </ul>
     </nav>
 
-<button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
 
-
-<div class="mobile-menu" id="mobileMenu">
-  <button class="close-btn" onclick="toggleMobileMenu()">×</button>
-  <a href="/">Home</a>
-  <a href="/about-us">About</a>
-  <a href="/Priority">Programs</a>
-  <a href=/Health-Systems>Health-Systems</a>
-    <a href="/Involved">Get Involve</a>
-  <a href="/Newsletter">Newsletter</a>
-</div>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-btn" onclick="toggleMobileMenu()">×</button>
+        <a href="/">Home</a>
+        <a href="/about-us">About</a>
+        <a href="/Priority">Programs</a>
+        <a href="/Health-Systems">Health-Systems</a>
+        <a href="/Involved">Get Involve</a>
+        <a href="/Newsletter">Newsletter</a>
     </div>
+</div>
 
 <section class="slider-container">
     <div class="slider">
         <div class="slide">
             <img src="{{ url_for('static', filename='home-slider1.jpg') }}" alt="home-slider1">
-             <div class="vignette"></div> 
+            <div class="vignette"></div>
             <div class="slide-text">
+                <span class="eyebrow">Ondo State · SDG 3</span>
                 <h2>Providing Quality Healthcare</h2>
                 <p>Your health is our priority.</p>
             </div>
         </div>
         <div class="slide">
             <img src="{{ url_for('static', filename='home-slider2.jpg') }}" alt="home-slider2">
-             <div class="vignette"></div> 
+            <div class="vignette"></div>
             <div class="slide-text">
+                <span class="eyebrow">Community Health Systems</span>
                 <h2>Building Stronger Communities</h2>
                 <p>Empowering health for all.</p>
             </div>
         </div>
         <div class="slide">
             <img src="{{ url_for('static', filename='home-slider3.jpg') }}" alt="home-slider3">
-             <div class="vignette"></div> 
+            <div class="vignette"></div>
             <div class="slide-text">
+                <span class="eyebrow">Diagnostics & Screening</span>
                 <h2>Accessible Medical Testing</h2>
                 <p>Ensuring early diagnosis for better health.</p>
             </div>
         </div>
-                <div class="slide">
+        <div class="slide">
             <img src="{{ url_for('static', filename='home-slider4.jpg') }}" alt="home-slider4">
-                     <div class="vignette"></div> 
+            <div class="vignette"></div>
             <div class="slide-text">
+                <span class="eyebrow">Diagnostics & Screening</span>
                 <h2>Accessible Medical Testing</h2>
                 <p>Ensuring early diagnosis for better health.</p>
             </div>
@@ -862,37 +913,46 @@
     <button class="prev" onclick="prevSlide()">&#10094;</button>
     <button class="next" onclick="nextSlide()">&#10095;</button>
 </section>
-  <section>
- <div class="about">
-            <img src="{{ url_for('static', filename='about.png') }}" alt="about">
-            <div class="about-text">
-                <h2>Who we are</h2>
-                <p>BRAIN is dedicated to advancing sustainable, evidence-based health interventions
-                    that strengthen governance, service delivery, and community health systems.
-                    Our core focus areas include maternal and child health, reproductive health and family
-                    planning, malaria prevention, and HIV/AIDS care and prevention.</p>
-<p>
-  Through strategic partnerships and community engagement, we contribute to
-    the achievement of the Sustainable Development Goals (SDGs), particularly SDG 3:
-    Good Health and Well-being. We also emphasize strengthening primary health care and community
-    systems to ensure inclusive and equitable access to quality care.
-</p>
-            </div>
- </div>
-    </section>
- <section class="function-container">
+
+<span class="pulse-divider">
+    <svg viewBox="0 0 1200 34" preserveAspectRatio="none">
+        <path d="M0 17 H430 L460 4 L490 30 L520 10 L550 24 L580 17 H1200"></path>
+    </svg>
+</span>
+
+<section>
+    <div class="about">
+        <img src="{{ url_for('static', filename='about.png') }}" alt="about">
+        <div class="about-text">
+            <span class="eyebrow">Who We Are</span>
+            <h2>Who we are</h2>
+            <p>BRAIN is dedicated to advancing sustainable, evidence-based health interventions
+                that strengthen governance, service delivery, and community health systems.
+                Our core focus areas include maternal and child health, reproductive health and family
+                planning, malaria prevention, and HIV/AIDS care and prevention.</p>
+            <p>
+                Through strategic partnerships and community engagement, we contribute to
+                the achievement of the Sustainable Development Goals (SDGs), particularly SDG 3:
+                Good Health and Well-being. We also emphasize strengthening primary health care and community
+                systems to ensure inclusive and equitable access to quality care.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="function-container">
     <div class="function-text">
+        <span class="eyebrow">What We Do</span>
         <h3>What we do</h3>
         <p>
-  BRAIN strengthens health and social systems through evidence-based solutions.
+            BRAIN strengthens health and social systems through evidence-based solutions.
             We focus on maternal and child health, reproductive health, malaria, HIV/AIDS, and
             reinforce primary and community health care for sustainable impact.
-</p>
-
+        </p>
     </div>
 
     <div class="services-table">
-       
+
         <div class="service-column">
             <h2>Health System Strengthening</h2>
 
@@ -913,12 +973,12 @@
 
             <div class="service-item">
                 <img src="{{ url_for('static', filename='icons/Leadership-and-Governance.png') }}" alt="Leadership-and-Governance">
-               <span>Leadership and Organizational Management Capacity Development</span>
+                <span>Leadership and Organizational Management Capacity Development</span>
             </div>
 
             <div class="service-item">
                 <img src="{{ url_for('static', filename='icons/Service-Delivery-and-Innovation.png') }}" alt="Service-Delivery-and-Innovation">
-               <span>Service Delivery and Innovation</span>
+                <span>Service Delivery and Innovation</span>
             </div>
 
             <div class="service-item">
@@ -928,10 +988,8 @@
             <a href="/Health-Systems" class="know-more-btn">Know More→</a>
         </div>
 
-       
         <div class="services-divider"></div>
 
-       
         <div class="service-column">
             <h2>Public Health Programs</h2>
 
@@ -963,11 +1021,11 @@
         </div>
     </div>
 </section>
-    <footer>
-        <div class="footer-top">
-        
+
+<footer>
+    <div class="footer-top">
         <div class="footer-columns">
-           
+
             <div class="footer-logo">
                 <a href="{{ url_for('index') }}">
                     <img src="{{ url_for('static', filename='bahi logo.png') }}" alt="bahi logo">
@@ -978,7 +1036,6 @@
                 </p>
             </div>
 
-  
             <div class="footer-column">
                 <a href="/about-us" style="text-decoration: none; color: inherit;">
                     <h4>About Us</h4></a>
@@ -989,10 +1046,9 @@
                 </ul>
             </div>
 
-         
             <div class="footer-column">
                 <a href="/Priority" style="text-decoration: none; color: inherit;">
-                 <h4>Programs</h4></a>
+                    <h4>Programs</h4></a>
                 <ul>
                     <li><a href="/Health-Systems">Health Systems</a></li>
                     <li>HIV/AIDS</li>
@@ -1000,10 +1056,9 @@
                 </ul>
             </div>
 
-        
             <div class="footer-column">
                 <a href="/Involved" style="text-decoration: none; color: inherit;">
-                  <h4>Get Involved</h4>
+                    <h4>Get Involved</h4>
                 </a>
                 <ul>
                     <li><a href="/Involved">Donate</a></li>
@@ -1011,332 +1066,326 @@
                 </ul>
             </div>
         </div>
- </div>
-       
-        <div class="social-links">
-            <h4>Follow Us</h4>
-            <a href="https://facebook.com" target="_blank">
-                <img src="{{ url_for('static', filename='facebook.png') }}" alt="Facebook">
-            </a>
-            <a href="https://instagram.com" target="_blank">
-                <img src="{{ url_for('static', filename='instagram.png') }}" alt="Instagram">
-            </a>
-            <a href="https://linkedin.com" target="_blank">
-                <img src="{{ url_for('static', filename='linkedin.png') }}" alt="LinkedIn">
-            </a>
+    </div>
+
+    <div class="social-links">
+        <h4>Follow Us</h4>
+        <a href="https://facebook.com" target="_blank">
+            <img src="{{ url_for('static', filename='facebook.png') }}" alt="Facebook"> Facebook
+        </a>
+        <a href="https://instagram.com" target="_blank">
+            <img src="{{ url_for('static', filename='instagram.png') }}" alt="Instagram"> Instagram
+        </a>
+        <a href="https://linkedin.com" target="_blank">
+            <img src="{{ url_for('static', filename='linkedin.png') }}" alt="LinkedIn"> LinkedIn
+        </a>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 Broader Accessible-Health Initiatives. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+            <a id="contact-link">Contact Us</a>
+            <a id="terms-link">Terms of Use</a>
+            <a id="privacy-link">Privacy Policy</a>
         </div>
-
- <div class="footer-bottom">
-    <p>&copy; 2025 Broader Accessible-Health Initiatives. All Rights Reserved.</p>
-    <div class="footer-bottom-links">
-      <a id="contact-link">Contact Us</a>
-      <a id="terms-link">Terms of Use</a>
-      <a id="privacy-link">Privacy Policy</a>
     </div>
-  </div>
 
-  <div class="modal-overlay" id="privacyModal">
-    <div class="modal">
-      <span class="close-btn" onclick="closeModal('privacyModal')">&times;</span>
- <h2 style="color: #172e69;">Privacy Policy</h2>
-  <p><strong>Effective Date:</strong> January 1, 2025</p>
+    <div class="modal-overlay" id="privacyModal">
+        <div class="modal">
+            <span class="close-btn" onclick="closeModal('privacyModal')">&times;</span>
+            <h2>Privacy Policy</h2>
+            <p><strong>Effective Date:</strong> January 1, 2025</p>
 
-  <p>Broader Accessible-Health Initiatives (BRAIN) is committed to protecting your privacy
-      and ensuring that your personal data is handled in a safe and responsible manner.
-      This Privacy Policy outlines how we collect, use, store, and protect your information
-      when you visit our website or engage with our services.</p>
+            <p>Broader Accessible-Health Initiatives (BRAIN) is committed to protecting your privacy
+                and ensuring that your personal data is handled in a safe and responsible manner.
+                This Privacy Policy outlines how we collect, use, store, and protect your information
+                when you visit our website or engage with our services.</p>
 
-  <h3>1. Information We Collect</h3>
-  <p>We may collect the following information from you when you visit our website or fill out forms:</p>
-  <ul>
-    <li>Full name</li>
-    <li>Email address</li>
-    <li>Phone number</li>
-    <li>IP address and browser details</li>
-    <li>Any additional information you voluntarily provide</li>
-  </ul>
+            <h3>1. Information We Collect</h3>
+            <p>We may collect the following information from you when you visit our website or fill out forms:</p>
+            <ul>
+                <li>Full name</li>
+                <li>Email address</li>
+                <li>Phone number</li>
+                <li>IP address and browser details</li>
+                <li>Any additional information you voluntarily provide</li>
+            </ul>
 
-  <h3>2. How We Use Your Information</h3>
-  <p>The information we collect is used to:</p>
-  <ul>
-    <li>Communicate with you</li>
-    <li>Provide updates on our programs and activities</li>
-    <li>Improve the quality of our services and content</li>
-    <li>Respond to inquiries or feedback</li>
-    <li>Analyze site usage and visitor trends</li>
-  </ul>
+            <h3>2. How We Use Your Information</h3>
+            <p>The information we collect is used to:</p>
+            <ul>
+                <li>Communicate with you</li>
+                <li>Provide updates on our programs and activities</li>
+                <li>Improve the quality of our services and content</li>
+                <li>Respond to inquiries or feedback</li>
+                <li>Analyze site usage and visitor trends</li>
+            </ul>
 
-  <h3>3. Data Sharing and Disclosure</h3>
-  <p>We do not sell, rent, or share your personal data with third parties except where:</p>
-  <ul>
-    <li>We have your explicit consent</li>
-    <li>It is necessary to comply with legal obligations</li>
-    <li>It is required to protect our rights, safety, or the rights of others</li>
-  </ul>
+            <h3>3. Data Sharing and Disclosure</h3>
+            <p>We do not sell, rent, or share your personal data with third parties except where:</p>
+            <ul>
+                <li>We have your explicit consent</li>
+                <li>It is necessary to comply with legal obligations</li>
+                <li>It is required to protect our rights, safety, or the rights of others</li>
+            </ul>
 
-  <h3>4. Data Security</h3>
-  <p>We implement reasonable administrative, technical, and physical safeguards to protect
-      your information from loss, misuse, unauthorized access, or disclosure.</p>
+            <h3>4. Data Security</h3>
+            <p>We implement reasonable administrative, technical, and physical safeguards to protect
+                your information from loss, misuse, unauthorized access, or disclosure.</p>
 
-  <h3>5. Use of Cookies</h3>
-  <p>Our website uses cookies to enhance your browsing experience and collect
-      anonymous visitor data. You may choose to disable cookies in your browser settings if you prefer.</p>
+            <h3>5. Use of Cookies</h3>
+            <p>Our website uses cookies to enhance your browsing experience and collect
+                anonymous visitor data. You may choose to disable cookies in your browser settings if you prefer.</p>
 
-  <h3>6. Your Rights</h3>
-  <p>You have the right to:</p>
-  <ul>
-    <li>Request access to your personal data</li>
-    <li>Request correction or deletion of inaccurate or incomplete data</li>
-    <li>Withdraw your consent at any time (if applicable)</li>
-  </ul>
+            <h3>6. Your Rights</h3>
+            <p>You have the right to:</p>
+            <ul>
+                <li>Request access to your personal data</li>
+                <li>Request correction or deletion of inaccurate or incomplete data</li>
+                <li>Withdraw your consent at any time (if applicable)</li>
+            </ul>
 
-  <h3>7. Retention of Information</h3>
-  <p>We retain personal data only for as long as necessary to fulfill the purposes outlined
-      in this policy or to comply with legal obligations.</p>
+            <h3>7. Retention of Information</h3>
+            <p>We retain personal data only for as long as necessary to fulfill the purposes outlined
+                in this policy or to comply with legal obligations.</p>
 
-  <h3>8. External Links</h3>
-  <p>Our site may contain links to third-party websites. BRAIN is not responsible for the content or
-      privacy practices of external websites.</p>
+            <h3>8. External Links</h3>
+            <p>Our site may contain links to third-party websites. BRAIN is not responsible for the content or
+                privacy practices of external websites.</p>
 
-  <h3>9. Changes to This Policy</h3>
-  <p>We may update this Privacy Policy from time to time. We encourage you to review it periodically to
-      stay informed about how we are protecting your data.</p>
+            <h3>9. Changes to This Policy</h3>
+            <p>We may update this Privacy Policy from time to time. We encourage you to review it periodically to
+                stay informed about how we are protecting your data.</p>
 
-  <h3>10. Contact Us</h3>
-  <p>If you have any questions, concerns, or requests regarding this Privacy Policy, please contact:</p>
-  <ul>
-    <li>Email: <a href="admin@broaderaccessible.org">admin@broaderaccessible.org</a></li>
-    <li>Address: Broader Accessible-Health Initiatives (BAHI), Akure, Ondo State, Nigeria</li>
-  </ul>
+            <h3>10. Contact Us</h3>
+            <p>If you have any questions, concerns, or requests regarding this Privacy Policy, please contact:</p>
+            <ul>
+                <li>Email: <a href="admin@broaderaccessible.org">admin@broaderaccessible.org</a></li>
+                <li>Address: Broader Accessible-Health Initiatives (BAHI), Akure, Ondo State, Nigeria</li>
+            </ul>
+        </div>
     </div>
-  </div>
 
-  <div class="modal-overlay" id="termsModal">
-    <div class="modal">
-      <span class="close-btn" onclick="closeModal('termsModal')">&times;</span>
-      <h2 style="color: #172e69;">Terms of Use</h2>
-  <p><strong>Effective Date:</strong> January 1, 2025</p>
+    <div class="modal-overlay" id="termsModal">
+        <div class="modal">
+            <span class="close-btn" onclick="closeModal('termsModal')">&times;</span>
+            <h2>Terms of Use</h2>
+            <p><strong>Effective Date:</strong> January 1, 2025</p>
 
-  <p>Welcome to the official website of <strong>Broader Accessible-Health Initiatives (BRAIN)</strong>.
-      By accessing or using this website, you agree to comply with and be bound by the following Terms of Use.
-      If you do not agree to these terms, you must not use this site.</p>
+            <p>Welcome to the official website of <strong>Broader Accessible-Health Initiatives (BRAIN)</strong>.
+                By accessing or using this website, you agree to comply with and be bound by the following Terms of Use.
+                If you do not agree to these terms, you must not use this site.</p>
 
-  <h3>1. Acceptance of Terms</h3>
-  <p>These Terms of Use apply to all visitors and users of the BAHI website. By accessing the site,
-      you agree to abide by these terms and any applicable laws and regulations.</p>
+            <h3>1. Acceptance of Terms</h3>
+            <p>These Terms of Use apply to all visitors and users of the BAHI website. By accessing the site,
+                you agree to abide by these terms and any applicable laws and regulations.</p>
 
-  <h3>2. Changes to Terms</h3>
-  <p>BRAIN reserves the right to update or modify these Terms at any time without prior notice.
-      Your continued use of the site following any changes constitutes your acceptance of the revised terms.</p>
+            <h3>2. Changes to Terms</h3>
+            <p>BRAIN reserves the right to update or modify these Terms at any time without prior notice.
+                Your continued use of the site following any changes constitutes your acceptance of the revised terms.</p>
 
-  <h3>3. Privacy</h3>
-  <p>Your use of this site is subject to our <a href="#privacy" style="color: #1abc9c;">Privacy Policy</a>, which outlines how we collect, use, and protect your data. Please review it carefully.</p>
+            <h3>3. Privacy</h3>
+            <p>Your use of this site is subject to our <a href="#privacy" style="color: #E8A33D;">Privacy Policy</a>, which outlines how we collect, use, and protect your data. Please review it carefully.</p>
 
-  <h3>4. Use of Site Content</h3>
-  <p>All content on this website—including text, graphics, logos, videos, icons, and code—is
-      the property of BRAIN or its licensors. You may not copy, reproduce, republish, upload, post,
-      transmit, or distribute any material without express permission.</p>
+            <h3>4. Use of Site Content</h3>
+            <p>All content on this website—including text, graphics, logos, videos, icons, and code—is
+                the property of BRAIN or its licensors. You may not copy, reproduce, republish, upload, post,
+                transmit, or distribute any material without express permission.</p>
 
-  <h3>5. User Conduct</h3>
-  <p>You agree not to:</p>
-  <ul>
-    <li>Use the website in any unlawful or fraudulent manner</li>
-    <li>Attempt to gain unauthorized access to systems or data</li>
-    <li>Impersonate any person or entity</li>
-    <li>Engage in any activity that could harm BAHI’s systems, reputation, or other users</li>
-  </ul>
+            <h3>5. User Conduct</h3>
+            <p>You agree not to:</p>
+            <ul>
+                <li>Use the website in any unlawful or fraudulent manner</li>
+                <li>Attempt to gain unauthorized access to systems or data</li>
+                <li>Impersonate any person or entity</li>
+                <li>Engage in any activity that could harm BAHI's systems, reputation, or other users</li>
+            </ul>
 
-  <h3>6. Third-Party Links</h3>
-  <p>This site may contain links to third-party websites or services.
-      BRAIN is not responsible for the content, privacy practices, or policies of any third-party websites.</p>
+            <h3>6. Third-Party Links</h3>
+            <p>This site may contain links to third-party websites or services.
+                BRAIN is not responsible for the content, privacy practices, or policies of any third-party websites.</p>
 
-  <h3>7. Disclaimer</h3>
-  <p>All content is provided “as is” and “as available.”
-      BRAIN makes no representations or warranties regarding accuracy, completeness, or
-      suitability of the information and disclaims liability for any errors or omissions.</p>
+            <h3>7. Disclaimer</h3>
+            <p>All content is provided "as is" and "as available."
+                BRAIN makes no representations or warranties regarding accuracy, completeness, or
+                suitability of the information and disclaims liability for any errors or omissions.</p>
 
-  <h3>8. Limitation of Liability</h3>
-  <p>BRAIN shall not be liable for any direct, indirect, incidental, or
-      consequential damages arising from the use or inability to use this website,
-      even if advised of the possibility of such damages.</p>
+            <h3>8. Limitation of Liability</h3>
+            <p>BRAIN shall not be liable for any direct, indirect, incidental, or
+                consequential damages arising from the use or inability to use this website,
+                even if advised of the possibility of such damages.</p>
 
-  <h3>9. Governing Law</h3>
-  <p>These Terms are governed by the laws of the <strong>Federal Republic of Nigeria</strong>, without regard to its conflict of laws principles.</p>
+            <h3>9. Governing Law</h3>
+            <p>These Terms are governed by the laws of the <strong>Federal Republic of Nigeria</strong>, without regard to its conflict of laws principles.</p>
 
-  <h3>10. Contact Information</h3>
-  <p>If you have any questions about these Terms of Use, please contact:</p>
-  <ul>
-    <li>Email: <a href="admin@broaderaccessible.org">admin@broaderaccessible.org</a></li>
-    <li>Address: Broader Accessible-Health Initiatives (BRAIN), Akure, Ondo State, Nigeria</li>
-  </ul>
+            <h3>10. Contact Information</h3>
+            <p>If you have any questions about these Terms of Use, please contact:</p>
+            <ul>
+                <li>Email: <a href="admin@broaderaccessible.org">admin@broaderaccessible.org</a></li>
+                <li>Address: Broader Accessible-Health Initiatives (BRAIN), Akure, Ondo State, Nigeria</li>
+            </ul>
+        </div>
     </div>
-  </div>
 
-  
-  <div class="modal-overlay" id="contactModal">
-    <div class="modal">
-      <span class="close-btn" onclick="closeModal('contactModal')">&times;</span>
-   <h2 style="color: #172e69;">Contact Us</h2>
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal">
+            <span class="close-btn" onclick="closeModal('contactModal')">&times;</span>
+            <h2>Contact Us</h2>
 
-  <p>If you have any questions, feedback, or would like to get in touch with us regarding our programs,
-      services, or partnership opportunities, we would be happy to hear from you.</p>
+            <p>If you have any questions, feedback, or would like to get in touch with us regarding our programs,
+                services, or partnership opportunities, we would be happy to hear from you.</p>
 
-  <h3>Our Office</h3>
-  <p>
-    <strong>Broader Accessible-Health Initiatives (BRAIN)</strong><br>
-    No. 123 Health Drive,<br>
-    Akure, Ondo State, Nigeria
-  </p>
+            <h3>Our Office</h3>
+            <p>
+                <strong>Broader Accessible-Health Initiatives (BRAIN)</strong><br>
+                No. 123 Health Drive,<br>
+                Akure, Ondo State, Nigeria
+            </p>
 
-  <h3>Email</h3>
-  <p>
-    For general inquiries or support:
-    <a href="admin@broaderaccessible.org" style="color: #1abc9c;">admin@broaderaccessible.org</a>
-  </p>
+            <h3>Email</h3>
+            <p>
+                For general inquiries or support:
+                <a href="admin@broaderaccessible.org" style="color: #E8A33D;">admin@broaderaccessible.org</a>
+            </p>
 
-  <h3>Phone</h3>
-  <p>
-    Monday – Friday (9:00 AM – 5:00 PM WAT):<br>
-    <strong>+234-800-BRAIN-CARE</strong>
-  </p>
+            <h3>Phone</h3>
+            <p>
+                Monday – Friday (9:00 AM – 5:00 PM WAT):<br>
+                <strong>+234-800-BRAIN-CARE</strong>
+            </p>
 
-  <h3>Follow Us</h3>
-  <p>Stay connected with us through our social media channels:</p>
-  <ul style="list-style: none; padding: 0;">
-    <li><a href="https://facebook.com" target="_blank" style="color: #1abc9c;">Facebook</a></li>
-    <li><a href="https://instagram.com" target="_blank" style="color: #1abc9c;">Instagram</a></li>
-    <li><a href="https://linkedin.com" target="_blank" style="color: #1abc9c;">LinkedIn</a></li>
-  </ul>
-
-  <h3>Feedback & Support</h3>
-  <p>If you’re experiencing any issues with our services or have suggestions to improve,
-      kindly send us an email or fill out our contact form on the homepage.</p>
+            <h3>Follow Us</h3>
+            <p>Stay connected with us through our social media channels:</p>
+            <ul style="list-style: none; padding: 0;">
+                <li><a href="https://facebook.com" target="_blank" style="color: #E8A33D;">Facebook</a></li>
+                <li><a href="https://instagram.com" target="_blank" style="color: #E8A33D;">Instagram</a></li>
+                <li><a href="https://linkedin.com" target="_blank" style="color: #E8A33D;">LinkedIn</a></li>
+            </ul>
+        </div>
     </div>
-  </div>
-    
-  <div class="cookie-banner" id="cookieBanner">
-    This website uses cookies to enhance user experience and track anonymous visits.
-      By continuing, you accept our privacy terms.
-    <button onclick="acceptCookies()">Got it</button>
-  </div>
 
-    </footer>
-  <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let currentIndex = 0;
-            const slides = document.querySelectorAll(".slide");
-            const totalSlides = slides.length;
-            const slider = document.querySelector(".slider");
+    <div class="cookie-banner" id="cookieBanner">
+        This website uses cookies to enhance user experience and track anonymous visits.
+        By continuing, you accept our privacy terms.
+        <button onclick="acceptCookies()">Got it</button>
+    </div>
 
-            function showSlide(index) {
-                if (index < 0) {
-                    currentIndex = totalSlides - 1;
-                } else if (index >= totalSlides) {
-                    currentIndex = 0;
-                } else {
-                    currentIndex = index;
-                }
+</footer>
 
-                const offset = -currentIndex * 100;
-                slider.style.transform = `translateX(${offset}%)`;
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let currentIndex = 0;
+        const slides = document.querySelectorAll(".slide");
+        const totalSlides = slides.length;
+        const slider = document.querySelector(".slider");
+
+        function showSlide(index) {
+            if (index < 0) {
+                currentIndex = totalSlides - 1;
+            } else if (index >= totalSlides) {
+                currentIndex = 0;
+            } else {
+                currentIndex = index;
             }
 
-            function nextSlide() {
-                showSlide(currentIndex + 1);
-            }
+            const offset = -currentIndex * 100;
+            slider.style.transform = `translateX(${offset}%)`;
+        }
 
-            function prevSlide() {
-                showSlide(currentIndex - 1);
-            }
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
 
-            document.querySelector(".prev").addEventListener("click", prevSlide);
-            document.querySelector(".next").addEventListener("click", nextSlide);
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
 
+        document.querySelector(".prev").addEventListener("click", prevSlide);
+        document.querySelector(".next").addEventListener("click", nextSlide);
 
-            setInterval(nextSlide, 5000);
-        });
-    </script>
+        setInterval(nextSlide, 5000);
+    });
+</script>
 
 <script>
     function openModal(id) {
-      document.getElementById(id).style.display = "flex";
+        document.getElementById(id).style.display = "flex";
     }
 
     function closeModal(id) {
-      document.getElementById(id).style.display = "none";
+        document.getElementById(id).style.display = "none";
     }
 
     document.getElementById("privacy-link").addEventListener("click", function(e) {
-      e.preventDefault();
-      openModal("privacyModal");
+        e.preventDefault();
+        openModal("privacyModal");
     });
 
     document.getElementById("terms-link").addEventListener("click", function(e) {
-      e.preventDefault();
-      openModal("termsModal");
+        e.preventDefault();
+        openModal("termsModal");
     });
 
     document.getElementById("contact-link").addEventListener("click", function(e) {
-      e.preventDefault();
-      openModal("contactModal");
+        e.preventDefault();
+        openModal("contactModal");
     });
-      function setCookie(name, value, minutes) {
-      const expires = new Date(Date.now() + minutes * 60 * 1000).toUTCString();
-      document.cookie = `${name}=${value}; expires=${expires}; path=/`;
+
+    function setCookie(name, value, minutes) {
+        const expires = new Date(Date.now() + minutes * 60 * 1000).toUTCString();
+        document.cookie = `${name}=${value}; expires=${expires}; path=/`;
     }
 
     function getCookie(name) {
-      const cookies = document.cookie.split(';');
-      for (let cookie of cookies) {
-        const [cname, cvalue] = cookie.trim().split('=');
-        if (cname === name) return cvalue;
-      }
-      return null;
+        const cookies = document.cookie.split(';');
+        for (let cookie of cookies) {
+            const [cname, cvalue] = cookie.trim().split('=');
+            if (cname === name) return cvalue;
+        }
+        return null;
     }
 
     function acceptCookies() {
-      document.getElementById('cookieBanner').style.display = 'none';
-      setCookie('cookieConsent', 'true', 60); 
-   
-      fetch('/track-visitor', { method: 'POST' });
+        document.getElementById('cookieBanner').style.display = 'none';
+        setCookie('cookieConsent', 'true', 60);
+        fetch('/track-visitor', { method: 'POST' });
     }
 
     window.addEventListener('DOMContentLoaded', function () {
-      if (!getCookie('cookieConsent')) {
-        document.getElementById('cookieBanner').style.display = 'block';
-      }
+        if (!getCookie('cookieConsent')) {
+            document.getElementById('cookieBanner').style.display = 'block';
+        }
     });
 
-
-  function toggleMobileMenu() {
-    const menu = document.getElementById("mobileMenu");
-    if (menu.style.display === "flex") {
-      menu.style.display = "none";
-    } else {
-      menu.style.display = "flex";
+    function toggleMobileMenu() {
+        const menu = document.getElementById("mobileMenu");
+        if (menu.style.display === "flex") {
+            menu.style.display = "none";
+        } else {
+            menu.style.display = "flex";
+        }
     }
-  }
-  document.addEventListener("DOMContentLoaded", function() {
-  const backToTopBtn = document.getElementById("backToTop");
 
-  // Only run if the button actually exists in the HTML
-  if (backToTopBtn) {
-    window.addEventListener("scroll", () => {
-      if (window.pageYOffset > 300) {
-        backToTopBtn.classList.add("show");
-      } else {
-        backToTopBtn.classList.remove("show");
-      }
-    });
+    document.addEventListener("DOMContentLoaded", function() {
+        const backToTopBtn = document.getElementById("backToTop");
 
-    backToTopBtn.addEventListener("click", () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
+        if (backToTopBtn) {
+            window.addEventListener("scroll", () => {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add("show");
+                } else {
+                    backToTopBtn.classList.remove("show");
+                }
+            });
+
+            backToTopBtn.addEventListener("click", () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
+        }
     });
-  }
-});
 </script>
 <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 </body>
