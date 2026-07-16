@@ -831,8 +831,78 @@
             .back-to-top{ bottom:150px; right:20px; width:45px; height:45px; }
         }
     </style>
+
+    <!-- =====================================================
+         BEGIN: HOSTING RENEWAL COUNTDOWN BANNER (CSS)
+         To remove this feature entirely, delete this whole
+         <style> block AND the two other blocks in this file
+         marked "HOSTING RENEWAL COUNTDOWN BANNER".
+         ===================================================== -->
+    <style>
+        #hosting-renewal-banner{
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            gap: 14px;
+            flex-wrap: wrap;
+            background: linear-gradient(90deg, #7A1F1F, #9C2B2B);
+            color:#fff;
+            font-family:'Inter', sans-serif;
+            font-size: 13.5px;
+            padding: 10px 16px;
+            text-align:center;
+            position: relative;
+            z-index: 600;
+        }
+        #hosting-renewal-banner strong{ font-weight:700; }
+        #hosting-renewal-banner .hrb-msg{
+            display:flex;
+            align-items:center;
+            gap:8px;
+            flex-wrap:wrap;
+            justify-content:center;
+        }
+        #hosting-renewal-banner .hrb-countdown{
+            font-family:'IBM Plex Mono', monospace;
+            font-weight:600;
+            background: rgba(255,255,255,0.15);
+            padding: 3px 10px;
+            border-radius: 6px;
+            letter-spacing: 0.02em;
+        }
+        #hosting-renewal-banner .hrb-close{
+            background:none;
+            border:none;
+            color:#fff;
+            opacity:0.75;
+            font-size:18px;
+            line-height:1;
+            cursor:pointer;
+            padding:0 4px;
+        }
+        #hosting-renewal-banner .hrb-close:hover{ opacity:1; }
+        @media (max-width:600px){
+            #hosting-renewal-banner{ font-size:12px; padding:8px 12px; }
+        }
+    </style>
+    <!-- END: HOSTING RENEWAL COUNTDOWN BANNER (CSS) -->
 </head>
 <body>
+
+<!-- =====================================================
+     BEGIN: HOSTING RENEWAL COUNTDOWN BANNER (HTML)
+     To remove: delete this whole <div id="hosting-renewal-banner">
+     block, plus the matching CSS and JS blocks marked the same way.
+     ===================================================== -->
+<div id="hosting-renewal-banner">
+    <span class="hrb-msg">
+        ⚠️ <strong>Hosting renewal due soon</strong> — please contact your webhost to renew before access expires:
+        <span class="hrb-countdown" id="hrb-countdown">--d --h --m --s</span>
+    </span>
+    <button class="hrb-close" onclick="document.getElementById('hosting-renewal-banner').style.display='none'" aria-label="Dismiss">&times;</button>
+</div>
+<!-- END: HOSTING RENEWAL COUNTDOWN BANNER (HTML) -->
+
 <header>
     <div class="social-links">
         <a href="https://facebook.com" target="_blank"><img src="{{ url_for('static', filename='facebook.png') }}" alt="Facebook"></a>
@@ -1388,5 +1458,50 @@
     });
 </script>
 <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+<!-- =====================================================
+     BEGIN: HOSTING RENEWAL COUNTDOWN BANNER (JS)
+     To remove: delete this whole <script> block, plus the
+     matching CSS and HTML blocks marked the same way.
+
+     TO SET THE DATE: edit the line below —
+       const hrbDeadline = new Date("2026-08-15T00:00:00");
+     Set it to the actual hosting expiry date (30 days from
+     when you turn this on). The banner auto-hides once the
+     deadline passes.
+     ===================================================== -->
+<script>
+    (function () {
+        const hrbDeadline = new Date("2026-08-15T00:00:00"); // <-- set expiry date here
+        const hrbEl = document.getElementById("hrb-countdown");
+        const hrbBanner = document.getElementById("hosting-renewal-banner");
+
+        function hrbTick() {
+            const now = new Date();
+            const diff = hrbDeadline - now;
+
+            if (diff <= 0) {
+                if (hrbEl) hrbEl.textContent = "Expired — renew now";
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+            if (hrbEl) {
+                hrbEl.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }
+        }
+
+        if (hrbBanner) {
+            hrbTick();
+            setInterval(hrbTick, 1000);
+        }
+    })();
+</script>
+<!-- END: HOSTING RENEWAL COUNTDOWN BANNER (JS) -->
+
 </body>
 </html>
