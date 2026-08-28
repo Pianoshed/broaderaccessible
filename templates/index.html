@@ -890,19 +890,6 @@
 </head>
 <body>
 
-<!-- =====================================================
-     BEGIN: HOSTING RENEWAL COUNTDOWN BANNER (HTML)
-     To remove: delete this whole <div id="hosting-renewal-banner">
-     block, plus the matching CSS and JS blocks marked the same way.
-     ===================================================== -->
-<div id="hosting-renewal-banner">
-    <span class="hrb-msg">
-        ⚠️ <strong>Hosting renewal due soon</strong> — please contact your webhost to renew before access expires:
-        <span class="hrb-countdown" id="hrb-countdown">--d --h --m --s</span>
-    </span>
-    <button class="hrb-close" onclick="document.getElementById('hosting-renewal-banner').style.display='none'" aria-label="Dismiss">&times;</button>
-</div>
-<!-- END: HOSTING RENEWAL COUNTDOWN BANNER (HTML) -->
 
 <header>
     <div class="social-links">
@@ -1465,50 +1452,6 @@
     });
 </script>
 <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
-
-<!-- =====================================================
-     BEGIN: HOSTING RENEWAL COUNTDOWN BANNER (JS)
-     To remove: delete this whole <script> block, plus the
-     matching CSS and HTML blocks marked the same way.
-
-     TO SET THE DATE: edit the line below —
-       const hrbDeadline = new Date("2026-08-15T00:00:00");
-     Set it to the actual hosting expiry date (30 days from
-     when you turn this on). The banner auto-hides once the
-     deadline passes.
-     ===================================================== -->
-<script>
-    (function () {
-        const hrbDeadline = new Date("2026-08-15T00:00:00"); // <-- set expiry date here
-        const hrbEl = document.getElementById("hrb-countdown");
-        const hrbBanner = document.getElementById("hosting-renewal-banner");
-
-        function hrbTick() {
-            const now = new Date();
-            const diff = hrbDeadline - now;
-
-            if (diff <= 0) {
-                if (hrbEl) hrbEl.textContent = "Expired — renew now";
-                return;
-            }
-
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-            const minutes = Math.floor((diff / (1000 * 60)) % 60);
-            const seconds = Math.floor((diff / 1000) % 60);
-
-            if (hrbEl) {
-                hrbEl.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-            }
-        }
-
-        if (hrbBanner) {
-            hrbTick();
-            setInterval(hrbTick, 1000);
-        }
-    })();
-</script>
-<!-- END: HOSTING RENEWAL COUNTDOWN BANNER (JS) -->
 
 </body>
 </html>
