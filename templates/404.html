@@ -1,0 +1,104 @@
+{% extends "base.html" %} {% block title %}404 - Page Not Found | Broader
+Accessible-Health Initiatives{% endblock %} {% block content %}
+
+<section
+  class="min-h-[70vh] flex items-center justify-center py-20 bg-white relative overflow-hidden"
+>
+  <!-- Subtle Background Rings -->
+  <div
+    class="absolute w-96 h-96 bg-blue-50 rounded-full blur-3xl -z-10 opacity-70"
+  ></div>
+
+  <div class="max-w-2xl mx-auto px-6 text-center space-y-6">
+    <!-- 404 Visual Icon Badge -->
+    <div
+      class="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-blue-50 text-[#172e69] text-3xl font-extrabold shadow-sm mb-2"
+    >
+      🩺
+    </div>
+
+    <!-- Error Code -->
+    <span
+      class="block font-mono text-sm font-bold uppercase tracking-widest text-slate-400"
+    >
+      Error Code 404
+    </span>
+
+    <!-- Headline -->
+    <h1
+      class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight"
+    >
+      Page Not Found
+    </h1>
+
+    <!-- Subtitle -->
+    <p
+      class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-md mx-auto"
+    >
+      The clinical resource, program document, or page you are looking for might
+      have been moved or is no longer available.
+    </p>
+
+    <!-- Recovery Navigation Buttons -->
+    <div class="flex flex-wrap justify-center items-center gap-4 pt-4">
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold text-white bg-[#172e69] hover:bg-[#122452] active:scale-95 rounded-xl shadow-md transition"
+      >
+        <span>Back to Home</span>
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+          ></path>
+        </svg>
+      </a>
+
+      <a
+        href="/Priority"
+        class="inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold text-[#172e69] bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-xl transition"
+      >
+        <span>View Priority Programs</span>
+        <svg
+          class="w-4 h-4 text-[#172e69]"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+          ></path>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Helpful Quick Links -->
+    <div
+      class="pt-8 border-t border-slate-100 text-xs text-slate-400 flex justify-center gap-6"
+    >
+      <a href="/about-us" class="hover:text-[#172e69] hover:underline"
+        >About Our Mission</a
+      >
+      <span>·</span>
+      <a href="/Health-Systems" class="hover:text-[#172e69] hover:underline"
+        >Health Systems</a
+      >
+      <span>·</span>
+      <a href="/contact" class="hover:text-[#172e69] hover:underline"
+        >Contact Support</a
+      >
+    </div>
+  </div>
+</section>
+
+{% endblock %}

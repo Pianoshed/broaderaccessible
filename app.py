@@ -59,24 +59,17 @@ def Newsletter():
 def Admin():
     return render_template("Admin.html")
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
 @app.route('/static/<path:filename>')
 def static_files(filename):
     return send_from_directory('static', filename)
 
-@app.route("/contact", methods=["POST"])
+@app.route('/contact')
 def contact():
-    name = request.form["name"]
-    email = request.form["email"]
-    message = request.form["message"]
-
-    conn = sqlite3.connect("database.db")
-    cursor = conn.cursor()
-    cursor.execute("INSERT INTO messages (name, email, message) VALUES (?, ?, ?)", (name, email, message))
-    conn.commit()
-    conn.close()
-
-    flash("Your message has been sent successfully!", "success")
-    return redirect(url_for("home"))
+    return render_template('contact.html')
 
 
 @app.route('/subscribe', methods=['POST'])

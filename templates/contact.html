@@ -1,0 +1,233 @@
+{% extends "base.html" %} {% block title %}Contact Us - Broader
+Accessible-Health Initiatives (BRAIN){% endblock %} {% block content %}
+
+<!-- 1. Header Banner -->
+<section class="bg-[#172e69] text-white py-20 relative overflow-hidden">
+  <div
+    class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"
+  ></div>
+  <div class="max-w-5xl mx-auto px-6 text-center relative z-10 space-y-4">
+    <span
+      class="inline-block px-3.5 py-1 bg-white/10 text-blue-200 text-xs font-bold uppercase tracking-widest rounded-full"
+    >
+      Get In Touch
+    </span>
+    <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">
+      Connect With Our Team
+    </h1>
+    <p
+      class="text-blue-100 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed"
+    >
+      Have a question about our health systems research, maternal programs, or
+      partnership opportunities? We'd love to hear from you.
+    </p>
+  </div>
+</section>
+
+<!-- 2. Contact Section (2 Columns) -->
+<section class="py-24 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <!-- ================= LEFT: Secretariat Information (5 Cols) ================= -->
+      <div class="lg:col-span-5 space-y-8 text-left">
+        <div>
+          <span
+            class="text-[#172e69] text-xs font-bold uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-md inline-block mb-3"
+          >
+            Secretariat & Operations
+          </span>
+          <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">
+            Our Head Office
+          </h2>
+          <p class="text-slate-600 text-sm mt-3 leading-relaxed">
+            We are headquartered in Akure, Ondo State, coordinating clinical
+            field initiatives across rural and urban communities.
+          </p>
+        </div>
+
+        <!-- Info Cards -->
+        <div class="space-y-4">
+          <!-- Office Location -->
+          <div
+            class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-start gap-4"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-blue-50 text-[#172e69] flex items-center justify-center font-bold text-xl shrink-0"
+            >
+              📍
+            </div>
+            <div>
+              <h4 class="text-sm font-bold text-slate-900">Physical Address</h4>
+              <p class="text-slate-600 text-sm mt-1 leading-relaxed">
+                Broader Accessible-Health Initiatives (BRAIN)<br />
+                Akure, Ondo State, Nigeria
+              </p>
+            </div>
+          </div>
+
+          <!-- Email Contacts -->
+          <div
+            class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-start gap-4"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-blue-50 text-[#172e69] flex items-center justify-center font-bold text-xl shrink-0"
+            >
+              ✉️
+            </div>
+            <div>
+              <h4 class="text-sm font-bold text-slate-900">Email Inquiries</h4>
+              <p class="text-slate-600 text-sm mt-1">
+                General & Official Correspondence:
+              </p>
+              <a
+                href="mailto:admin@broaderaccessible.org"
+                class="text-sm font-semibold text-[#172e69] hover:underline block mt-0.5"
+              >
+                admin@broaderaccessible.org
+              </a>
+            </div>
+          </div>
+
+          <!-- Operating Hours -->
+          <div
+            class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-start gap-4"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-blue-50 text-[#172e69] flex items-center justify-center font-bold text-xl shrink-0"
+            >
+              🕒
+            </div>
+            <div>
+              <h4 class="text-sm font-bold text-slate-900">
+                Office Working Hours
+              </h4>
+              <p class="text-slate-600 text-sm mt-1">
+                Monday – Friday: 9:00 AM – 5:00 PM (WAT)<br />
+                <span class="text-xs text-slate-400"
+                  >Closed on weekends and public holidays</span
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= RIGHT: Interactive Contact Form (7 Cols) ================= -->
+      <div
+        class="lg:col-span-7 bg-white p-8 sm:p-12 rounded-3xl border border-slate-100 shadow-xl"
+      >
+        <h3 class="text-2xl font-extrabold text-slate-900 mb-2">
+          Send Us a Direct Message
+        </h3>
+        <p class="text-slate-500 text-sm mb-8">
+          Fill in your details below and a program officer will respond within
+          24–48 hours.
+        </p>
+
+        <form
+          action="mailto:admin@broaderaccessible.org"
+          method="POST"
+          enctype="text/plain"
+          class="space-y-6"
+        >
+          <div class="grid sm:grid-cols-2 gap-6">
+            <!-- Full Name -->
+            <div>
+              <label
+                for="name"
+                class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2"
+                >Full Name *</label
+              >
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                placeholder="Dr. / Mr. / Ms. John Doe"
+                class="w-full px-4 py-3.5 rounded-xl text-sm bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#172e69] transition"
+              />
+            </div>
+
+            <!-- Email Address -->
+            <div>
+              <label
+                for="email"
+                class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2"
+                >Email Address *</label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="johndoe@example.com"
+                class="w-full px-4 py-3.5 rounded-xl text-sm bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#172e69] transition"
+              />
+            </div>
+          </div>
+
+          <!-- Subject Category -->
+          <div>
+            <label
+              for="subject"
+              class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2"
+              >Inquiry Purpose *</label
+            >
+            <select
+              id="subject"
+              name="subject"
+              class="w-full px-4 py-3.5 rounded-xl text-sm bg-slate-50 border border-slate-200 text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#172e69] transition"
+            >
+              <option value="Partnership">
+                Institutional Partnership & Grants
+              </option>
+              <option value="Volunteer">Volunteer & Clinical Fieldwork</option>
+              <option value="Donation">Donation & Commodity Support</option>
+              <option value="General">General Inquiry</option>
+            </select>
+          </div>
+
+          <!-- Message -->
+          <div>
+            <label
+              for="message"
+              class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2"
+              >Your Message *</label
+            >
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              required
+              placeholder="Describe your inquiry, proposal, or feedback..."
+              class="w-full px-4 py-3.5 rounded-xl text-sm bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#172e69] transition"
+            ></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-[15px] font-semibold text-white bg-[#172e69] hover:bg-[#122452] active:scale-95 rounded-xl shadow-md hover:shadow-lg transition"
+          >
+            <span>Send Message</span>
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+              ></path>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

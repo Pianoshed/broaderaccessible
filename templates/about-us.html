@@ -1,970 +1,417 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Broader Accessible-Health Initiatives</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='bahi logo.png') }}">
-    <link rel="stylesheet" href="styles.css"> 
-
-    <style>
-
-  * {
-    margin: 0;
-    padding: 0;
-  }
-
-  body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f4f4f4;
-  }
-
-
-  header {
-    background: #172e69;
-    padding: 5px;
-    text-align: center;
-    height: 20px;
-  }
-
-  .social-links {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 15px;
-    padding: 2px 20px;
-    margin: auto;
-  }
-
-  .social-links img {
-    width: 24px;
-    height: 24px;
-    transition: transform 0.3s ease;
-  }
-
-  .social-links img:hover {
-    transform: scale(1.2);
-  }
-
-
-  .main-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 5px 10%;
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  .logo img {
-    height: 100px;
-  }
-
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-  }
-
-  nav ul li a {
-    text-decoration: none;
-    color: #333;
-    font-size: 16px;
-    font-weight: 600;
-    transition: color 0.3s ease;
-  }
-
-  nav ul li a:hover {
-    color: #007bff;
-  }
-
- /* Hide toggle button on desktop */
-.mobile-menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 26px;
-  color: #172e69;
-  cursor: pointer;
-}
-
-
-.mobile-menu {
-  display: none;
-  flex-direction: column;
-  background-color: #fff;
-  position: absolute;
-  top: 80px;
-  right: 0;
-  width: 100%;
-  z-index: 1000;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.mobile-menu a {
-  padding: 15px 20px;
-  text-decoration: none;
-  color: #172e69;
-  font-weight: 600;
-  border-bottom: 1px solid #eee;
-}
-
-.mobile-menu .close-btn {
-  align-self: flex-end;
-  background: none;
-  border: none;
-  font-size: 28px;
-  color: #172e69;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-@media (max-width: 600px) {
-  nav ul {
-    display: none;
-  }
-
-  .mobile-menu-toggle {
-    display: block;
-  }
-
-  .mobile-menu {
-    display: none; /* Shown via JS */
-  }
-}
-
-  .slider-container {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-  }
-
-  .slider {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: 100%;
-  }
-
-  .slide {
-    flex: 0 0 100%;
-    position: relative;
-    height: 600px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-  }
-
-  .slider img {
-    width: 100%;
-    height: 700px;
-    object-fit: cover;
-  }
-
-  .slide-text {
-    position: absolute;
-    top: 50%;
-    left: 35%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: white;
-    padding: 20px;
-    width: 80%;
-    max-width: 600px;
-    z-index: 2;
-  }
-
-  .slide-text h2 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 50px;
-    text-align: left;
-    font-weight: bold;
-    margin-bottom: 10px;
-    z-index: 10;
-  }
-
-  .slide-text p {
-    font-size: 18px;
-    text-align: left;
-    z-index: 10;
-  }
-
-  .vignette {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.8) 100%);
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  .prev, .next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    font-size: 22px;
-    transition: 0.3s;
-    border-radius: 50%;
-  }
-
-  .prev {
-    left: 50px;
-  }
-
-  .next {
-    right: 50px;
-  }
-
-  .prev:hover, .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-
-
-  .about {
-    background-color: #ffffff;
-    padding: 80px 20px;
-    font-family: 'Segoe UI', 'Roboto', sans-serif;
-    color: #333;
-    line-height: 1.8;
-  }
-
-  .about .container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-
-  .about h2 {
-    font-size: 36px;
-    font-weight: 700;
-    color: #172e69;
-    margin-bottom: 30px;
-    border-bottom: 4px solid #1abc9c;
-    display: inline-block;
-    padding-bottom: 10px;
-  }
-
-  .about p {
-    font-size: 18px;
-    margin-bottom: 24px;
-    text-align: justify;
-    color: #555;
-  }
-
-  .mission-values-section {
-    background-color: #f9f9f9;
-    padding: 60px 20px;
-  }
-
-  .section-header {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-
-  .section-header h2 {
-    font-size: 32px;
-    color: #172e69;
-    font-weight: bold;
-    border-bottom: 3px solid #1abc9c;
-    display: inline-block;
-    padding-bottom: 10px;
-  }
-
-  .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-  }
-
-  .info-card {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-    padding: 20px;
-    width: 300px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .info-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
-  }
-
-  .info-card h3 {
-    font-size: 20px;
-    color: #1abc9c;
-    margin-bottom: 10px;
-  }
-
-  .info-card p {
-    font-size: 15px;
-    color: #555;
-    line-height: 1.6;
-  }
-
-  .highlight-card {
-    width: 100%;
-    max-width: 960px;
-    background-color: #eafcfb;
-    border-left: 6px solid #1abc9c;
-  }
-
-.trustees-section {
-  background-color: #f9f9f9;
-  padding: 60px 20px;
-  font-family: 'Roboto', sans-serif;
-}
-
-.trustees-section h2 {
-  font-size: 28px;
-  color: #172e69;
-  margin-bottom: 30px;
-  padding-bottom: 8px;
-  border-bottom: 3px solid #1abc9c;
-  text-align: center;
-  display: block;
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.trustee-slider {
-  display: flex;
-  gap: 25px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-
-.trustee-card {
-  background-color: #fff;
-  width: 260px; /* reduced for compactness */
-  padding: 18px 15px;
-  border-radius: 14px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
-  flex-shrink: 0;
-}
-
-.trustee-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
-}
-
-
-.trustee-card img {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid #1abc9c;
-  margin-bottom: 12px;
-}
-
-
-.trustee-card h3 {
-  font-size: 16px;
-  color: #172e69;
-  margin-bottom: 8px;
-  font-weight: 700;
-}
-
-.trustee-card p {
-  font-size: 13px;
-  color: #555;
-  line-height: 1.5;
-  text-align: justify;
-  margin: 0;
-  max-height: 90px;   /* keeps cards neat */
-  overflow-y: auto;   /* scroll if too long */
-  padding-right: 4px; /* space for scrollbar */
-}
-
-.trustee-card p::-webkit-scrollbar {
-  width: 5px;
-}
-.trustee-card p::-webkit-scrollbar-thumb {
-  background: #1abc9c;
-  border-radius: 3px;
-}
-
-
-@media (max-width: 768px) {
-  .trustee-slider {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-  }
-
-  .trustee-card {
-    width: 100%;
-    padding: 15px 10px;
-  }
-
-  .trustee-card img {
-    width: 90px;
-    height: 90px;
-  }
-
-  .trustee-card h3 {
-    font-size: 14px;
-  }
-
-  .trustee-card p {
-    font-size: 11px;
-    max-height: 70px;
-  }
-}
-
-
-
-  footer {
-    background-color: #080f21;
-    color: #fff;
-    padding: 40px 20px;
-    font-family: 'Poppins', sans-serif;
-  }
-
-  .footer-top {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    text-align: center;
-  }
-
-        .footer-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 10px;
-            width: 50%;
-            max-width: 1100px;
-            margin: auto;
-        }
-
-  .footer-column {
-    min-width: 200px;
-  }
-
-  .footer-column h4 {
-    font-size: 16px;
-    margin-bottom: 10px;
-    border-bottom: 2px solid #e63946;
-    display: inline-block;
-    padding-bottom: 5px;
-  }
-
-  .footer-column ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  .footer-column ul li {
-    margin-bottom: 8px;
-  }
-
-  .footer-column ul li a {
-    color: #bbb;
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-
-  .footer-column ul li a:hover {
-    color: #e63946;
-  }
-
-     .footer-bottom {
-      padding: 20px;
-      text-align: center;
-      font-size: 13px;
-      background-color: transparent;
-      color: #eee;
-    }
-
-  .footer-bottom-links a {
-    margin-left: 15px;
-    color: #bbb;
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-
-  .footer-bottom-links a:hover {
-    color: #e63946;
-  }
-
-  @media (max-width: 600px) {
-    body {
-      font-size: 14px;
-      padding: 0;
-    }
-
-          .social-links {
-            display: flex;
-             align-items: flex-start;
-            margin: auto;
-  justify-content: flex-start;
-            gap: 15px;
-            padding: 2px;
-        }
-
-        .social-links img {
-            width: 15px;
-            height: 15px;
-            transition: transform 0.3s ease;
-        }
-
-        .social-links img:hover {
-            transform: scale(1.2);
-        }
-
-  .main-header {
-    flex-direction: flex;
-    align-items: flex-start;
-    padding: 10px 5%;
-  }
-
-  .logo img {
-    height: 60px;
-  }
-
-  .slider-container {
-    height: auto;
-  }
-
-  .slider img {
-    height: auto;
-    max-height: 100vh;
-    object-fit: cover;
-  }
-
-  .slide {
-    height: auto;
-    flex-direction: column;
-  }
-
-  .slide-text {
-    position: absolute;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-  }
-
-  .slide-text h2 {
-    font-size: 24px;
-    text-align: center;
-  }
-
-  .slide-text p {
-    font-size: 14px;
-    text-align: center;
-  }
-
-    .about {
-      padding: 20px;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .about h2 {
-      font-size: 24px;
-      text-align: center;
-    }
-
-    .about p {
-      font-size: 14px;
-    }
-
-  .footer-columns {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    text-align: center;
-  }
-
-    .footer-logo,
-  .footer-prose,
-  .footer-column {
-    max-width: 100%;
-    text-align: center;
-    align-items: center;
-  }
-
-    .footer-prose {
-    margin: 10px auto;
-    font-size: 10px;
-  }
-
-  .footer-column h4,
-  .footer-column ul li {
-    font-size: 10px;
-  }
-  .footer-bottom {
-    font-size: 10px;
-    padding: 10px;
-  }
-
-}
-
-</style>
-
-
-</head>
-<body>
-<header>
-
-   </header>
-
-    <div class="main-header">
-        <div class="logo">
-            <a href="{{ url_for('index') }}">
-             <img src="{{ url_for('static', filename='bahi logo.png') }}" alt="bahi logo">
-            </a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="/Priority">Programs</a></li>
-                <li><a href=/Health-Systems>Health-Systems</a></li>
-                <li><a href="/Involved">Get Involve</a></li>
-                <li><a href="/Newsletter">Newsletter</a></li>
-            </ul>
-        </nav>
-
-<button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
-
-
-<div class="mobile-menu" id="mobileMenu">
-  <button class="close-btn" onclick="toggleMobileMenu()">×</button>
-  <a href="/">Home</a>
-  <a href="/about-us">About</a>
-  <a href="/Priority">Programs</a>
-  <a href=/Health-Systems>Health-Systems</a>
-    <a href="/Involved">Get Involve</a>
-  <a href="/Newsletter">Newsletter</a>
-</div>
-    </div>
-
-<section class="slider-container">
-    <div class="slider">
-        <div class="slide">
-            <img src="{{ url_for('static', filename='home-slider5.jpg') }}" alt="home-slider1">
-             <div class="vignette"></div> 
-            <div class="slide-text">
-                <h2>Strengthening Systems. Empowering Communities. Saving Lives</h2>
-                <p>We work to close healthcare gaps for underserved populations
-                    through data-driven solutions, strategic partnerships, and compassionate care.</p>
-            </div>
-        </div>
-        <div class="slide">
-            <img src="{{ url_for('static', filename='home-slider6.jpg') }}" alt="home-slider2">
-             <div class="vignette"></div> 
-            <div class="slide-text">
-                <h2>Partnering for Health Equity in Every Community.</h2>
-                <p>From policy to primary care, we bridge the divide in access
-                    and outcomes across Nigeria’s most vulnerable populations.</p>
-            </div>
-        </div>
-    </div>
-    <button class="prev" onclick="prevSlide()">&#10094;</button>
-    <button class="next" onclick="nextSlide()">&#10095;</button>
+{% extends "base.html" %} {% block title %}About Us - Broader Accessible-Health
+Initiatives (BRAIN){% endblock %} {% block content %}
+
+<!-- 1. Clean Header Banner (No clunky dark slider!) -->
+<section class="bg-[#172e69] text-white py-20 relative overflow-hidden">
+  <div
+    class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"
+  ></div>
+  <div class="max-w-5xl mx-auto px-6 text-center relative z-10 space-y-4">
+    <span
+      class="inline-block px-3 py-1 bg-white/10 text-blue-200 text-xs font-bold uppercase tracking-widest rounded-full"
+    >
+      Institutional Profile
+    </span>
+    <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">
+      Dedicated to Health Equity
+    </h1>
+    <p class="text-blue-100 text-base sm:text-lg max-w-2xl mx-auto font-light">
+      Discover our origin, our guiding principles, and the multidisciplinary
+      specialists steering public health transformation.
+    </p>
+  </div>
 </section>
 
+<!-- 2. Detailed Organization Overview -->
+<section class="py-20 bg-white border-b border-slate-100">
+  <div
+    class="max-w-4xl mx-auto px-6 space-y-6 text-slate-700 text-[17px] leading-relaxed"
+  >
+    <div class="text-center mb-10">
+      <h2 class="text-3xl font-extrabold text-slate-900">Who We Are</h2>
+      <div class="w-16 h-1 bg-[#172e69] mx-auto mt-3 rounded-full"></div>
+    </div>
 
-   <section class="about">
-        <div class="container">
-            <h2>About Us</h2>
-            <p>Broader Accessible-Health Initiatives (BRAIN) is a registered,
-                not-for-profit, and non-political organization dedicated to advancing equitable healthcare
-                access and strengthening health systems across Nigeria. Founded on the principles of accountability,
-                collaboration, and impact-driven service,
-                BRAIN works to bridge critical gaps in healthcare delivery—particularly for vulnerable and
-                underserved populations.
-                <p> Our mission is to deliver sustainable, evidence-based solutions that improve health governance,
-            service delivery, and community outcomes. We focus on maternal and child health, reproductive health,
-            malaria, and HIV/AIDS. We also strengthen community health systems by empowering local
-            structures and promoting ownership, and support primary health care through capacity building,
-            infrastructure, and integrated services.
-                </p>
-             <p>
-                Through strategic partnerships with government agencies, local communities,
-                 and international development partners, we support healthcare facilities at both state and local levels
-                 with technical assistance, advocacy, and targeted program implementation.
-                 We are committed to empowering healthcare systems with the tools and resources needed to deliver quality,
-                 people-centered care.
-                </p>
-        </div>
-                </section>
-            <section class="mission-values-section">
-              <div class="section-header">
-                <h2>Our Mission & Core Values</h2>
-              </div>
+    <p>
+      <strong>Broader Accessible-Health Initiatives (BRAIN)</strong> is a
+      registered, not-for-profit, and non-political organization dedicated to
+      advancing equitable healthcare access and strengthening health systems
+      across Nigeria. Founded on the principles of accountability,
+      collaboration, and impact-driven service, BRAIN works to bridge critical
+      gaps in healthcare delivery—particularly for vulnerable and underserved
+      populations.
+    </p>
+    <p>
+      Our mission is to deliver sustainable, evidence-based solutions that
+      improve health governance, service delivery, and community health
+      outcomes. We focus on maternal, newborn, and child health (MNCH),
+      reproductive health, malaria containment, and HIV/AIDS care.
+    </p>
+    <p>
+      Through strategic partnerships with government ministries, local health
+      authorities, and international development partners, we support primary
+      health facilities with technical assistance, field advocacy, and digital
+      data infrastructure to ensure continuous, people-centered care.
+    </p>
+  </div>
+</section>
 
-              <div class="card-container">
-                <div class="info-card highlight-card">
-                  <h3>Our Mission</h3>
-                  <p>
-                    To enhance equitable access to quality healthcare by strengthening health systems,
-                    supporting evidence-based interventions, and empowering communities through strategic
-                    partnerships that promote sustainable, people-centered health outcomes.
-                  </p>
-                </div>
+<!-- 3. Core Values (6-Grid Modern Cards) -->
+<section class="py-20 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span
+        class="text-[#172e69] text-xs font-bold uppercase tracking-widest bg-blue-50 px-3.5 py-1.5 rounded-full inline-block mb-3"
+        >Guiding Principles</span
+      >
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">
+        Our Core Values
+      </h2>
+    </div>
 
-                <div class="info-card">
-                  <h3>Equity</h3>
-                  <p>We believe everyone deserves access to quality healthcare regardless of gender, location, or socio-economic status.</p>
-                </div>
-
-                <div class="info-card">
-                  <h3>Integrity</h3>
-                  <p>We uphold transparency, accountability, and ethical standards in all our operations and partnerships.</p>
-                </div>
-
-                <div class="info-card">
-                  <h3>Collaboration</h3>
-                  <p>We foster inclusive partnerships with governments, communities, and stakeholders to drive sustainable impact.</p>
-                </div>
-
-                <div class="info-card">
-                  <h3>Innovation</h3>
-                  <p>We embrace data-driven, context-specific solutions to improve healthcare delivery and system performance.</p>
-                </div>
-
-                <div class="info-card">
-                  <h3>Compassion</h3>
-                  <p>We prioritize the dignity, well-being, and voices of the vulnerable and underserved in all our programs.</p>
-                </div>
-
-                <div class="info-card">
-                  <h3>Excellence</h3>
-                  <p>We are committed to delivering high-quality, measurable outcomes that align with global health goals and local priorities.</p>
-                </div>
-              </div>
-            </section>
-<section class="trustees-section">
-                  <div class="section-header">
-                <h2>Board of Trustees</h2>
-              </div>
-  <div class="container">
-    <div class="trustee-slider">
-                    <div class="trustee-card">
-        <img src="static/profbolarinwa.jpg" alt="Prof. Oladimeji Bolarinwa">
-        <h3>Prof. Oladimeji Bolarinwa</h3>
-        <p>
-            Professor Oladimeji Akeem Bolarinwa is a public health physician, research methodologist,
-            and academic leader with over two decades of experience in health systems, infectious and non-communicable
-            diseases research. A Fellow of the West African College of Physicians and Bernard Lown Visiting Scholar
-            at Harvard T.H. Chan School of Public Health, he has authored more than 100 peer-reviewed publications,
-            supervised numerous postgraduate students, and secured multi-million-naira and international research grants. As Board of Trustees Chairman of Broader Accessible-Health Initiative,
-            he brings deep expertise in health policy, program design, and evidence-based research, working to expand equitable healthcare access and strengthen community health systems across Africa
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- 1 -->
+      <div
+        class="bg-white p-7 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition"
+      >
+        <div class="text-2xl mb-3">⚖️</div>
+        <h3 class="text-lg font-bold text-slate-900 mb-2">Equity</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">
+          We believe everyone deserves access to quality healthcare regardless
+          of gender, location, or socioeconomic standing.
         </p>
       </div>
-                    <div class="trustee-card">
-        <img src="static/DrPius.jpg" alt="Dr. Pius Olakunle Osunyikanmi">
-        <h3>Dr. Pius Olakunle Osunyikanmi</h3>
-        <p>Dr. Pius Olakunle Osunyikanmi is a Professor of Political Science and International Relations
-            and a seasoned public administrator with over 30 years of experience in academia, governance,
-            and international development. He has served as Special Adviser to the President of Nigeria,
-            Commissioner for Education in Ondo State, and Director-General of the Directorate of Technical Aid Corps.
-            As a scholar–practitioner, he combines rigorous research with hands-on leadership in policymaking
-            and institution building, bringing strategic insight and global
-            perspective to his role as a member of the Board of Trustees of Broader Accessible-Health
-            Initiative.
+      <!-- 2 -->
+      <div
+        class="bg-white p-7 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition"
+      >
+        <div class="text-2xl mb-3">🛡️</div>
+        <h3 class="text-lg font-bold text-slate-900 mb-2">Integrity</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">
+          We uphold total transparency, fiscal accountability, and uncompromised
+          ethical standards in all partnerships.
         </p>
       </div>
-      <div class="trustee-card">
-        <img src="static/rhodaalade.jpg" alt="Aladeniyi Olajumoke">
-        <h3>Aladeniyi Olajumoke</h3>
-        <p>
-          Aladeniyi Olajumoke is a Magistrate with the Ondo State Judiciary, known for her dedication to upholding justice and the rule of law.
-            She is an alumna of Adekunle Ajasin University.
-            she brings a strong commitment to integrity, equity, and community service in her judicial responsibilities and beyond.
+      <!-- 3 -->
+      <div
+        class="bg-white p-7 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition"
+      >
+        <div class="text-2xl mb-3">🤝</div>
+        <h3 class="text-lg font-bold text-slate-900 mb-2">Collaboration</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">
+          We foster inclusive, multi-sector partnerships with governments and
+          community leaders to drive lasting change.
+        </p>
+      </div>
+      <!-- 4 -->
+      <div
+        class="bg-white p-7 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition"
+      >
+        <div class="text-2xl mb-3">💡</div>
+        <h3 class="text-lg font-bold text-slate-900 mb-2">Innovation</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">
+          We leverage reliable data analytics and context-specific digital tools
+          to optimize clinical operations and outcomes.
+        </p>
+      </div>
+      <!-- 5 -->
+      <div
+        class="bg-white p-7 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition"
+      >
+        <div class="text-2xl mb-3">❤️</div>
+        <h3 class="text-lg font-bold text-slate-900 mb-2">Compassion</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">
+          We prioritize the dignity, human rights, and voices of underserved
+          patients in every clinical intervention.
+        </p>
+      </div>
+      <!-- 6 -->
+      <div
+        class="bg-white p-7 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition"
+      >
+        <div class="text-2xl mb-3">⭐</div>
+        <h3 class="text-lg font-bold text-slate-900 mb-2">Excellence</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">
+          We are committed to delivering measurable, high-grade clinical
+          outcomes aligned with international standards.
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="trustees-section">
-                  <div class="section-header">
-                <h2>Management Team</h2>
-              </div>
-  <div class="container">
-    <div class="trustee-slider">
-      <div class="trustee-card">
-        <img src="static/CEO_PICS.jpg" alt="Dr. Aladeniyi Isaac Olugbenga">
-        <h3>Dr. Aladeniyi Isaac Olugbenga</h3>
-        <p>
-         Dr. Isaac Olugbenga Aladeniyi is a Medical Epidemiologist and Senior Health Specialist with over
-            25 years of post-graduation experience in public health leadership, health systems strengthening,
-            and epidemiological research. He holds an MBBS from the University of Ilorin, an MPH in Field Epidemiology, and a PhD in Epidemiology from the University of Ibadan. Over his career, he has coordinated multimillion-dollar donor-funded projects, advised national and international agencies, and published extensively on infectious and non-communicable diseases, health financing, and systems improvement. Currently serving as Director of Family Health at the Ondo State Ministry of Health and Senior Lecturer at the University of Medical Sciences, Ondo, he brings a wealth of expertise in project planning,
-            policy development, and strategic partnerships to his role as member Board of Trustees of Broader Accessible-Health Initiative.
-                 </p>
-      </div>
+<!-- 4. Board of Trustees -->
+<section class="py-20 bg-white border-t border-slate-100" id="trustees">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span
+        class="text-[#172e69] text-xs font-bold uppercase tracking-widest bg-blue-50 px-3.5 py-1.5 rounded-full inline-block mb-3"
+        >Governance</span
+      >
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">
+        Board of Trustees
+      </h2>
+    </div>
 
-        <div class="trustee-card">
-        <img src="static/MRS_ALADENIYI.jpg" alt="MRS_ALADENIYI">
-        <h3>Olayemi Rhoda Aladeniyi/ Program Director Reproductive maternal newborn and child health</h3>
-        <p>
-Olayemi Rhoda Aladeniyi, MSc (Nursing), BNSc, HND(PHN), RM, RN, is a Nurse, Midwife,
-            and Public Health Nursing Specialist with over 25 years of progressive experience in
-            clinical practice, health systems strengthening, and nursing education. She currently serves
-            as Head of the Department of Public Health Nursing at the College of Health Technology, Ondo
-            State Ministry of Health, Akure, where she provides strategic leadership for academic programming,
-            curriculum development, and the professional formation of future public health nurses.
-            She is also a Master Trainer and Facility Supervisor on the AMPLI-PPHI Project, supporting
-            skilled birth attendants in applying evidence-based interventions to prevent postpartum haemorrhage and advance maternal health outcomes.
-
-Olayemi’s professional journey reflects a consistent commitment to maternal, newborn, and child health.
-            She has previously served as Head of Nursing Services at the College of Health Technology Model
-            Health Centre, Deputy Head of the STI Clinic at the State Specialist Hospital, Akure, and as a
-            practicing Nurse and Midwife across primary, secondary, and tertiary facilities in Ondo State.
-            Alongside her clinical and managerial contributions, she has established family planning services, led community health outreach programs, and mentored both senior and junior colleagues. She holds a Master degree in Maternal and Child Health from the University of Benin, building on her BNSc in Nursing and HND in Public Health Nursing, with earlier certifications as a Registered Nurse and Registered Midwife. Recognized with the
-            Ondo State Ministry of Health’s Award for Excellence in Midwifery, she continues to combine service, scholarship, and leadership in shaping the nursing profession and strengthening Nigeria’s health system.
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Trustee 1 -->
+      <div
+        class="bg-slate-50 p-6 rounded-3xl border border-slate-100 flex flex-col items-center text-center"
+      >
+        <img
+          src="{{ url_for('static', filename='profbolarinwa.jpg') }}"
+          alt="Prof. Oladimeji Bolarinwa"
+          class="w-28 h-28 rounded-full object-cover border-4 border-white shadow-md mb-4"
+        />
+        <h3 class="text-lg font-bold text-slate-900">
+          Prof. Oladimeji Bolarinwa
+        </h3>
+        <span class="text-xs font-semibold text-[#172e69] mb-3"
+          >Chairman, Board of Trustees</span
+        >
+        <p
+          class="text-slate-600 text-sm leading-relaxed line-clamp-4 text-left mb-3"
+        >
+          Professor Oladimeji Akeem Bolarinwa is a public health physician,
+          research methodologist, and academic leader with over two decades of
+          experience in health systems and infectious disease research. A Fellow
+          of the West African College of Physicians and Harvard Lown Scholar.
         </p>
+        <button
+          onclick="toggleBioText(this)"
+          class="mt-auto text-xs font-bold text-[#172e69] hover:underline"
+        >
+          Read Full Bio
+        </button>
       </div>
 
-      <div class="trustee-card">
-        <img src="static/maryadeolu.jpg" alt="Mary Adeolu">
-        <h3>Mary Adeolu/Program Director</h3>
-        <p>
-        Mary Adeolu is a Data Analytics Professional and Public Health Researcher with more than a
-            decade of experience in data management, health informatics, and program monitoring and evaluation.
-            She holds a Master’s degree in Biostatistics from the University of Ibadan and a Bachelor of Technology
-            in Industrial Mathematics from the Federal University of Technology, Akure. Over her career,
-            she has worked with leading organizations including the World Health Organization, APIN Public Health Initiatives,
-            and the Nigeria State Health Investment Project, where she developed expertise in strategic planning, epidemiological research, and health systems data management.
-
-With proven proficiency in tools such as Power BI, Tableau, and MySQL, Mary specializes in transforming complex datasets into actionable insights that inform policy, improve health outcomes, and drive operational efficiency. She has trained and mentored health facility managers, strengthened data integrity systems, and contributed to large-scale public health projects targeting HIV, malaria, and maternal and child health. Her blend of technical expertise, strategic vision, and passion for evidence-driven decision-making underscores her commitment to advancing public health through data innovation and informed policy.
+      <!-- Trustee 2 -->
+      <div
+        class="bg-slate-50 p-6 rounded-3xl border border-slate-100 flex flex-col items-center text-center"
+      >
+        <img
+          src="{{ url_for('static', filename='DrPius.jpg') }}"
+          alt="Dr. Pius Olakunle Osunyikanmi"
+          class="w-28 h-28 rounded-full object-cover border-4 border-white shadow-md mb-4"
+        />
+        <h3 class="text-lg font-bold text-slate-900">
+          Dr. Pius Olakunle Osunyikanmi
+        </h3>
+        <span class="text-xs font-semibold text-[#172e69] mb-3">Trustee</span>
+        <p
+          class="text-slate-600 text-sm leading-relaxed line-clamp-4 text-left mb-3"
+        >
+          Professor of Political Science and International Relations with over
+          30 years of experience in academia and governance. Former Special
+          Adviser to the President of Nigeria and Director-General of the
+          Directorate of Technical Aid Corps.
         </p>
-      </div>
-        <div class="trustee-card">
-        <img src="static/Babajide.jpg" alt="Babajide Akingbesote">
-        <h3>Babajide Akingbesote/ICT & M&E Lead</h3>
-        <p>
-            Babajide Akingbesote is a Public Health Scientist and ICT-driven Monitoring & Evaluation
-            Specialist with a strong background in biochemistry and health program implementation.
-            He supports data-informed decision-making across HIV, maternal health,
-            and community-based interventions.
-        </p>
+        <button
+          onclick="toggleBioText(this)"
+          class="mt-auto text-xs font-bold text-[#172e69] hover:underline"
+        >
+          Read Full Bio
+        </button>
       </div>
 
+      <!-- Trustee 3 -->
+      <div
+        class="bg-slate-50 p-6 rounded-3xl border border-slate-100 flex flex-col items-center text-center"
+      >
+        <img
+          src="{{ url_for('static', filename='rhodaalade.jpg') }}"
+          alt="Aladeniyi Olajumoke"
+          class="w-28 h-28 rounded-full object-cover border-4 border-white shadow-md mb-4"
+        />
+        <h3 class="text-lg font-bold text-slate-900">Aladeniyi Olajumoke</h3>
+        <span class="text-xs font-semibold text-[#172e69] mb-3">Trustee</span>
+        <p
+          class="text-slate-600 text-sm leading-relaxed line-clamp-4 text-left mb-3"
+        >
+          Magistrate with the Ondo State Judiciary, dedicated to upholding
+          justice, equity, and the rule of law. She brings a strong background
+          in legal governance and ethical stewardship to the initiative.
+        </p>
+        <button
+          onclick="toggleBioText(this)"
+          class="mt-auto text-xs font-bold text-[#172e69] hover:underline"
+        >
+          Read Full Bio
+        </button>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- 5. Management Team -->
+<section class="py-20 bg-slate-50 border-t border-slate-100" id="team">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span
+        class="text-[#172e69] text-xs font-bold uppercase tracking-widest bg-blue-50 px-3.5 py-1.5 rounded-full inline-block mb-3"
+        >Execution</span
+      >
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">
+        Management Team
+      </h2>
+    </div>
 
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Member 1 -->
+      <div
+        class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm flex flex-col items-center text-center"
+      >
+        <img
+          src="{{ url_for('static', filename='CEO_PICS.jpg') }}"
+          alt="Dr. Aladeniyi Isaac"
+          class="w-24 h-24 rounded-full object-cover border-2 border-slate-100 mb-3"
+        />
+        <h3 class="text-base font-bold text-slate-900">
+          Dr. Aladeniyi Isaac Olugbenga
+        </h3>
+        <span class="text-xs font-semibold text-[#172e69] mb-2"
+          >Executive Director</span
+        >
+        <p
+          class="text-slate-600 text-xs leading-relaxed line-clamp-4 text-left mb-3"
+        >
+          Medical Epidemiologist and Senior Health Specialist with 25+ years in
+          public health leadership. PhD in Epidemiology from the University of
+          Ibadan.
+        </p>
+        <!-- <button
+          onclick="toggleBioText(this)"
+          class="mt-auto text-xs font-bold text-[#172e69] hover:underline"
+        >
+          Read More
+        </button> -->
+      </div>
 
+      <!-- Member 2 -->
+      <div
+        class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm flex flex-col items-center text-center"
+      >
+        <img
+          src="{{ url_for('static', filename='MRS_ALADENIYI.jpg') }}"
+          alt="Olayemi Rhoda Aladeniyi"
+          class="w-24 h-24 rounded-full object-cover border-2 border-slate-100 mb-3"
+        />
+        <h3 class="text-base font-bold text-slate-900">
+          Olayemi Rhoda Aladeniyi
+        </h3>
+        <span class="text-xs font-semibold text-[#172e69] mb-2"
+          >Program Director (RMNCH)</span
+        >
+        <p
+          class="text-slate-600 text-xs leading-relaxed line-clamp-4 text-left mb-3"
+        >
+          Nurse, Midwife, and Public Health Nursing Specialist with 25+ years
+          experience. Master Trainer on the AMPLI-PPHI maternal health project.
+        </p>
+        <!-- <button
+          onclick="toggleBioText(this)"
+          class="mt-auto text-xs font-bold text-[#172e69] hover:underline"
+        >
+          Read More
+        </button> -->
+      </div>
 
-   <footer>
-        <div class="footer-top">
-        <div class="footer-columns">
-            <div class="footer-column">
-                <a href="/about-us" style="text-decoration: none; color: inherit;">
-                    <h4>About Us</h4></a>
-                <ul>
-                    <li>Our Mission</li>
-                    <li>Our Impact</li>
-                    <li>Leadership</li>
-                </ul>
-            </div>
+      <!-- Member 3 -->
+      <div
+        class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm flex flex-col items-center text-center"
+      >
+        <img
+          src="{{ url_for('static', filename='maryadeolu.jpg') }}"
+          alt="Mary Adeolu"
+          class="w-24 h-24 rounded-full object-cover border-2 border-slate-100 mb-3"
+        />
+        <h3 class="text-base font-bold text-slate-900">Mary Adeolu</h3>
+        <span class="text-xs font-semibold text-[#172e69] mb-2"
+          >Program Director (Analytics)</span
+        >
+        <p
+          class="text-slate-600 text-xs leading-relaxed line-clamp-4 text-left mb-3"
+        >
+          Data Analytics Professional and Health Informatics Researcher. MSc in
+          Biostatistics from the University of Ibadan, with expertise in WHO &
+          APIN projects.
+        </p>
+        <!-- <button
+          onclick="toggleBioText(this)"
+          class="mt-auto text-xs font-bold text-[#172e69] hover:underline"
+        >
+          Read More
+        </button> -->
+      </div>
 
-            <div class="footer-column">
-                <a href="/Priority" style="text-decoration: none; color: inherit;">
-                 <h4>Programs</h4></a>
-                <ul>
-                    <li><a href="/Health-Systems">Health Systems</a></li>
-                    <li>HIV/AIDS</li>
-                    <li>Research & Innovation</li>
-                </ul>
-            </div>
+      <!-- Member 4 -->
+      <div
+        class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm flex flex-col items-center text-center"
+      >
+        <img
+          src="{{ url_for('static', filename='Babajide.jpg') }}"
+          alt="Babajide Akingbesote"
+          class="w-24 h-24 rounded-full object-cover border-2 border-slate-100 mb-3"
+        />
+        <h3 class="text-base font-bold text-slate-900">Babajide Akingbesote</h3>
+        <span class="text-xs font-semibold text-[#172e69] mb-2"
+          >ICT & M&E Lead</span
+        >
+        <p
+          class="text-slate-600 text-xs leading-relaxed line-clamp-4 text-left mb-3"
+        >
+          Public Health Scientist and ICT-driven Monitoring & Evaluation
+          Specialist supporting data-driven decisions across disease
+          interventions.
+        </p>
+        <!-- <button
+          onclick="toggleBioText(this)"
+          class="mt-auto text-xs font-bold text-[#172e69] hover:underline"
+        >
+          Read More
+        </button> -->
+      </div>
 
-            <div class="footer-column">
-                <a href="/Involved" style="text-decoration: none; color: inherit;">
-                  <h4>Get Involved</h4>
-                </a>
-                <ul>
-                    <li><a href="/Involved">Donate</a></li>
-                    <li><a href="/Involved">Volunteer</a></li>
-                </ul>
-            </div>
-        </div>
- </div>
-        <div class="social-links">
-            <h4>Follow Us</h4>
-            <a href="https://facebook.com" target="_blank">
-                <img src="{{ url_for('static', filename='facebook.png') }}" alt="Facebook">
-            </a>
-            <a href="https://instagram.com" target="_blank">
-                <img src="{{ url_for('static', filename='instagram.png') }}" alt="Instagram">
-            </a>
-            <a href="https://linkedin.com" target="_blank">
-                <img src="{{ url_for('static', filename='linkedin.png') }}" alt="LinkedIn">
-            </a>
-        </div>
+      <!-- Members 5 -->
+       <div
+        class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm flex flex-col items-center text-center"
+      >
+        <img
+          src="{{ url_for('static', filename='Mrs faloye.jpeg') }}"
+          alt="Mrs. Faloye"
+          class="w-24 h-24 rounded-full object-cover border-2 border-slate-100 mb-3"
+        />
+        <h3 class="text-base font-bold text-slate-900">Faloye Temidayo, Phd</h3>
+        <span class="text-xs font-semibold text-[#172e69] mb-2"
+          >Research & Disease Surveillance Lead</span
+        >
+        <p
+          class="text-slate-600 text-xs leading-relaxed line-clamp-4 text-left mb-3"
+        >
+          Medical Microbiologist and Epidemiologist with the Ondo State Ministry of Health (Public Health Department, Epidemiology Unit). Holds a Ph.D. in Medical Microbiology from FUTA and an MPH in Epidemiology (in-view) from Ahmadu Bello University. Specializes in pathogen surveillance, antimicrobial resistance, and laboratory-backed public health interventions.
+        </p>
+        <button
+          onclick="toggleBioText(this)"
+          class="mt-auto text-xs font-bold text-[#172e69] hover:underline"
+        >
+          Read More
+        </button>
+    </div>
+  </div>
+</section>
 
-
-    <div class="footer-bottom">
-        <p>&copy; 2025 Broader Accessible-Health Initiatives. All Rights Reserved.</p>
-           </div>
-</footer>
-
- <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let currentIndex = 0;
-            const slides = document.querySelectorAll(".slide");
-            const totalSlides = slides.length;
-            const slider = document.querySelector(".slider");
-
-            function showSlide(index) {
-                if (index < 0) {
-                    currentIndex = totalSlides - 1;
-                } else if (index >= totalSlides) {
-                    currentIndex = 0;
-                } else {
-                    currentIndex = index;
-                }
-
-                const offset = -currentIndex * 100;
-                slider.style.transform = `translateX(${offset}%)`;
-            }
-
-            function nextSlide() {
-                showSlide(currentIndex + 1);
-            }
-
-            function prevSlide() {
-                showSlide(currentIndex - 1);
-            }
-
-            document.querySelector(".prev").addEventListener("click", prevSlide);
-            document.querySelector(".next").addEventListener("click", nextSlide);
-
-            // Auto slide every 15 seconds
-            setInterval(nextSlide, 5000);
-        });
-
-       function toggleMobileMenu() {
-    const menu = document.getElementById("mobileMenu");
-    if (menu.style.display === "flex") {
-      menu.style.display = "none";
+<!-- Simple Script for Expandable Bios -->
+<script>
+  function toggleBioText(btn) {
+    const textEl = btn.previousElementSibling;
+    if (textEl.classList.contains("line-clamp-4")) {
+      textEl.classList.remove("line-clamp-4");
+      btn.textContent = "Show Less";
     } else {
-      menu.style.display = "flex";
+      textEl.classList.add("line-clamp-4");
+      btn.textContent = "Read More";
     }
   }
+</script>
 
-    </script>
-
-
-</body>
-</html>
+{% endblock %}

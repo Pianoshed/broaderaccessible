@@ -1,0 +1,180 @@
+/* ==========================================================================
+   MODERN NGO HEADER
+   ========================================================================== */
+.site-header {
+  background-color: #ffffff;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 12px rgba(10, 31, 61, 0.04);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Brand Logo */
+.brand-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.brand-logo img {
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Desktop Navigation */
+.main-nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 32px;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1e293b;
+  padding: 8px 0;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #0f6e57;
+}
+
+/* Sleek active underline */
+.nav-link.active {
+  color: #0f6e57;
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #0f6e57;
+  border-radius: 2px;
+}
+
+/* Right Side CTA */
+.header-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn-header-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0d9488;
+  color: #ffffff !important;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 50px;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  box-shadow: 0 2px 6px rgba(13, 148, 136, 0.25);
+}
+
+.btn-header-cta:hover {
+  background-color: #0f766e;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.35);
+}
+
+/* Mobile Toggle - STRICTLY HIDDEN ON DESKTOP */
+.mobile-toggle-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.mobile-toggle-btn span {
+  display: block;
+  width: 24px;
+  height: 2.5px;
+  background-color: #0a1f3d;
+  border-radius: 2px;
+  transition:
+    transform 0.2s,
+    opacity 0.2s;
+}
+
+/* Mobile Drawer */
+.mobile-drawer {
+  display: none;
+  flex-direction: column;
+  background: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  padding: 16px 24px;
+}
+
+.mobile-drawer a {
+  padding: 12px 0;
+  text-decoration: none;
+  color: #1e293b;
+  font-weight: 600;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.mobile-drawer a.mobile-cta-link {
+  color: #0d9488;
+  font-weight: 700;
+  border-bottom: none;
+  padding-top: 16px;
+}
+
+.mobile-drawer.is-open {
+  display: flex;
+}
+
+/* ==========================================================================
+   MOBILE BREAKPOINT ONLY (Under 992px)
+   ========================================================================== */
+@media (max-width: 992px) {
+  .main-nav,
+  .btn-header-cta {
+    display: none !important;
+  }
+
+  .mobile-toggle-btn {
+    display: flex !important;
+  }
+
+  .brand-logo img {
+    height: 44px;
+  }
+
+  .header-inner {
+    height: 70px;
+  }
+}
