@@ -213,74 +213,189 @@ Broader Accessible-Health Initiatives (BRAIN){% endblock %} {% block content %}
     </div>
 
     <!-- Gallery Grid with Modern Hover Zoom -->
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <!-- Grid Container -->
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto px-4"
+    >
+      <!-- Project 1 -->
       <div
-        class="group overflow-hidden rounded-3xl shadow-md border border-slate-100 relative"
+        class="project-card group overflow-hidden rounded-3xl shadow-md border border-slate-100 relative bg-slate-900 cursor-pointer"
+        data-full-src="{{ url_for('static', filename='proj4.jpg') }}"
       >
         <img
           src="{{ url_for('static', filename='proj6.jpg') }}"
-          alt="Field Project 1"
-          class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500 ease-out"
+          alt="Field Project 2"
+          class="w-full h-72 object-cover transform group-hover:scale-105 transition duration-500 ease-out"
         />
         <div
-          class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6"
+          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-6"
         >
-          <p class="text-white text-xs font-semibold">
-            Facility Readiness & Assessment
-          </p>
+          <!-- Zoom Icon -->
+          <span
+            class="bg-white/20 backdrop-blur-md p-2 rounded-full text-white"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
+              />
+            </svg>
+          </span>
         </div>
       </div>
 
-      <div
-        class="group overflow-hidden rounded-3xl shadow-md border border-slate-100 relative"
+
+       <div
+        class="project-card group overflow-hidden rounded-3xl shadow-md border border-slate-100 relative bg-slate-900 cursor-pointer"
+        data-full-src="{{ url_for('static', filename='proj4.jpg') }}"
       >
         <img
           src="{{ url_for('static', filename='proj4.jpg') }}"
           alt="Field Project 2"
-          class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500 ease-out"
+          class="w-full h-72 object-cover transform group-hover:scale-105 transition duration-500 ease-out"
         />
         <div
-          class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6"
+          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-6"
         >
-          <p class="text-white text-xs font-semibold">
-            Frontline Healthcare Worker Training
-          </p>
+          <!-- Zoom Icon -->
+          <span
+            class="bg-white/20 backdrop-blur-md p-2 rounded-full text-white"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
+              />
+            </svg>
+          </span>
         </div>
       </div>
 
+      <!-- Project 2 -->
       <div
-        class="group overflow-hidden rounded-3xl shadow-md border border-slate-100 relative"
+        class="project-card group overflow-hidden rounded-3xl shadow-md border border-slate-100 relative bg-slate-900 cursor-pointer"
+        data-full-src="{{ url_for('static', filename='proj2.jpg') }}"
       >
         <img
           src="{{ url_for('static', filename='proj2.jpg') }}"
           alt="Field Project 3"
-          class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500 ease-out"
+          class="w-full h-72 object-cover transform group-hover:scale-105 transition duration-500 ease-out"
         />
         <div
-          class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6"
+          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-6"
         >
-          <p class="text-white text-xs font-semibold">
-            Maternal Clinical Outreach
-          </p>
+          <!-- Zoom Icon -->
+          <span
+            class="bg-white/20 backdrop-blur-md p-2 rounded-full text-white"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
+              />
+            </svg>
+          </span>
         </div>
       </div>
 
+      <!-- Project 3 -->
       <div
-        class="group overflow-hidden rounded-3xl shadow-md border border-slate-100 relative"
+        class="project-card group overflow-hidden rounded-3xl shadow-md border border-slate-100 relative bg-slate-900 cursor-pointer"
+        data-full-src="{{ url_for('static', filename='proj1.jpg') }}"
       >
         <img
           src="{{ url_for('static', filename='proj1.jpg') }}"
           alt="Field Project 4"
-          class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500 ease-out"
+          class="w-full h-72 object-cover transform group-hover:scale-105 transition duration-500 ease-out"
         />
         <div
-          class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6"
+          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-6"
         >
-          <p class="text-white text-xs font-semibold">
-            Community Stakeholder Engagement
-          </p>
+          <!-- Zoom Icon -->
+          <span
+            class="bg-white/20 backdrop-blur-md p-2 rounded-full text-white"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
+              />
+            </svg>
+          </span>
         </div>
       </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div
+      id="imageModal"
+      class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 transition-opacity duration-300"
+    >
+      <!-- Close Button -->
+      <button
+        id="closeModal"
+        class="absolute top-6 right-6 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 p-2 rounded-full transition focus:outline-none"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+
+      <img
+        id="modalImg"
+        src=""
+        alt=""
+        class="max-w-[95vw] max-h-[85vh] object-contain rounded-xl shadow-2xl transition-transform duration-300 scale-95"
+      />
+
+      <!-- Image Caption / Title -->
+      <p
+        id="modalCaption"
+        class="mt-4 text-white text-base font-medium tracking-wide"
+      ></p>
     </div>
 
     <!-- Bottom Collaboration CTA -->
@@ -314,5 +429,63 @@ Broader Accessible-Health Initiatives (BRAIN){% endblock %} {% block content %}
     </div>
   </div>
 </section>
+
+<script>
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImg");
+  const modalCaption = document.getElementById("modalCaption");
+  const closeBtn = document.getElementById("closeModal");
+  const cards = document.querySelectorAll(".project-card");
+
+  function openModal(src, title) {
+    modalImg.src = src;
+    modalImg.alt = title;
+    modalCaption.textContent = title;
+
+    modal.classList.remove("hidden");
+    document.body.classList.add("overflow-hidden"); // Disable background scrolling
+
+    // Smooth pop-in animation
+    setTimeout(() => {
+      modalImg.classList.remove("scale-95");
+      modalImg.classList.add("scale-100");
+    }, 10);
+  }
+
+  function closeModal() {
+    modalImg.classList.remove("scale-100");
+    modalImg.classList.add("scale-95");
+
+    setTimeout(() => {
+      modal.classList.add("hidden");
+      modalImg.src = "";
+      document.body.classList.remove("overflow-hidden");
+    }, 150);
+  }
+
+  // Open on card click
+  cards.forEach((card) => {
+    card.addEventListener("click", () => {
+      const src = card.dataset.fullSrc;
+      const title = card.dataset.title;
+      openModal(src, title);
+    });
+  });
+
+  // Close triggers
+  closeBtn.addEventListener("click", closeModal);
+
+  // Close when clicking outside image
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // Close on Escape key press
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+      closeModal();
+    }
+  });
+</script>
 
 {% endblock %}
