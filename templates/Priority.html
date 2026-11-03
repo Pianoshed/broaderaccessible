@@ -234,8 +234,10 @@ Accessible-Health Initiatives (BRAIN){% endblock %} {% block content %}
 
     <!-- Gallery Grid -->
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Project 1 -->
       <div
-        class="overflow-hidden rounded-3xl shadow-md border border-slate-100 group"
+        class="project-card cursor-pointer overflow-hidden rounded-3xl shadow-md border border-slate-100 group"
+        data-full-src="{{ url_for('static', filename='project1.jpg') }}"
       >
         <img
           src="{{ url_for('static', filename='project1.jpg') }}"
@@ -243,8 +245,11 @@ Accessible-Health Initiatives (BRAIN){% endblock %} {% block content %}
           class="w-full h-60 object-cover group-hover:scale-105 transition duration-500 ease-out"
         />
       </div>
+
+      <!-- Project 2 -->
       <div
-        class="overflow-hidden rounded-3xl shadow-md border border-slate-100 group"
+        class="project-card cursor-pointer overflow-hidden rounded-3xl shadow-md border border-slate-100 group"
+        data-full-src="{{ url_for('static', filename='project2.jpg') }}"
       >
         <img
           src="{{ url_for('static', filename='project2.jpg') }}"
@@ -252,8 +257,11 @@ Accessible-Health Initiatives (BRAIN){% endblock %} {% block content %}
           class="w-full h-60 object-cover group-hover:scale-105 transition duration-500 ease-out"
         />
       </div>
+
+      <!-- Project 3 -->
       <div
-        class="overflow-hidden rounded-3xl shadow-md border border-slate-100 group"
+        class="project-card cursor-pointer overflow-hidden rounded-3xl shadow-md border border-slate-100 group"
+        data-full-src="{{ url_for('static', filename='project3.jpg') }}"
       >
         <img
           src="{{ url_for('static', filename='project3.jpg') }}"
@@ -261,15 +269,109 @@ Accessible-Health Initiatives (BRAIN){% endblock %} {% block content %}
           class="w-full h-60 object-cover group-hover:scale-105 transition duration-500 ease-out"
         />
       </div>
+
+      <!-- Project 4 -->
       <div
-        class="overflow-hidden rounded-3xl shadow-md border border-slate-100 group"
+        class="project-card cursor-pointer overflow-hidden rounded-3xl shadow-md border border-slate-100 group"
+        data-full-src="{{ url_for('static', filename='project4.jpg') }}"
       >
         <img
           src="{{ url_for('static', filename='project4.jpg') }}"
           alt="Project 4"
           class="w-full h-60 object-cover group-hover:scale-105 transition duration-500 ease-out"
         />
-      </div>
+
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-6"
+        >
+         </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div
+      id="imageModal"
+      class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 transition-opacity duration-300 select-none cursor-grab active:cursor-grabbing"
+    >
+      <!-- Close Button -->
+      <button
+        id="closeModal"
+        class="absolute top-6 right-6 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 p-2 rounded-full transition focus:outline-none z-50"
+        aria-label="Close"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+
+      <!-- Previous Button (Desktop & Tablet) -->
+      <button
+        id="prevBtn"
+        class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition focus:outline-none z-50"
+        aria-label="Previous image"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 19l-7-7 7-7"
+          />
+        </svg>
+      </button>
+
+      <!-- Next Button (Desktop & Tablet) -->
+      <button
+        id="nextBtn"
+        class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition focus:outline-none z-50"
+        aria-label="Next image"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"
+          />
+        </svg>
+      </button>
+
+      <!-- Image -->
+      <img
+        id="modalImg"
+        src=""
+        alt=""
+        draggable="false"
+        class="max-w-[95vw] max-h-[85vh] object-contain rounded-xl shadow-2xl transition-transform duration-300 scale-95 pointer-events-none"
+      />
+
+      <!-- Image Caption / Title -->
+      <p
+        id="modalCaption"
+        class="mt-4 text-white text-base font-medium tracking-wide"
+      ></p>
     </div>
 
     <!-- Bottom Collaboration CTA -->
@@ -296,5 +398,132 @@ Accessible-Health Initiatives (BRAIN){% endblock %} {% block content %}
     </div>
   </div>
 </section>
+
+<script>
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImg");
+  const modalCaption = document.getElementById("modalCaption");
+  const closeBtn = document.getElementById("closeModal");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const cards = Array.from(document.querySelectorAll(".project-card"));
+
+  let currentIndex = 0;
+
+  // Drag & Swipe tracking
+  let startX = 0;
+  let startY = 0;
+  let isDragging = false;
+  const minSwipeDistance = 40; // Pixels needed to register a swipe
+
+  function updateModal(index) {
+    currentIndex = index;
+    const card = cards[currentIndex];
+    const src = card.dataset.fullSrc;
+    const title = card.dataset.title;
+
+    modalImg.src = src;
+    modalImg.alt = title;
+    modalCaption.textContent = title;
+  }
+
+  function openModal(index) {
+    updateModal(index);
+    modal.classList.remove("hidden");
+    document.body.classList.add("overflow-hidden");
+
+    setTimeout(() => {
+      modalImg.classList.remove("scale-95");
+      modalImg.classList.add("scale-100");
+    }, 10);
+  }
+
+  function closeModal() {
+    modalImg.classList.remove("scale-100");
+    modalImg.classList.add("scale-95");
+
+    setTimeout(() => {
+      modal.classList.add("hidden");
+      modalImg.src = "";
+      document.body.classList.remove("overflow-hidden");
+    }, 150);
+  }
+
+  function nextImage() {
+    const nextIdx = (currentIndex + 1) % cards.length;
+    updateModal(nextIdx);
+  }
+
+  function prevImage() {
+    const prevIdx = (currentIndex - 1 + cards.length) % cards.length;
+    updateModal(prevIdx);
+  }
+
+  // --- Unified Drag / Swipe Handler (Works for both Touch & Mouse) ---
+
+  // Prevent browser default behavior of ghost-dragging the <img> tag
+  modalImg.addEventListener("dragstart", (e) => e.preventDefault());
+
+  modal.addEventListener("pointerdown", (e) => {
+    // Ignore clicks directly on buttons to allow normal clicking
+    if (e.target.closest("button")) return;
+
+    startX = e.clientX;
+    startY = e.clientY;
+    isDragging = true;
+    modal.classList.add("cursor-grabbing");
+  });
+
+  window.addEventListener("pointerup", (e) => {
+    if (!isDragging) return;
+    isDragging = false;
+    modal.classList.remove("cursor-grabbing");
+
+    const diffX = e.clientX - startX;
+    const diffY = e.clientY - startY;
+
+    // Must be predominantly horizontal and past the threshold
+    if (
+      Math.abs(diffX) > Math.abs(diffY) &&
+      Math.abs(diffX) > minSwipeDistance
+    ) {
+      if (diffX < 0) {
+        nextImage(); // Dragged Left -> Next
+      } else {
+        prevImage(); // Dragged Right -> Prev
+      }
+    }
+  });
+
+  // --- Button & Card Event Listeners ---
+  cards.forEach((card, index) => {
+    card.addEventListener("click", () => openModal(index));
+  });
+
+  if (prevBtn)
+    prevBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      prevImage();
+    });
+  if (nextBtn)
+    nextBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      nextImage();
+    });
+  closeBtn.addEventListener("click", closeModal);
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // Keyboard navigation (Escape, Left, Right)
+  document.addEventListener("keydown", (e) => {
+    if (modal.classList.contains("hidden")) return;
+
+    if (e.key === "Escape") closeModal();
+    if (e.key === "ArrowRight") nextImage();
+    if (e.key === "ArrowLeft") prevImage();
+  });
+</script>
 
 {% endblock %}
